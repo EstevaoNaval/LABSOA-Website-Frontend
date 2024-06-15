@@ -1,33 +1,35 @@
 <template>
-  <div class='h-[48rem] max-w-3xl flex flex-col justify-center bg-base-200' ref='ketcherContainer'>
+  <div class='h-[48rem] max-w-3xl flex flex-col justify-center bg-base-200 p-4 rounded-3xl m-auto'>
     <iframe class="ketcher-iframe rounded-xl" ref='ketcherIFrame' v-if='isInView' :src='ketcherSrc' allowfullscreen></iframe>
-    <div class="flex mt-4 max-w-auto">
-      <div class="join flex">
+    
+    <form action="" method="post" class="flex mt-4 max-w-auto">
+      <div v-if="searchSelected === searchOptions[1].value" class="flex m-auto max-w-auto">
+        <div class="flex flex-col">
+          <label for="rangeid" class="my-auto text-sm font-semibold">Tanimoto Similarity</label>
+          <input v-model="inputSimilarityPercent" min="0" max="100" id="rangeid" type="range" class="range range-primary w-64" />
+        </div>
+        <div class="divider divider-horizontal"></div>
+        <div class="m-auto text-primary flex font-bold text-3xl gap-1">
+          <input v-model="inputSimilarityPercent" type="number" min="0" max="100" class="max-w-14 text-center" /><p>%</p>
+        </div>
+      </div>
+      
+      <div class="join flex ml-auto">
         <select v-model="searchSelected" class="join-item select select-bordered text-semibold text-lg" required>
-          <option value="exactSelected"><a>Exact</a></option>
-          <option :value="similaritySearchOptionValue"><a>Similarity</a></option>
-          <option value="substructureSelected"><a>Substructure</a></option>
+          <option value="" disabled selected>Search Type</option>
+          <option v-for="option in searchOptions" :key="option.id" :value="option.value"><a>{{ option.text }}</a></option>
         </select>
         <div class="indicator">
-          <button class="btn btn-primary join-item">
+          <button type="submit" class="btn btn-primary join-item">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-6 m-auto">
               <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
             </svg>
           </button>
         </div>
       </div>
-      <div v-if="searchSelected === similaritySearchOptionValue" class="flex m-auto max-w-auto">
-        <div class="flex flex-col">
-          <label for="rangeid" class="my-auto text-sm font-semibold">Tanimoto Similarity</label>
-          <input v-model="similarityPorcent" id="rangeid" type="range" min="0" max="100" class="range range-primary w-64" />
-        </div>
-        <div class="divider divider-horizontal"></div>
-        <div class="m-auto text-primary flex font-bold text-3xl">
-          <p>{{ similarityPorcent + '%' }}</p>
-        </div>
-      </div>
       
-    </div>
+    </form>
+    
   </div>
 </template>
 
@@ -45,16 +47,18 @@ const props = defineProps({
   }
 });
 
-const similarityPorcent = defineModel("similarityPorcent")
-// Default value
-similarityPorcent.value = 80
+const inputSimilarityPercent = defineModel("similarityPercent")
+inputSimilarityPercent.value = 90
 
 const searchSelected = defineModel("searchSelected")
 searchSelected.value = "exactSelected"
 
-const similaritySearchOptionValue = 'similaritySelected'
+const searchOptions = ref([
+  { id: 0, value: "exactSearchOption", text: "Exact" },
+  { id: 1, value: "similaritySearchOption", text: "Similarity" },
+  { id: 2, value: "substructureSearchOption", text: "Substructure" }
+])
 
-const ketcherContainer = ref(null);
 const isInView = ref(true);
 const ketcherSrc = computed(() => props.src);
 
@@ -96,5 +100,17 @@ defineExpose({ sendSmiles })
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 </style>
