@@ -1,23 +1,30 @@
 <template>
-  <div class='h-[48rem] max-w-3xl flex flex-col justify-center bg-base-200 p-4 rounded-3xl m-auto'>
+  <div class='h-[48rem] flex flex-col justify-center bg-base-100'>
+    
     <iframe class="ketcher-iframe rounded-xl" ref='ketcherIFrame' v-if='isInView' :src='ketcherSrc' allowfullscreen></iframe>
     
     <form action="" method="post" class="flex mt-4 max-w-auto">
-      <div v-if="searchSelected === searchOptions[1].value" class="flex m-auto max-w-auto">
-        <div class="flex flex-col">
-          <label for="rangeid" class="my-auto text-sm font-semibold">Tanimoto Similarity</label>
-          <input v-model="inputSimilarityPercent" min="0" max="100" id="rangeid" type="range" class="range range-primary w-64" />
+      <div class="flex flex-col m-auto font-semibold">
+        <div v-if="searchSelected === searchOptions[1].value" class="flex m-auto max-w-auto">
+          <div class="flex flex-col">
+            <label for="rangeid" class="my-auto text-sm font-semibold">Tanimoto Similarity</label>
+            <input v-model="inputSimilarityPercent" min="0" max="100" id="rangeid" type="range" class="range range-primary w-64" />
+          </div>
+          <div class="divider divider-horizontal"></div>
+          <div class="m-auto text-primary flex font-semibold text-3xl gap-1">
+            <input v-model="inputSimilarityPercent" type="number" min="0" max="100" class="max-w-14 text-center" /><p>%</p>
+          </div>
         </div>
-        <div class="divider divider-horizontal"></div>
-        <div class="m-auto text-primary flex font-bold text-3xl gap-1">
-          <input v-model="inputSimilarityPercent" type="number" min="0" max="100" class="max-w-14 text-center" /><p>%</p>
-        </div>
+        <label class="cursor-pointer label mr-auto gap-2" v-if="searchSelected !== searchOptions[1].value">
+          <input type="checkbox" class="checkbox checkbox-primary" />
+          <span class="label-text text-lg text-primary">Match Tautomers</span>
+        </label>
       </div>
-      
+    
       <div class="join flex ml-auto">
-        <select v-model="searchSelected" class="join-item select select-bordered text-semibold text-lg" required>
-          <option value="" disabled selected>Search Type</option>
-          <option v-for="option in searchOptions" :key="option.id" :value="option.value"><a>{{ option.text }}</a></option>
+        <select v-model="searchSelected" class="join-item select select-bordered font-semibold text-primary text-lg" required>
+          <option class="font-semibold" value="" disabled selected>Search Type</option>
+          <option class="font-semibold" v-for="option in searchOptions" :key="option.id" :value="option.value"><a>{{ option.text }}</a></option>
         </select>
         <div class="indicator">
           <button type="submit" class="btn btn-primary join-item">
@@ -27,9 +34,8 @@
           </button>
         </div>
       </div>
-      
     </form>
-    
+
   </div>
 </template>
 

@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <KetcherComponent src="Ketcher/index.html" endpoint="/search"></KetcherComponent>
+    <Navbar></Navbar>
   </div>
 </template>
 
 <script setup>
-import KetcherComponent from "~/components/KetcherComponent.vue";
+import Navbar from "~/components/Navbar.vue";
 
 </script>
 
