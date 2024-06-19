@@ -22,7 +22,7 @@ export default {
     daisyui
   ],
   daisyui: {
-    themes: ["night", "light"]
+    themes: ["night", "autumn"]
   }
 }
 

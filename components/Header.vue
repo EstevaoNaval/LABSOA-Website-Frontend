@@ -24,8 +24,9 @@
                         <li>
                             <a class="flex" href="">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m6.75 12-3-3m0 0-3 3m3-3v6m-1.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                                 </svg>
+
                                 <p>Submit</p>
                             </a>
                         </li>
@@ -53,7 +54,7 @@
                 <li class="my-auto">
                     <label class="btn btn-ghost btn-circle swap swap-rotate">    
                         <!-- this hidden checkbox controls the state -->
-                        <input type="checkbox" class="theme-controller" value="light"/>
+                        <input type="checkbox" class="theme-controller" value="autumn"/>
                         <!-- sun icon -->
                         <svg class="swap-on fill-current h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
                         <!-- moon icon -->
@@ -65,7 +66,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                         </svg>
-                        Sign in
+                        Sign In
                     </a>
                 </li>
             </div>
@@ -75,7 +76,7 @@
             <li class="ml-auto my-auto">
                 <label class="btn btn-ghost btn-circle swap swap-rotate text-primary">
                     <!-- this hidden checkbox controls the state -->
-                    <input type="checkbox" class="theme-controller" value="light"/>
+                    <input type="checkbox" class="theme-controller" value="autumn"/>
                     <!-- sun icon -->
                     <svg class="swap-on fill-current h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
                     <!-- moon icon -->
@@ -87,7 +88,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                     </svg>
-                    Sign in
+                    Sign In
                 </a>
             </li>
         </ul>
@@ -168,7 +169,7 @@
             <div class="hidden md:flex">
                 <div class="flex flex-col">
                     <div class="join">
-                        <input class="input input-bordered join-item text-lg" type="text" placeholder="Search Compound" required>
+                        <input class="input input-bordered join-item text-lg w-72" type="text" placeholder="Search Compound" required>
                         <div class="indicator">
                           <button type="submit" class="btn btn-primary join-item">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-6 m-auto">
@@ -178,13 +179,13 @@
                         </div>
                     </div>
                     <div class="flex text-md font-semibold gap-2">
-                        <a class="link link-primary" @click="toggleKetcherComponentModal()">Draw Structure</a>
+                        <a class="link link-primary" @click="openKetcherModal()">Draw Structure</a>
                         <a href="" class="link link-primary">Advanced Search</a>
                     </div>
                 </div>              
             </div>
-            <div class="flex text-primary md:hidden lg:hidden">
-                <button type="button" class="btn btn-ghost btn-circle" @click="toggleSearchButton()">
+            <div class="flex text-primary md:hidden lg:hidden">    
+                <button type="button" class="btn btn-ghost btn-circle" @click="toggleSearchBar()">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-6 w-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                     </svg>
@@ -192,51 +193,95 @@
             </div>
         </div>
     </div>
-    <dialog ref="drawStructureModal" class="modal">
-        <div class="modal-box p-4 rounded-3xl m-auto max-w-3xl">
-            <Suspense v-if="isKetcherComponentModelOpened">
-                <KetcherComponent src="Ketcher/index.html" endpoint="/search"></KetcherComponent>
-                <template #fallback>
-                    <span class="loading loading-dots loading-lg text-primary"></span>
-                </template>
-            </Suspense>
+
+    <div class="bg-base-200 shadow-md font-semibold">
+        <div class="md:hidden">
+            <transition 
+            name="collapse"
+            @enter="enter"
+            @after-enter="afterEnter"
+            @leave="leave"
+            @after-leave="afterLeave"
+            >   
+                <div v-show="isSearchBarVisible" class="collapsible">
+                    <ul class="flex menu menu-horizontal">
+                        <div class="m-auto flex flex-col">
+                            <div class="join">
+                                <input class="input input-bordered join-item text-md w-64" type="text" placeholder="Search Compound" required>
+                                <div class="indicator">
+                                  <button type="submit" class="btn btn-primary join-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-6 w-6 m-auto">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                                    </svg>
+                                  </button>
+                                </div>
+                            </div>
+                            <div class="flex text-sm font-semibold gap-2">
+                                <a href="" class="link link-primary">Advanced Search</a>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </transition>
         </div>
-        <form method="dialog" class="modal-backdrop">
-            <button @click="toggleKetcherComponentModal()">close</button>
-        </form>
-    </dialog>
-    
+        
+    </div>
+    <ketcher-modal ref="ketcherModalRef"></ketcher-modal>
 </template>
 
 <script setup lang="ts">
-import { ref, defineAsyncComponent } from 'vue';
+import { ref } from 'vue';
+import KetcherModal from '~/components/KetcherModal.vue';
 
-const KetcherComponent = defineAsyncComponent({
-    loader: () => import('./KetcherComponent.vue')
-});
+var ketcherModalRef =  ref(null)
 
-var isKetcherComponentModelOpened = ref(false)
-var drawStructureModal = ref(null)
+var isSearchBarVisible = ref(false)
 var menuDetailsSwapCheckbox = ref(null)
+
+const openKetcherModal = () => {
+    if(ketcherModalRef.value) {
+        ketcherModalRef.value.toggleKetcherComponentModal()
+    }
+}
 
 const toggleDetailsSwapCheckbox = () => {
     menuDetailsSwapCheckbox.value.checked = !menuDetailsSwapCheckbox.value.checked
 } 
 
-const toggleSearchButton = () => {
-
+const toggleSearchBar = () => {
+    isSearchBarVisible.value = !isSearchBarVisible.value
 }
 
-const toggleKetcherComponentModal = () => {
-    isKetcherComponentModelOpened.value = !isKetcherComponentModelOpened.value
-
-    if (isKetcherComponentModelOpened.value) {
-        drawStructureModal.value.showModal()
-    } 
+const enter = (el) => {
+    el.style.height = '0';
+    el.style.overflow = 'hidden';
+    el.style.transition = 'height 0.5s ease';
+    requestAnimationFrame(() => {
+      el.style.height = el.scrollHeight + 'px';
+    });
 }
 
+const afterEnter = (el) => {
+    el.style.height = 'auto';
+}
+
+const leave = (el) => {
+    el.style.height = el.scrollHeight + 'px';
+    el.style.overflow = 'hidden';
+    requestAnimationFrame(() => {
+      el.style.transition = 'height 0.5s ease';
+      el.style.height = '0';
+    });
+}
+
+const afterLeave = (el) => {
+    el.style.height = 'auto';
+}
 </script>
 
-<style>
+<style scoped>
+    .collapsible {
+        overflow: hidden;
+    }
 
 </style>

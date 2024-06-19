@@ -1,14 +1,11 @@
 <template>
-  <div id="app">
-    <Navbar></Navbar>
-  </div>
+  <div id="app"></div>
 </template>
 
 <script setup>
-import Navbar from "~/components/Navbar.vue";
-
+definePageMeta({
+  middleware: 'redirect-to-home'
+})
 </script>
 
-<style>
-
-</style>
+<style></style>
