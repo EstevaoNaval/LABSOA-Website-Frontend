@@ -5,9 +5,19 @@
         <div class="w-3/4 flex flex-col">
           <div class="gap-4 items-center hidden md:flex md:flex-col">
             <h1 class="text-6xl font-bold text-primary">Explore LabSOADB</h1>
-            <h1 class="text-xl font-semibold text-primary">Here you find </h1>
-            <div class="join w-3/4">
-              <input class="input input-bordered join-item text-2xl w-full p-8" type="text" placeholder="Search Compound on LabSOADB" required>
+            <h1 class="text-2xl font-semibold text-primary text-center">You will find chemicals gathered from the scientific literature</h1>
+            <div class="join w-[95%] xl:hidden">
+              <input class="input input-bordered join-item text-2xl w-full p-8" data-typewriter="1,3,7-trimethylpurine-2,6-dione...;C1=CC=C(C=C1)C=O...;[X3&H0]...;C9H8O4...;InChI=1S/C3H6O/c1-3(2)4/h1-2H3..." type="text" required>
+              <div class="indicator">
+                <button type="submit" class="btn btn-primary h-full join-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-10 w-10">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="join w-2/3 hidden xl:flex">
+              <input class="input input-bordered join-item text-2xl w-full p-8" data-typewriter="1,3,7-trimethylpurine-2,6-dione...;C1=CC=C(C=C1)C=O...;[X3&H0]...;C9H8O4...;InChI=1S/C3H6O/c1-3(2)4/h1-2H3..." type="text" required>
               <div class="indicator">
                 <button type="submit" class="btn btn-primary h-full join-item">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-10 w-10">
@@ -40,9 +50,9 @@
           </div>
           <div class="flex flex-col gap-4 items-center md:hidden">
             <h1 class="text-2xl font-bold text-primary">Explore LabSOADB</h1>
-            <h1 class="text-lg font-semibold text-primary">Here you find </h1>
-            <div class="join">
-              <input class="input input-bordered join-item text-lg w-full" type="text" placeholder="Search Compound" required>
+            <h1 class="text-lg font-semibold text-primary text-center">You will find chemicals gathered from the scientific literature</h1>
+            <div class="join w-full">
+              <input class="input input-bordered join-item text-lg w-full" type="text" placeholder="Search Chemical" required>
               <div class="indicator">
                 <button type="submit" class="btn btn-primary join-item">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-7 w-7">
@@ -76,8 +86,9 @@
   <ketcher-modal ref="ketcherModalRef"></ketcher-modal>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import KetcherModal from '~/components/KetcherModal.vue';
+import { onMounted } from 'vue';
 
 var ketcherModalRef =  ref(null)
 
@@ -87,14 +98,77 @@ const openKetcherModal = () => {
   }
 }
 
+
+class Typerwriter {
+  constructor(el, options){
+    this.el = el;
+    this.words = [...this.el.dataset.typewriter.split(';')];
+    this.speed = options?.speed || 100;
+    this.delay = options?.delay || 1500;
+    this.repeat = options?.repeat;
+    this.initTyping();
+  }
+
+  wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
+  toggleTyping = () => this.el.classList.toggle('typing');
+
+  async typewrite(word){
+    await this.wait(this.delay);
+    
+    this.toggleTyping();
+    
+    let result = '|';
+    
+    for (const letter of word.split('')) {
+      result = result.slice(0, result.length - 1) + letter + result.slice(result.length - 1, result.length);
+      this.el.placeholder = result
+      await this.wait(this.speed)
+    }
+    
+    this.toggleTyping();
+    
+    await this.wait(this.delay);
+    
+    this.toggleTyping();
+    
+    while (this.el.placeholder.length !== 0){
+      this.el.placeholder = this.el.placeholder.slice(0, -1);
+      await this.wait(this.speed)
+    }
+    
+    this.toggleTyping();
+  }
+
+  async initTyping() {
+    for (const word of this.words){
+      await this.typewrite(word);
+    }
+    if(this.repeat){
+      await this.initTyping();
+    } else {
+      this.el.style.animation = 'none';
+    }
+  }
+}
+
+onMounted(() => {
+  document.querySelectorAll('[data-typewriter]').forEach(el => {
+    new Typerwriter(el, {
+      repeat: true,
+      speed: 50,
+      delay: 1000
+    })
+  })
+})
+
 definePageMeta({
   layout: 'default'
 });
-
 </script>
 
 <style scoped>
 .search_bar_background {
-  background-image: url('./search_bar_background.jpg');
+  background-image: url('~/assets/search_bar_background.jpg');
 }
 </style>

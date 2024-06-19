@@ -160,10 +160,10 @@
                 </ul>
             </details>
 
-            <a class="btn btn-ghost text-2xl text-primary hidden md:flex">MolMod-CS-LabSOA</a>
+            <a class="btn btn-ghost text-2xl text-primary hidden md:flex">LabSOADB</a>
         </div>
         <div class="navbar-center">
-            <a class="btn btn-ghost text-lg text-primary md:hidden">MolMod-CS-LabSOA</a>
+            <a class="btn btn-ghost text-lg text-primary md:hidden">LabSOADB</a>
         </div>
         <div class="navbar-end">
             <div class="hidden md:flex">
@@ -216,6 +216,7 @@
                                   </button>
                                 </div>
                             </div>
+                            
                             <div class="flex text-sm font-semibold gap-2">
                                 <a href="" class="link link-primary">Advanced Search</a>
                             </div>
