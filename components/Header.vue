@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-base-200 shadow-md text-primary font-semibold">
+    <div class="bg-base-200 shadow-lg text-primary font-semibold">
         <ul class="menu menu-horizontal text-lg hidden md:flex">
             <li>
                 <a class="flex">
@@ -10,28 +10,29 @@
                 </a>
             </li>
             <li>
-                <details class="flex my-auto">
-                    <summary>Pdf2Chemicals</summary>
-                    <ul class="p-2">
+                <div class="dropdown dropdown-hover m-auto flex flex-col">
+                    <div class="flex" tabindex="0" role="button">
+                        PDF2Chemicals
+                    </div>
+                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 rounded-box bg-base-200 mt-10 mx-auto">
                         <li>
-                            <a href="">
+                            <NuxtLink class="flex" to="/pdf2chemicals/about">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                About
-                            </a>
+                                <p>About</p>
+                            </NuxtLink>
                         </li>
                         <li>
                             <a class="flex" href="">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m6.75 12-3-3m0 0-3 3m3-3v6m-1.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                                 </svg>
-
                                 <p>Submit</p>
                             </a>
                         </li>
                     </ul>
-                </details>
+                </div>
             </li>
             <li>
                 <a href="" class="flex">
@@ -54,7 +55,7 @@
                 <li class="my-auto">
                     <label class="btn btn-ghost btn-circle swap swap-rotate">    
                         <!-- this hidden checkbox controls the state -->
-                        <input type="checkbox" class="theme-controller" value="autumn"/>
+                        <input type="checkbox" class="theme-controller" :checked="isNightTheme" @change="toggleTheme"/>
                         <!-- sun icon -->
                         <svg class="swap-on fill-current h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
                         <!-- moon icon -->
@@ -62,7 +63,7 @@
                     </label>
                 </li>
                 <li class="my-auto">
-                    <a href="" class="flex">
+                    <a href="/" class="flex">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                         </svg>
@@ -76,7 +77,7 @@
             <li class="ml-auto my-auto">
                 <label class="btn btn-ghost btn-circle swap swap-rotate text-primary">
                     <!-- this hidden checkbox controls the state -->
-                    <input type="checkbox" class="theme-controller" value="autumn"/>
+                    <input type="checkbox" class="theme-controller" :checked="isNightTheme" @change="toggleTheme"/>
                     <!-- sun icon -->
                     <svg class="swap-on fill-current h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
                     <!-- moon icon -->
@@ -84,7 +85,7 @@
                 </label>
             </li>
             <li class="my-auto">
-                <a href="" class="flex">
+                <a href="/" class="flex">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                     </svg>
@@ -94,7 +95,7 @@
         </ul>
         
     </div>
-    <div class="navbar bg-base-100 shadow-md">
+    <div class="navbar bg-base-100 shadow-xl">
         <div class="navbar-start">
             <details class="dropdown md:hidden">
                 <summary ref="menuSummary" @click="toggleDetailsSwapCheckbox()" tabindex="0" role="button" class="btn btn-ghost swap swap-rotate text-primary">
@@ -119,15 +120,15 @@
                     </li>
                     <li>
                         <details class="flex my-auto">
-                            <summary>Pdf2Chemicals</summary>
+                            <summary>PDF2Chemicals</summary>
                             <ul class="p-2">
                                 <li>
-                                    <a href="">
+                                    <NuxtLink to="/pdf2chemicals/about">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
                                         About
-                                    </a>
+                                    </NuxtLink>
                                 </li>
                                 <li>
                                     <a class="flex" href="">
@@ -140,7 +141,6 @@
                             </ul>
                         </details>
                     </li>
-                    <!--<div class="divider"></div>-->
                     <li>
                         <a href="" class="flex">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
@@ -160,16 +160,16 @@
                 </ul>
             </details>
 
-            <a class="btn btn-ghost text-2xl text-primary hidden md:flex">LabSOADB</a>
+            <NuxtLink to="/home" class="btn btn-ghost text-2xl text-primary hidden md:flex">LabSOADB</NuxtLink>
         </div>
         <div class="navbar-center">
-            <a class="btn btn-ghost text-lg text-primary md:hidden">LabSOADB</a>
+            <NuxtLink to="/home" class="btn btn-ghost text-lg text-primary md:hidden">LabSOADB</NuxtLink>
         </div>
         <div class="navbar-end">
             <div class="hidden md:flex">
                 <div class="flex flex-col">
                     <div class="join">
-                        <input class="input input-bordered join-item text-lg w-72" type="text" placeholder="Search Compound" required>
+                        <input class="input input-bordered join-item text-lg w-72" type="text" placeholder="Search Chemical" required>
                         <div class="indicator">
                           <button type="submit" class="btn btn-primary join-item">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-6 m-auto">
@@ -207,7 +207,7 @@
                     <ul class="flex menu menu-horizontal">
                         <div class="m-auto flex flex-col">
                             <div class="join">
-                                <input class="input input-bordered join-item text-md w-64" type="text" placeholder="Search Compound" required>
+                                <input class="input input-bordered join-item text-md w-64" type="text" placeholder="Search Chemical" required>
                                 <div class="indicator">
                                   <button type="submit" class="btn btn-primary join-item">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-6 w-6 m-auto">
@@ -231,8 +231,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useThemeStore } from '~/stores/theme';
 import KetcherModal from '~/components/KetcherModal.vue';
+
+const themeStore = useThemeStore();
+const isNightTheme = computed(() => themeStore.currentTheme === 'night');
 
 var ketcherModalRef =  ref(null)
 
@@ -278,6 +282,11 @@ const leave = (el) => {
 const afterLeave = (el) => {
     el.style.height = 'auto';
 }
+
+const toggleTheme = () => {
+  const newTheme = isNightTheme.value ? 'autumn' : 'night';
+  themeStore.setTheme(newTheme);
+};
 </script>
 
 <style scoped>
