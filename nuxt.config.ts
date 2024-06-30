@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   ],
   srcDir: './',
   plugins: [
-    '~/plugins/axios.js'
+    '~/plugins/axios.js',
+    { src: '~/plugins/aos.client.js', mode: 'client' }
   ],
 })
