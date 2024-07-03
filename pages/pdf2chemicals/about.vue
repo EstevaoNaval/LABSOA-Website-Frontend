@@ -1,52 +1,74 @@
 <template>
+    <Head>
+        <Title>About | PDF2Chemicals</Title>
+        <Meta name="description" :content="pdf2chemicals_about_content" />
+    </Head>
     <section class="py-16 bg-base-200 bg-scroll bg-cover bg-center">
-        <div class="bg-opacity-70 h-full flex bg-base-200 text-left">
+        <div class="h-full flex bg-base-200 text-left">
             <div data-aos="fade-down" class="mx-auto w-2/3 hidden lg:flex lg:flex-col">
-                <div class="space-y-6">
+                <div class="space-y-2">
                     <h1 class="text-6xl text-primary font-bold">
                         About PDF2Chemicals
                     </h1>
-                    <h1 class="text-3xl text-primary font-semibold">
-                        PDF2Chemicals is an easy and versatile tool that extracts, cleans, structure and enriches chemicals experimental data from scientific literature PDFs
+                    <h1 class="text-3xl  font-semibold">
+                        PDF2Chemicals is a <strong>free</strong>, <strong>easy to use</strong> and <strong>versatile</strong> tool that <strong>extracts</strong>, <strong>cleans</strong> and <strong>structure</strong> chemicals experimental data from scientific literature PDFs
                     </h1>
-                    <h1 class="text-3xl text-primary font-semibold">
-                        Convinced? <a href="" class="link link-secondary">Submit</a> your PDFs to use PDF2Chemicals <strong>for free</strong>
+                </div>
+                <br>
+                <div class="space-y-2">
+                    <h1 class="text-2xl font-semibold">
+                        Interested? <a href="" class="link link-primary duration-200 hover:text-secondary">Submit</a> your PDFs to use PDF2Chemicals <strong>for free</strong>
                     </h1>
-                    <h1 class="text-3xl text-primary font-semibold">
-                        Want to know more? Scroll down to learn about the many features of PDF2Chemicals
+                    <h1 class="text-2xl font-semibold">
+                        Want to know more? Scroll down to learn about the main features of PDF2Chemicals
+                    </h1>
+                    <h1 class="text-2xl font-semibold">
+                        The full list of PDF2Chemicals features can be found on the <NuxtLink to='/pdf2chemicals/features' class="link link-primary duration-200 hover:text-secondary">features</NuxtLink> page
                     </h1>
                     
                 </div>
             </div>
             <div data-aos="fade-down" class="mx-auto w-[90%] hidden md:flex md:flex-col lg:hidden">
-                <div class="space-y-4">
+                <div class="space-y-2">
                     <h1 class="text-6xl text-primary font-bold">
                         About PDF2Chemicals
                     </h1>
-                    <h1 class="text-3xl text-primary font-semibold">
-                        PDF2Chemicals is an easy and versatile tool that extracts, cleans, structure and enriches chemicals experimental data from scientific literature PDFs
+                    <h1 class="text-3xl font-semibold">
+                        PDF2Chemicals is a <strong>free</strong>, <strong>easy to use</strong> and <strong>versatile</strong> tool that <strong>extracts</strong>, <strong>cleans</strong> and <strong>structure</strong> chemicals experimental data from scientific literature PDFs
                     </h1>
-                    <h1 class="text-3xl text-primary font-semibold">
-                        Convinced? <a href="" class="link link-secondary">Submit</a> your PDFs to use PDF2Chemicals <strong>for free</strong>
+                </div>
+                <br>
+                <div class="space-y-2">
+                    <h1 class="text-2xl font-semibold">
+                        Interested? <a href="" class="link link-secondary">Submit</a> your PDFs to use PDF2Chemicals <strong>for free</strong>
                     </h1>
-                    <h1 class="text-3xl text-primary font-semibold">
+                    <h1 class="text-2xl font-semibold">
                         Want to know more? Scroll down to learn about the many features of PDF2Chemicals
+                    </h1>
+                    <h1 class="text-2xl font-semibold">
+                        The full list of PDF2Chemicals features can be found on the <NuxtLink to='/pdf2chemicals/features' class="link link-secondary">features</NuxtLink> page
                     </h1>
                 </div>
             </div>
             <div data-aos="fade-down" class="mx-auto w-[90%] flex flex-col md:hidden">
-                <div class="space-y-4 text-left">
+                <div class="space-y-2 text-left">
                     <h1 class="text-2xl text-primary font-bold">
                         About PDF2Chemicals
                     </h1>
-                    <h1 class="text-lg text-primary font-semibold">
-                        PDF2Chemicals is an easy and versatile tool that extracts, cleans, structure and enriches chemicals experimental data from scientific literature PDFs
+                    <h1 class="text-lg font-semibold">
+                        PDF2Chemicals is a <strong>free</strong>, <strong>easy to use</strong> and <strong>versatile</strong> tool that <strong>extracts</strong>, <strong>cleans</strong> and <strong>structure</strong> chemicals experimental data from scientific literature PDFs
                     </h1>
-                    <h1 class="text-lg text-primary font-semibold">
-                        Convinced? <a href="" class="link link-secondary">Submit</a> your PDFs to use PDF2Chemicals <strong>for free</strong>
+                </div>
+                <br>
+                <div class="space-y-2 text-left">
+                    <h1 class="text-md font-semibold">
+                        Interested? <a href="" class="link link-secondary">Submit</a> your PDFs to use PDF2Chemicals <strong>for free</strong>
                     </h1>
-                    <h1 class="text-lg text-primary font-semibold">
+                    <h1 class="text-md font-semibold">
                         Want to know more? Scroll down to learn about the many features of PDF2Chemicals
+                    </h1>
+                    <h1 class="text-md font-semibold">
+                        The full list of PDF2Chemicals features can be found on the <NuxtLink to='/pdf2chemicals/features' class="link link-secondary">features</NuxtLink> page
                     </h1>
                 </div>
                 
@@ -232,7 +254,7 @@
                 </svg>
             </section>
             <section data-aos="fade-left" class="items-center mx-auto gap-12 w-2/3 hidden lg:flex m-8">
-                <h1 class="text-4xl text-primary font-semibold">
+                <h1 class="text-4xl font-semibold text-primary">
                     Predict extracted compounds that pass through the blood-brain barrier or gastrointestinal tract
                 </h1>
 
@@ -281,7 +303,7 @@
                 </h1>
 
                 <svg viewBox="0 0 367.094 306.746" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" class="w-96 h-auto fill-primary stroke-primary mx-auto">
-                    <path d="M204.209 98.897s-16.735 35.276-21.266 53.327c-5.927 23.614.86 41.46-7.752 64.36-14.883 26.855-15.889 31.2-70.2 31.141-19.904-.02-76.902-15.194-76.902-15.194-7.858-2.017-22.311-.826-22.311-9.61 0-8.785 10.279-15.188 19.42-15.214l35.977 3.162c8.745-.55 17.893-5.662 18.17-17.1-.145-16.92-1.819-29.91-10.404-43.655L35.59 98.077c-1.991-4.141-2.467-11.205 3.3-14.36 5.768-3.156 12.317 1.534 14.553 5.615L90.689 140c3.982 3.698 11.053 4.412 10.451-3.466L84.69 61.12c-1.025-5.358 1.693-11.847 7.898-11.847 8.142 0 13.143 3.11 12.984 8.024l18.084 74.407c1.416 3.618 6.43 3.142 7.78-.205l5.152-72.357c.265-2.308 3.274-6.33 9.055-5.496s9.109 7.03 8.5 9.419l-1.673 71.497c1.17 6.337 6.151 7.263 10.034 3.724l25.314-45.264c1.534-3.797 7.56-4.584 11.046-3.082 3.248 2.116 5.358 4.948 5.358 8.936z" style="fill:none;stroke-width:6.615;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" transform="translate(88.055 55.713)"/><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="-44.515" y="235.627" transform="translate(88.055 55.713)"><tspan style="stroke-width:6.615" x="-44.515" y="235.627">MW</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="8.295" y="-62.363" transform="rotate(80.031 10.848 80.298)"><tspan style="stroke-width:6.615" x="8.295" y="-62.363">HBD</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="53.59" y="41.057" transform="rotate(50.446 -15.109 121.322)"><tspan style="stroke-width:6.615" x="53.59" y="41.057">RB</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="84.413" y="238.329" transform="rotate(-60.53 91.765 -47.593)"><tspan style="stroke-width:6.615" x="84.413" y="238.329">LOGP</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="16.171" y="167.396" transform="rotate(-83.554 75.208 -21.425)"><tspan style="stroke-width:6.615" x="16.171" y="167.396">HBA</tspan></text>
+                    <path d="M204.209 98.897s-16.735 35.276-21.266 53.327c-5.927 23.614.86 41.46-7.752 64.36-14.883 26.855-15.889 31.2-70.2 31.141-19.904-.02-76.902-15.194-76.902-15.194-7.858-2.017-22.311-.826-22.311-9.61 0-8.785 10.279-15.188 19.42-15.214l35.977 3.162c8.745-.55 17.893-5.662 18.17-17.1-.145-16.92-1.819-29.91-10.404-43.655L35.59 98.077c-1.991-4.141-2.467-11.205 3.3-14.36 5.768-3.156 12.317 1.534 14.553 5.615L90.689 140c3.982 3.698 11.053 4.412 10.451-3.466L84.69 61.12c-1.025-5.358 1.693-11.847 7.898-11.847 8.142 0 13.143 3.11 12.984 8.024l18.084 74.407c1.416 3.618 6.43 3.142 7.78-.205l5.152-72.357c.265-2.308 3.274-6.33 9.055-5.496s9.109 7.03 8.5 9.419l-1.673 71.497c1.17 6.337 6.151 7.263 10.034 3.724l25.314-45.264c1.534-3.797 7.56-4.584 11.046-3.082 3.248 2.116 5.358 4.948 5.358 8.936z" style="fill:none;stroke-width:6.615;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" transform="translate(88.055 55.713)"/><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="-44.515" y="235.627" transform="translate(88.055 55.713)"><tspan style="stroke-width:6.615" x="-44.515" y="235.627">MW</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="-13.067" y="95.846" transform="rotate(-101.887 66.63 -7.868)"><tspan style="stroke-width:6.615" x="-13.067" y="95.846">HBD</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="53.59" y="41.057" transform="rotate(50.446 -15.109 121.322)"><tspan style="stroke-width:6.615" x="53.59" y="41.057">RB</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="84.413" y="238.329" transform="rotate(-60.53 91.765 -47.593)"><tspan style="stroke-width:6.615" x="84.413" y="238.329">LOGP</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="16.171" y="167.396" transform="rotate(-83.554 75.208 -21.425)"><tspan style="stroke-width:6.615" x="16.171" y="167.396">HBA</tspan></text>
                 </svg>
             </section>
             <section data-aos="fade-left" class="items-center mx-auto gap-12 w-[90%] hidden md:flex lg:hidden m-8">
@@ -290,7 +312,7 @@
                 </h1>
 
                 <svg viewBox="0 0 367.094 306.746" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" class="w-96 h-auto fill-primary stroke-primary mx-auto">
-                    <path d="M204.209 98.897s-16.735 35.276-21.266 53.327c-5.927 23.614.86 41.46-7.752 64.36-14.883 26.855-15.889 31.2-70.2 31.141-19.904-.02-76.902-15.194-76.902-15.194-7.858-2.017-22.311-.826-22.311-9.61 0-8.785 10.279-15.188 19.42-15.214l35.977 3.162c8.745-.55 17.893-5.662 18.17-17.1-.145-16.92-1.819-29.91-10.404-43.655L35.59 98.077c-1.991-4.141-2.467-11.205 3.3-14.36 5.768-3.156 12.317 1.534 14.553 5.615L90.689 140c3.982 3.698 11.053 4.412 10.451-3.466L84.69 61.12c-1.025-5.358 1.693-11.847 7.898-11.847 8.142 0 13.143 3.11 12.984 8.024l18.084 74.407c1.416 3.618 6.43 3.142 7.78-.205l5.152-72.357c.265-2.308 3.274-6.33 9.055-5.496s9.109 7.03 8.5 9.419l-1.673 71.497c1.17 6.337 6.151 7.263 10.034 3.724l25.314-45.264c1.534-3.797 7.56-4.584 11.046-3.082 3.248 2.116 5.358 4.948 5.358 8.936z" style="fill:none;stroke-width:6.615;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" transform="translate(88.055 55.713)"/><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="-44.515" y="235.627" transform="translate(88.055 55.713)"><tspan style="stroke-width:6.615" x="-44.515" y="235.627">MW</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="8.295" y="-62.363" transform="rotate(80.031 10.848 80.298)"><tspan style="stroke-width:6.615" x="8.295" y="-62.363">HBD</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="53.59" y="41.057" transform="rotate(50.446 -15.109 121.322)"><tspan style="stroke-width:6.615" x="53.59" y="41.057">RB</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="84.413" y="238.329" transform="rotate(-60.53 91.765 -47.593)"><tspan style="stroke-width:6.615" x="84.413" y="238.329">LOGP</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="16.171" y="167.396" transform="rotate(-83.554 75.208 -21.425)"><tspan style="stroke-width:6.615" x="16.171" y="167.396">HBA</tspan></text>
+                    <path d="M204.209 98.897s-16.735 35.276-21.266 53.327c-5.927 23.614.86 41.46-7.752 64.36-14.883 26.855-15.889 31.2-70.2 31.141-19.904-.02-76.902-15.194-76.902-15.194-7.858-2.017-22.311-.826-22.311-9.61 0-8.785 10.279-15.188 19.42-15.214l35.977 3.162c8.745-.55 17.893-5.662 18.17-17.1-.145-16.92-1.819-29.91-10.404-43.655L35.59 98.077c-1.991-4.141-2.467-11.205 3.3-14.36 5.768-3.156 12.317 1.534 14.553 5.615L90.689 140c3.982 3.698 11.053 4.412 10.451-3.466L84.69 61.12c-1.025-5.358 1.693-11.847 7.898-11.847 8.142 0 13.143 3.11 12.984 8.024l18.084 74.407c1.416 3.618 6.43 3.142 7.78-.205l5.152-72.357c.265-2.308 3.274-6.33 9.055-5.496s9.109 7.03 8.5 9.419l-1.673 71.497c1.17 6.337 6.151 7.263 10.034 3.724l25.314-45.264c1.534-3.797 7.56-4.584 11.046-3.082 3.248 2.116 5.358 4.948 5.358 8.936z" style="fill:none;stroke-width:6.615;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" transform="translate(88.055 55.713)"/><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="-44.515" y="235.627" transform="translate(88.055 55.713)"><tspan style="stroke-width:6.615" x="-44.515" y="235.627">MW</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="-13.067" y="95.846" transform="rotate(-101.887 66.63 -7.868)"><tspan style="stroke-width:6.615" x="-13.067" y="95.846">HBD</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="53.59" y="41.057" transform="rotate(50.446 -15.109 121.322)"><tspan style="stroke-width:6.615" x="53.59" y="41.057">RB</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="84.413" y="238.329" transform="rotate(-60.53 91.765 -47.593)"><tspan style="stroke-width:6.615" x="84.413" y="238.329">LOGP</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="16.171" y="167.396" transform="rotate(-83.554 75.208 -21.425)"><tspan style="stroke-width:6.615" x="16.171" y="167.396">HBA</tspan></text>
                 </svg>
             </section>
             <section data-aos="fade-left" class="items-center mx-auto gap-12 w-2/3 hidden lg:flex m-8">
@@ -299,7 +321,7 @@
                 </h1>
 
                 <svg viewBox="0 0 367.094 306.746" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" class="w-96 h-auto fill-primary stroke-primary mx-auto">
-                    <path d="M204.209 98.897s-16.735 35.276-21.266 53.327c-5.927 23.614.86 41.46-7.752 64.36-14.883 26.855-15.889 31.2-70.2 31.141-19.904-.02-76.902-15.194-76.902-15.194-7.858-2.017-22.311-.826-22.311-9.61 0-8.785 10.279-15.188 19.42-15.214l35.977 3.162c8.745-.55 17.893-5.662 18.17-17.1-.145-16.92-1.819-29.91-10.404-43.655L35.59 98.077c-1.991-4.141-2.467-11.205 3.3-14.36 5.768-3.156 12.317 1.534 14.553 5.615L90.689 140c3.982 3.698 11.053 4.412 10.451-3.466L84.69 61.12c-1.025-5.358 1.693-11.847 7.898-11.847 8.142 0 13.143 3.11 12.984 8.024l18.084 74.407c1.416 3.618 6.43 3.142 7.78-.205l5.152-72.357c.265-2.308 3.274-6.33 9.055-5.496s9.109 7.03 8.5 9.419l-1.673 71.497c1.17 6.337 6.151 7.263 10.034 3.724l25.314-45.264c1.534-3.797 7.56-4.584 11.046-3.082 3.248 2.116 5.358 4.948 5.358 8.936z" style="fill:none;stroke-width:6.615;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" transform="translate(88.055 55.713)"/><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="-44.515" y="235.627" transform="translate(88.055 55.713)"><tspan style="stroke-width:6.615" x="-44.515" y="235.627">MW</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="8.295" y="-62.363" transform="rotate(80.031 10.848 80.298)"><tspan style="stroke-width:6.615" x="8.295" y="-62.363">HBD</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="53.59" y="41.057" transform="rotate(50.446 -15.109 121.322)"><tspan style="stroke-width:6.615" x="53.59" y="41.057">RB</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="84.413" y="238.329" transform="rotate(-60.53 91.765 -47.593)"><tspan style="stroke-width:6.615" x="84.413" y="238.329">LOGP</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="16.171" y="167.396" transform="rotate(-83.554 75.208 -21.425)"><tspan style="stroke-width:6.615" x="16.171" y="167.396">HBA</tspan></text>
+                    <path d="M204.209 98.897s-16.735 35.276-21.266 53.327c-5.927 23.614.86 41.46-7.752 64.36-14.883 26.855-15.889 31.2-70.2 31.141-19.904-.02-76.902-15.194-76.902-15.194-7.858-2.017-22.311-.826-22.311-9.61 0-8.785 10.279-15.188 19.42-15.214l35.977 3.162c8.745-.55 17.893-5.662 18.17-17.1-.145-16.92-1.819-29.91-10.404-43.655L35.59 98.077c-1.991-4.141-2.467-11.205 3.3-14.36 5.768-3.156 12.317 1.534 14.553 5.615L90.689 140c3.982 3.698 11.053 4.412 10.451-3.466L84.69 61.12c-1.025-5.358 1.693-11.847 7.898-11.847 8.142 0 13.143 3.11 12.984 8.024l18.084 74.407c1.416 3.618 6.43 3.142 7.78-.205l5.152-72.357c.265-2.308 3.274-6.33 9.055-5.496s9.109 7.03 8.5 9.419l-1.673 71.497c1.17 6.337 6.151 7.263 10.034 3.724l25.314-45.264c1.534-3.797 7.56-4.584 11.046-3.082 3.248 2.116 5.358 4.948 5.358 8.936z" style="fill:none;stroke-width:6.615;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" transform="translate(88.055 55.713)"/><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="-44.515" y="235.627" transform="translate(88.055 55.713)"><tspan style="stroke-width:6.615" x="-44.515" y="235.627">MW</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="-13.067" y="95.846" transform="rotate(-101.887 66.63 -7.868)"><tspan style="stroke-width:6.615" x="-13.067" y="95.846">HBD</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="53.59" y="41.057" transform="rotate(50.446 -15.109 121.322)"><tspan style="stroke-width:6.615" x="53.59" y="41.057">RB</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="84.413" y="238.329" transform="rotate(-60.53 91.765 -47.593)"><tspan style="stroke-width:6.615" x="84.413" y="238.329">LOGP</tspan></text><text xml:space="preserve" style="font-weight:700;font-size:48.3306px;font-family:System-ui;-inkscape-font-specification:&quot;System-ui Bold&quot;;text-align:center;text-anchor:middle;stroke:none;stroke-width:6.61501;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1" x="16.171" y="167.396" transform="rotate(-83.554 75.208 -21.425)"><tspan style="stroke-width:6.615" x="16.171" y="167.396">HBA</tspan></text>
                 </svg>
             </section>
         </div>
@@ -338,20 +360,25 @@
 
         <div class="bg-base-200 py-16">
             <section data-aos="fade-up" class="items-center mx-auto gap-12 flex md:hidden w-[90%] m-8">
-                <h1 class="text-lg text-center text-primary font-semibold">
+                <h1 class="text-lg text-center font-semibold">
                     Insterested? <a href="" class="link link-secondary">Submit</a> your PDFs to use PDF2Chemicals <strong>for free</strong>
                 </h1>
             </section>
             <section data-aos="fade-up" class="items-center mx-auto gap-12 w-[90%] hidden md:flex lg:hidden m-8">
-                <h1 class="text-2xl text-center text-primary font-semibold">
+                <h1 class="text-2xl text-center font-semibold">
                     Insterested? <a href="" class="link link-secondary">Submit</a> your PDFs to use PDF2Chemicals <strong>for free</strong>
                 </h1>
             </section>
             <section data-aos="fade-up" class="items-center mx-auto gap-12 w-2/3 hidden lg:flex m-8">
-                <h1 class="text-4xl text-center text-primary font-semibold mx-auto flex gap-2">
-                    Insterested? <a href="" class="link link-secondary">Submit</a> your PDFs to use PDF2Chemicals <strong>for free</strong>
+                <h1 class="text-4xl text-center font-semibold mx-auto flex gap-2">
+                    Insterested? <a href="" class="link link-primary duration-200 hover:text-secondary">Submit</a> your PDFs to use PDF2Chemicals <strong>for free</strong>
                 </h1>
             </section>
         </div>
     </div>
 </template>
+
+<script setup lang="ts">
+
+const pdf2chemicals_about_content = ref("PDF2Chemicals is a free, easy to use and versatile tool that extracts, cleans and structure chemicals experimental data from scientific literature PDFs.")
+</script>

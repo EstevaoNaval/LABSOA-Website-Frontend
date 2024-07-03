@@ -1,5 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: true,
+  target: 'server',
+  generate: {
+    routes: [
+      '/about',
+      '/pdf2chemicals/about',
+      '/pdf2chemicals/features'
+    ]
+  },
   devtools: { enabled: true },
   modules: [
     '@nuxtjs/tailwindcss',
@@ -8,6 +17,13 @@ export default defineNuxtConfig({
   srcDir: './',
   plugins: [
     '~/plugins/axios.js',
-    { src: '~/plugins/aos.client.js', mode: 'client' }
+    { src: '~/plugins/aos.client.js', mode: 'client' },
+    '~/plugins/close-details.js'
   ],
+  app: {
+    head: {
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+    }
+  }
 })

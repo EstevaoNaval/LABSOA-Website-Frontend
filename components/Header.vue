@@ -1,8 +1,8 @@
 <template>
-    <div class="bg-base-200 shadow-lg text-primary font-semibold">
+    <div class="bg-base-200 shadow-lg font-semibold">
         <ul class="menu menu-horizontal text-lg hidden md:flex">
             <li>
-                <a class="flex">
+                <a class="flex hover:text-primary">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -10,13 +10,13 @@
                 </a>
             </li>
             <li>
-                <div class="dropdown dropdown-hover m-auto flex flex-col">
-                    <div class="flex" tabindex="0" role="button">
+                <details v-close-details class="dropdown dropdown-hover m-auto flex flex-col closed:text-current group/details">
+                    <summary class="flex hover:text-primary duration-200 group-open/details:text-primary" tabindex="0" role="button">
                         PDF2Chemicals
-                    </div>
-                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 rounded-box bg-base-200 mt-10 mx-auto">
+                    </summary>
+                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 rounded-box bg-base-200 mx-auto">
                         <li>
-                            <NuxtLink class="flex" to="/pdf2chemicals/about">
+                            <NuxtLink class="flex hover:text-primary" to="/pdf2chemicals/about">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -24,7 +24,15 @@
                             </NuxtLink>
                         </li>
                         <li>
-                            <a class="flex" href="">
+                            <NuxtLink class="flex hover:text-primary" to="/pdf2chemicals/features">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                                </svg>
+                                <p>Features</p>
+                            </NuxtLink>
+                        </li>
+                        <li>
+                            <a class="flex hover:text-primary" href="">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m6.75 12-3-3m0 0-3 3m3-3v6m-1.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                                 </svg>
@@ -32,10 +40,10 @@
                             </a>
                         </li>
                     </ul>
-                </div>
+                </details>
             </li>
             <li>
-                <a href="" class="flex">
+                <a href="" class="flex hover:text-primary">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                     </svg>
@@ -43,7 +51,7 @@
                 </a>
             </li>
             <li>
-                <a class="flex">
+                <a class="flex hover:text-primary">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
                     </svg>
@@ -52,7 +60,7 @@
             </li>
             
             <div class="flex ml-auto">
-                <li class="my-auto">
+                <li class="my-auto hover:text-primary">
                     <label class="btn btn-ghost btn-circle swap swap-rotate">    
                         <!-- this hidden checkbox controls the state -->
                         <input type="checkbox" class="theme-controller" :checked="isNightTheme" @change="toggleTheme"/>
@@ -63,7 +71,7 @@
     
                     </label>
                 </li>
-                <li class="my-auto">
+                <li class="my-auto hover:text-primary">
                     <a href="/" class="flex">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -75,8 +83,8 @@
         </ul>
 
         <ul class="flex menu menu-horizontal text-lg md:hidden lg:hidden">
-            <li class="ml-auto my-auto">
-                <label class="btn btn-ghost btn-circle swap swap-rotate text-primary">
+            <li class="ml-auto my-auto hover:text-primary">
+                <label class="btn btn-ghost btn-circle swap swap-rotate">
                     <!-- this hidden checkbox controls the state -->
                     <input type="checkbox" class="theme-controller" :checked="isNightTheme" @change="toggleTheme"/>
                     <!-- moon icon -->
@@ -85,7 +93,7 @@
                     <svg class="swap-off fill-current h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
                 </label>
             </li>
-            <li class="my-auto">
+            <li class="my-auto hover:text-primary">
                 <a href="/" class="flex">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -98,8 +106,8 @@
     </div>
     <div class="navbar bg-base-100 shadow-xl">
         <div class="navbar-start">
-            <details class="dropdown md:hidden">
-                <summary ref="menuSummary" @click="toggleDetailsSwapCheckbox()" tabindex="0" role="button" class="btn btn-ghost swap swap-rotate text-primary">
+            <details v-close-details class="dropdown md:hidden group/details closed:text-current">
+                <summary ref="menuSummary" @click="toggleDetailsSwapCheckbox()" tabindex="0" role="button" class="btn btn-ghost swap swap-rotate duration-200 group-open/details:text-primary">
                     <input type="checkbox" ref="menuDetailsSwapCheckbox" />
 
                     <svg class="swap-on fill-current h-6 w-6" xmlns="http://www.w3.org/2000/svg" stroke-width="2.5" viewBox="0 0 512 512">
@@ -110,17 +118,17 @@
                     </svg>    
                 </summary>                    
 
-                <ul tabindex="0" class="menu menu-md dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-lg font-bold text-primary">
+                <ul tabindex="0" class="menu menu-md dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-lg font-bold">
                     <li>
-                        <a class="flex">
+                        <NuxtLink to='/about' class="flex">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             About
-                        </a>
+                        </NuxtLink>
                     </li>
                     <li>
-                        <details class="flex my-auto">
+                        <details v-close-details class="flex my-auto">
                             <summary>PDF2Chemicals</summary>
                             <ul class="p-2">
                                 <li>
@@ -128,7 +136,16 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
-                                        About
+                                        <p>About</p>
+                                    </NuxtLink>
+                                </li>
+                                <li>
+                                    <NuxtLink  to="/pdf2chemicals/features">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                          <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                                        </svg>
+
+                                        <p>Features</p>
                                     </NuxtLink>
                                 </li>
                                 <li>
@@ -143,20 +160,20 @@
                         </details>
                     </li>
                     <li>
-                        <a href="" class="flex">
+                        <NuxtLink href="" class="flex" to='/'>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                             </svg>
                             Download
-                        </a>
+                        </NuxtLink>
                     </li>
                     <li>
-                        <a class="flex">
+                        <NuxtLink class="flex" to='/'>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
                             </svg>
                             Web API
-                        </a>
+                        </NuxtLink>
                     </li>
                 </ul>
             </details>
@@ -179,15 +196,22 @@
                           </button>
                         </div>
                     </div>
-                    <div class="flex text-md font-semibold gap-2">
-                        <a class="link link-primary" @click="openKetcherModal()">Draw Structure</a>
-                        <a href="" class="link link-primary">Advanced Search</a>
+                    <div class="flex text-md font-semibold">
+                        <div class="flex gap-2 lg:hidden">
+                            <a class="link link-secondary" @click="openKetcherModal()">Draw Structure</a>
+                            <a href="" class="link link-secondary">Advanced Search</a>
+                        </div>
+                        <div class="gap-2 hidden lg:flex">
+                            <a class="link link-primary duration-200 hover:text-secondary" @click="openKetcherModal()">Draw Structure</a>
+                            <a href="" class="link link-primary duration-200 hover:text-secondary">Advanced Search</a>
+                        </div>
+                        
                     </div>
                 </div>              
             </div>
-            <div class="flex text-primary md:hidden lg:hidden">    
-                <button type="button" class="btn btn-ghost btn-circle" @click="toggleSearchBar()">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-6 w-6">
+            <div class="flex md:hidden">    
+                <button type="button" ref="searchBarToggleButton" class="btn btn-ghost btn-circle duration-200" @click="toggleSearchBar()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" class="h-6 w-6 stroke-current">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                     </svg>
                 </button>
@@ -210,16 +234,16 @@
                             <div class="join">
                                 <input class="input input-bordered join-item text-md w-64" type="text" placeholder="Search Chemical" required>
                                 <div class="indicator">
-                                  <button type="submit" class="btn btn-primary join-item">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-6 w-6 m-auto">
-                                      <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                                    </svg>
-                                  </button>
+                                    <button type="submit" class="btn btn-primary join-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-6 w-6 m-auto">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                                        </svg>
+                                    </button>
                                 </div>
                             </div>
                             
                             <div class="flex text-sm font-semibold gap-2">
-                                <a href="" class="link link-primary">Advanced Search</a>
+                                <a href="" class="link link-secondary">Advanced Search</a>
                             </div>
                         </div>
                     </ul>
@@ -239,9 +263,12 @@ import KetcherModal from '~/components/KetcherModal.vue';
 const themeStore = useThemeStore();
 const isNightTheme = computed(() => themeStore.currentTheme === 'night');
 
+var searchBarToggleButton = ref(null)
+
 var ketcherModalRef =  ref(null)
 
 var isSearchBarVisible = ref(false)
+var menuSummary = ref(null)
 var menuDetailsSwapCheckbox = ref(null)
 
 const openKetcherModal = () => {
@@ -256,6 +283,7 @@ const toggleDetailsSwapCheckbox = () => {
 
 const toggleSearchBar = () => {
     isSearchBarVisible.value = !isSearchBarVisible.value
+    searchBarToggleButton.value.classList.toggle('text-primary')
 }
 
 const enter = (el) => {
@@ -285,7 +313,7 @@ const afterLeave = (el) => {
 }
 
 const toggleTheme = () => {
-  const newTheme = isNightTheme.value ? 'autumn' : 'night';
+  const newTheme = isNightTheme.value ? 'winter' : 'night';
   themeStore.setTheme(newTheme);
 };
 </script>

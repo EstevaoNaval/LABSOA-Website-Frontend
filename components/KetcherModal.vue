@@ -1,7 +1,7 @@
 <template>
     <dialog ref="drawStructureModal" class="modal">
         <div class="modal-box p-4 rounded-3xl m-auto max-w-3xl">
-            <KetcherComponent src="Ketcher/index.html" v-if="isKetcherComponentModelOpened" endpoint="/search"></KetcherComponent>
+            <KetcherComponent v-if="isKetcherComponentModelOpened" endpoint="/search"></KetcherComponent>
         </div>
         <form method="dialog" class="modal-backdrop">
             <button @click="toggleKetcherComponentModal()">close</button>

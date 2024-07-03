@@ -22,7 +22,7 @@
       </div>
     
       <div class="join flex ml-auto">
-        <select v-model="searchSelected" class="join-item select select-bordered font-semibold text-primary text-lg" required>
+        <select v-model="searchSelected" class="join-item select select-bordered font-semibold text-lg" required>
           <option class="font-semibold" value="" disabled selected>Search Type</option>
           <option class="font-semibold" v-for="option in searchOptions" :key="option.id" :value="option.value"><a>{{ option.text }}</a></option>
         </select>
@@ -43,10 +43,6 @@
 import { ref, computed, onMounted } from 'vue';
 
 const props = defineProps({
-  src: {
-    type: String,
-    required: true
-  },
   endpoint: {
     type: String,
     required: true
@@ -66,7 +62,7 @@ const searchOptions = ref([
 ])
 
 const isInView = ref(true);
-const ketcherSrc = computed(() => props.src);
+const ketcherSrc = ref("/Ketcher/index.html")
 
 var ketcherIFrame = ref(null)
 var ketcherContentWindow = null
