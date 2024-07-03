@@ -9,12 +9,6 @@ export default defineNuxtPlugin((nuxtApp) => {
         if (checkbox) {
           checkbox.checked = false;
         }
-
-        const menuSummary = el.querySelector('summary')
-
-        if(menuSummary) {
-          menuSummary.classList.remove('text-primary')
-        }
       };
 
       if (nuxtApp.$router) {
