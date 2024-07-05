@@ -1,15 +1,52 @@
 <template>
   <Head>
-      <Title>Features | PDF2Chemicals</Title>
+    <Title>Features | PDF2Chemicals</Title>
   </Head>
   
-  <div data-aos="fade-up" class="mx-auto w-5/6 hidden lg:flex lg:flex-col py-16">
+  <details ref="tableOfContentsDetails" :data-theme="currTheme" class="dropdown mx-auto flex flex-col lg:hidden bg-base-200 table-of-contents sticky top-0 z-[1]">
+    
+    <summary class="flex w-[90%] mx-auto py-4" @click="toggleTableOfContentsArrow()">
+      <div class="flex w-full">
+        <h2 class="font-bold md:text-xl sm:text-lg mr-auto">
+          Table of Contents
+        </h2>
+        <label class="swap swap-rotate ml-auto">
+          <input ref="tableOfContentsCheckbox" type="checkbox" />
+                
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 swap-off">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+          </svg>
+
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 swap-on">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+          </svg>
+        </label>
+      </div>
+    </summary>
+    
+    <div class="bg-base-200 dropdown-content rounded-box shadow-md font-semibold lg:hidden overflow-y-auto p-4 max-h-screen">
+      <div class="flex w-[90%]">
+        <div class="flex flex-col w-full">
+          <scrollspy
+          @click="closeTableOfContents();toggleTableOfContentsArrow();" 
+          :sections="sectionsRef"
+          scrollspy-list="text-md md:text-lg font-semibold menu" 
+          scrollspy-item="py-1 pl-2 hover:text-secondary hover:border-secondary hover:font-bold hover:rounded-sm  hover:border-l-4" 
+          />
+        </div>
+      </div>
+    </div>
+  </details>
+
+  
+  
+  <div data-aos="fade-up" class="mx-auto w-[90%] hidden lg:flex lg:flex-col py-16">
     <div class="space-y-2">
         <h1 class="text-6xl text-primary font-bold">
-            PDF2Chemicals Features
+          PDF2Chemicals Features
         </h1>
         <h1 class="text-3xl font-semibold">
-            Navigate through the many features of PDF2Chemicals
+          Navigate through the many features of PDF2Chemicals
         </h1>
     </div>
   </div>
@@ -28,28 +65,609 @@
   <div data-aos="fade-up" class="mx-auto w-[90%] flex flex-col md:hidden py-8">
     <div class="space-y-2">
         <h1 class="text-2xl text-primary font-bold">
-            PDF2Chemicals Features
+          PDF2Chemicals Features
         </h1>
         <h1 class="text-lg font-semibold">
-            Navigate through the many features of PDF2Chemicals
+          Navigate through the many features of PDF2Chemicals
         </h1>
     </div>
   </div>
 
+  <div class="py-8 flex w-[90%] mx-auto">
+    <div class="w-full">
+      <div class="w-[90%]">
+        <section v-for="section in sectionsRef" data-aos="fade-up" :id="section.id" :key="section.id">
+          <h1 class="text-2xl font-bold"> {{ section.label }} </h1>
+          <div class="overflow-x-auto pb-16 pt-8">
+            <table class="ml-auto table table-auto table-zebra table-pin-rows">
+              <thead class="text-lg">
+                <tr>
+                  <th></th>
+                  <th>Property</th>
+                  <th>In CSV file</th>
+                  <th>Data Type</th>
+                </tr>
+              </thead>
+              <tbody class="text-lg font-normal">
+                <tr v-for="row in section.rows" :id="row.id" :key="row.id" class="hover">
+                  <th>{{ row.id }}</th>
+                  <td>{{ row.property }}</td>
+                  <td>{{ row.csv_representation }}</td>
+                  <td>{{ row.data_type }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="hidden lg:flex lg:flex-col mx-auto w-1/3 space-y-4 overflow-y-auto max-h-screen sticky top-0 p-4">
+      <p class="text-xl font-bold">Table of Contents</p>
+      <scrollspy 
+      :sections="sectionsRef" 
+      scrollspy-list="text-lg font-semibold" 
+      scrollspy-item="py-1 pl-2  hover:text-primary hover:border-primary hover:font-bold hover:rounded-sm  hover:border-l-4" 
+      />
+    </div>
+  </div>
 
 </template>
 
 <script setup>
 import Scrollspy from '~/components/Scrollspy.vue';
+import { useThemeStore } from '~/stores/theme';
 
-const sections = ref([
-  { id: 'identification', label: 'Identification' },
-  { id: '', label: 'Section 2' },
-  { id: 'section3', label: 'Section 3' },
+const themeStore = useThemeStore()
+const currTheme = computed(() => themeStore.currentTheme)
+
+var tableOfContentsDetails = ref(null)
+var tableOfContentsCheckbox = ref(null)
+
+const toggleTableOfContentsArrow = () => {
+  if(tableOfContentsCheckbox.value.hasAttribute("checked")) {
+    tableOfContentsCheckbox.value.removeAttribute("checked")
+  }else{
+    tableOfContentsCheckbox.value.setAttribute("checked", "")
+  }
+  
+}
+
+const closeTableOfContents = () => {
+  if(tableOfContentsDetails.value.hasAttribute("open")) {
+    tableOfContentsDetails.value.toggleAttribute("open")
+  }
+}
+
+const sectionsRef = ref([
+  { 
+    id: 'identification',
+    label: 'Identification',
+    rows: [
+      {
+        id: 1,
+        property: 'IUPAC Name',
+        csv_representation: 'iupac',
+        data_type: 'String'
+      },
+      {
+        id: 2,
+        property: 'PDF2Chemicals Chemical Id',
+        csv_representation: 'id',
+        data_type: 'String'
+      },
+      {
+        id: 3,
+        property: 'Pdf Chemical Id',
+        csv_representation: 'reference_index',
+        data_type: 'String'
+      },
+      {
+        id: 4,
+        property: 'Document Id',
+        csv_representation: 'document_id',
+        data_type: 'String'
+      },
+      {
+        id: 5,
+        property: 'DOI',
+        csv_representation: 'doi',
+        data_type: 'String'
+      }
+    ]
+  },
+  { 
+    id: 'structural-representation',
+    label: 'Structural Representation',
+    rows: [
+      {
+        id: 1,
+        property: 'InChi',
+        csv_representation: 'inchi',
+        data_type: 'String'
+      },
+      {
+        id: 2,
+        property: 'InChI Key',
+        csv_representation: 'inchi_key',
+        data_type: 'String'
+      },
+      {
+        id: 3,
+        property: 'SMILES',
+        csv_representation: 'smiles',
+        data_type: 'String'
+      }
+    ]
+  },
+  { id: 'physical-property',
+    label: 'Physical Property',
+    rows: [
+      {
+        id: 1,
+        property: 'Volume',
+        csv_representation: 'volume',
+        data_type: 'Float'
+      },
+      {
+        id: 2,
+        property: 'Density',
+        csv_representation: 'density',
+        data_type: 'Float'
+      },
+      {
+        id: 3,
+        property: 'Total Number of Atoms',
+        csv_representation: 'num_atom',
+        data_type: 'Integer'
+      },
+      {
+        id: 4,
+        property: 'Total Number of Heavy Atoms',
+        csv_representation: 'num_heavy_atom',
+        data_type: 'Integer'
+      },
+      {
+        id: 5,
+        property: 'Total Number of Aromatic Heavy Atoms',
+        csv_representation: 'num_arom_heavy_atom',
+        data_type: 'Integer'
+      },
+      {
+        id: 6,
+        property: 'Total Number of Rotatable Bonds',
+        csv_representation: 'num_rotatable_bond',
+        data_type: 'Integer'
+      },
+      {
+        id: 7,
+        property: 'Total Number of H-Bond Acceptors',
+        csv_representation: 'num_h_bond_accept',
+        data_type: 'Integer'
+      },
+      {
+        id: 8,
+        property: 'Total Number of H-Bond Donors',
+        csv_representation: 'num_h_bond_donor',
+        data_type: 'Integer'
+      },
+      {
+        id: 9,
+        property: 'Total Number of Rings',
+        csv_representation: 'num_ring',
+        data_type: 'Integer'
+      },
+      {
+        id: 10,
+        property: 'Total Number of Carbons',
+        csv_representation: 'num_carbon',
+        data_type: 'Integer'
+      },
+      {
+        id: 11,
+        property: 'Total Number of Heteroatoms',
+        csv_representation: 'num_heteroatom',
+        data_type: 'Integer'
+      }
+    ] 
+  },
+  { id: 'physicochemical-property',
+    label: 'Physicochemical Property',
+    rows: [
+      {
+        id: 1,
+        property: 'Molecular Weight (MW)',
+        csv_representation: 'mass_weight',
+        data_type: 'Float'
+      },
+      {
+        id: 2,
+        property: 'Fraction of SP3 Hybridised Carbon Atoms',
+        csv_representation: 'fraction_csp3',
+        data_type: 'Float between 0 and 1'
+      },
+      {
+        id: 3,
+        property: 'Molar Refractivity (MR)',
+        csv_representation: 'molar_refractivity',
+        data_type: 'Float'
+      },
+      {
+        id: 4,
+        property: 'Topological Polar Surface Area (TPSA)',
+        csv_representation: 'tpsa',
+        data_type: 'Float'
+      }
+    ]
+  },
+  {
+    id: 'melting-point',
+    label: 'Melting Point',
+    rows: [
+      {
+        id: 1,
+        property: 'Melting Point Lower Bound',
+        csv_representation: 'melting_point_lower_bound',
+        data_type: 'Float'
+      },
+      {
+        id: 2,
+        property: 'Melting Point Upper Bound',
+        csv_representation: 'melting_point_upper_bound',
+        data_type: 'Float'
+      },
+    ]
+  },
+  {
+    id: 'state-of-matter',
+    label: 'State of Matter',
+    rows: [
+      {
+        id: 1,
+        property: 'State of Matter',
+        csv_representation: 'state_of_matter',
+        data_type: 'String'
+      },
+      {
+        id: 2,
+        property: 'Color',
+        csv_representation: 'color',
+        data_type: 'String'
+      },
+      {
+        id: 3,
+        property: 'Color Hexadecimal',
+        csv_representation: 'color_hex_value',
+        data_type: 'String'
+      },
+    ]
+  },
+  {
+    id: 'log-p',
+    label: 'LogP',
+    rows: [
+      {
+        id: 1,
+        property: 'Wildman-Crippen LogP',
+        csv_representation: 'wlogp',
+        data_type: 'Float'
+      },
+      {
+        id: 2,
+        property: 'XLogP v2',
+        csv_representation: 'xlogp2',
+        data_type: 'Float'
+      },
+      {
+        id: 3,
+        property: 'JPLogP',
+        csv_representation: 'jplogp',
+        data_type: 'Float'
+      },
+      {
+        id: 4,
+        property: 'Mouriguchi LogP',
+        csv_representation: 'mlogp',
+        data_type: 'Float'
+      },
+      {
+        id: 5,
+        property: 'Consensus LogP',
+        csv_representation: 'consensus_logp',
+        data_type: 'Float'
+      }
+    ]
+  },
+  {
+    id: 'log-s',
+    label: 'LogS',
+    rows: [
+      {
+        id: 1,
+        property: 'ESOL LogS',
+        csv_representation: 'esol_logs',
+        data_type: 'Float'
+      },
+      {
+        id: 2,
+        property: 'Filter-It LogS',
+        csv_representation: 'filter_it_logs',
+        data_type: 'Float'
+      }
+    ]
+  },
+  { 
+    id: 'qsar-score', 
+    label: 'QSAR Score',
+    rows: [
+      {
+        id: 1,
+        property: 'Quantitative Estimate of Druglikeness (QED)',
+        csv_representation: 'qed_score',
+        data_type: 'Float between 0 and 1'
+      },
+      {
+        id: 2,
+        property: 'Synthetic Accessibility',
+        csv_representation: 'synthetic_accessibility_score',
+        data_type: 'Float between 1 and 10'
+      },
+      {
+        id: 3,
+        property: 'Natural Product',
+        csv_representation: 'natural_product_score',
+        data_type: 'Float between -5 and 5'
+      }
+    ]
+  },
+  { 
+    id: 'drug-like-rule',
+    label: 'Drug-like Rule',
+    rows: [
+      {
+        id: 1,
+        property: 'Total Number of Lipinski Violations',
+        csv_representation: 'num_lipinski_violation',
+        data_type: 'Integer'
+      },
+      {
+        id: 2,
+        property: 'List of Lipinski Violations',
+        csv_representation: 'lipinski_violation',
+        data_type: 'String sequence divided by comma'
+      },
+      {
+        id: 3,
+        property: 'Total Number of Ghose Violations',
+        csv_representation: 'num_ghose_violation',
+        data_type: 'Integer'
+      },
+      {
+        id: 4,
+        property: 'List of Ghose Violations',
+        csv_representation: 'ghose_violation',
+        data_type: 'String sequence divided by comma'
+      },
+      {
+        id: 5,
+        property: 'Total Number of Veber Violations',
+        csv_representation: 'num_veber_violation',
+        data_type: 'Integer'
+      },
+      {
+        id: 6,
+        property: 'List of Veber Violations',
+        csv_representation: 'veber_violation',
+        data_type: 'String sequence divided by comma'
+      },
+      {
+        id: 7,
+        property: 'Total Number of Egan Violations',
+        csv_representation: 'num_egan_violation',
+        data_type: 'Integer'
+      },
+      {
+        id: 8,
+        property: 'List of Egan Violations',
+        csv_representation: 'egan_violation',
+        data_type: 'String sequence divided by comma'
+      },
+      {
+        id: 9,
+        property: 'Total Number of Muegge Violations',
+        csv_representation: 'num_muegge_violation',
+        data_type: 'Integer'
+      },
+      {
+        id: 10,
+        property: 'List of Muegge Violations',
+        csv_representation: 'muegge_violation',
+        data_type: 'String sequence divided by comma'
+      }
+    ] 
+  },
+  { 
+    id: 'pharmacokinetics', 
+    label: 'Pharmacokinetics',
+    rows: [
+      {
+        id: 1,
+        property: 'Gastrointestinal Absorption',
+        csv_representation: 'gi_absorption',
+        data_type: 'Integer 0 (false) or 1 (true)'
+      },
+      {
+        id: 2,
+        property: 'Blood-Brain Barrier Permeation',
+        csv_representation: 'bbb_permeant',
+        data_type: 'Integer 0 (false) or 1 (true)'
+      },
+      {
+        id: 3,
+        property: 'Skin Permeation (LogKp)',
+        csv_representation: 'logkp',
+        data_type: 'Float'
+      }
+    ]
+  },
+  {
+    id:'p450-inhibition',
+    label: 'P450 Inhibition',
+    rows: [
+      {
+        id: 1,
+        property: 'CYP1A2 Inhibitor',
+        csv_representation: 'cyp1a2_inhibitor',
+        data_type: 'Integer 0 (false) or 1 (true)'
+      },
+      {
+        id: 2,
+        property: 'CYP2C9 Inhibitor',
+        csv_representation: 'cyp2c9_inhibitor',
+        data_type: 'Integer 0 (false) or 1 (true)'
+      },
+      {
+        id: 3,
+        property: 'CYP2C19 Inhibitor',
+        csv_representation: 'cyp2c19_inhibitor',
+        data_type: 'Integer 0 (false) or 1 (true)'
+      },
+      {
+        id: 4,
+        property: 'CYP2D6 Inhibitor',
+        csv_representation: 'cyp2d6_inhibitor',
+        data_type: 'Integer 0 (false) or 1 (true)'
+      },
+      {
+        id: 5,
+        property: 'CYP3A4 Inhibitor',
+        csv_representation: 'cyp3a4_inhibitor',
+        data_type: 'Integer 0 (false) or 1 (true)'
+      }
+    ]
+  },
+  {
+    id: 'pains-violation',
+    label: 'PAINS Violation',
+    rows: [
+      {
+        id: 1,
+        property: 'Total Number of PAINS Violations',
+        csv_representation: 'num_pains_violation',
+        data_type: 'Integer'
+      },
+      {
+        id: 2,
+        property: 'List of PAINS Violations',
+        csv_representation: 'pains_violation',
+        data_type: 'String sequence divided by comma'
+      }
+    ]
+  },
+  {
+    id: 'brenk-violation',
+    label: 'BRENK Violation',
+    rows: [
+      {
+        id: 1,
+        property: 'Total Number of BRENK Violations',
+        csv_representation: 'num_brenk_violation',
+        data_type: 'Integer'
+      },
+      {
+        id: 2,
+        property: 'List of BRENK Violations',
+        csv_representation: 'brenk_violation',
+        data_type: 'String sequence divided by comma'
+      }
+    ]
+  },
+  { 
+    id: 'toxicity', 
+    label: 'Toxicity',
+    rows: [
+      {
+        id: 1,
+        property: 'Cardiotoxicity Prediction',
+        csv_representation: 'cardiotoxicity_prediction',
+        data_type: 'Integer 0 (false) or 1 (true)'
+      },
+      {
+        id: 2,
+        property: 'Cardiotoxicity Probability',
+        csv_representation: 'cardiotoxicity_probability',
+        data_type: 'Float between 0 and 1'
+      },
+      {
+        id: 3,
+        property: 'Hepatotoxicity Prediction',
+        csv_representation: 'hepatotoxicity_prediction',
+        data_type: 'Integer 0 (false) or 1 (true)'
+      },
+      {
+        id: 4,
+        property: 'Hepatotoxicity Probability	',
+        csv_representation: 'hepatotoxicity_probability',
+        data_type: 'Float between 0 and 1'
+      },
+      {
+        id: 5,
+        property: 'Ames Mutagenesis Prediction',
+        csv_representation: 'ames_mutagenesis_prediction',
+        data_type: 'Integer 0 (false) or 1 (true)'
+      },
+      {
+        id: 6,
+        property: 'Ames Mutagenesis Probability',
+        csv_representation: 'ames_mutagenesis_probability',
+        data_type: 'Float between 0 and 1'
+      }
+    ]
+  },
+  { 
+    id: 'molecular-conformation', 
+    label: 'Molecular Conformation',
+    rows: [
+      {
+        id: 1,
+        property: 'Generation of a Given Number of Molecule Conformations',
+        csv_representation: '—',
+        data_type: '—'
+      }
+    ]
+  },
+  {
+    id: 'directory-path',
+    label: 'Chemical Directory Path',
+    rows: [
+      {
+        id: 1,
+        property: 'Directory path where all PDB, MOL2, SDF, etc, files generated for each chemical are located',
+        csv_representation: 'compound_path',
+        data_type: 'String'
+      }
+    ]
+  }
 ])
 
+watch(currTheme, (newTheme) => {
+  if(process.client) {
+    document.documentElement.setAttribute('data-theme', newTheme)
+  }
+})
+
 </script>
+<style scoped>
+  .table-of-contents[data-theme='winter'] {
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-color: #e2e8f0;
+    border-bottom-color: #e2e8f0;
+  }
 
-<style>
-
+  .table-of-contents[data-theme='night'] {
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-color: #1e293b;
+    border-bottom-color:#1e293b;
+  }
 </style>

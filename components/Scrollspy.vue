@@ -1,10 +1,11 @@
 <template>
-  <div class="scrollspy-container">
-    <ul class="scrollspy-list">
+  <div :class="props.scrollspyContainer">
+    <slot></slot>
+    <ul :class="props.scrollspyList">
       <li
-        v-for="section in sections"
+        v-for="section in props.sections"
         :key="section.id"
-        :class="{ active: activeSection.value === section.id }"
+        :class="[activeSection?.value === section.id ? props.sectionActive : '', props.scrollspyItem]"
         @click="scrollToSection(section.id)"
       >
         {{ section.label }}
@@ -14,56 +15,66 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
-import { debounce } from 'lodash';
+  import { ref, onMounted, onBeforeUnmount } from 'vue';
+  import debounce from 'lodash/debounce';
 
-defineProps({
-  sections: {
-    type: Array,
-    required: true,
-  },
-});
-
-const activeSection = ref(null);
-
-const scrollToSection = (id) => {
-  const section = document.getElementById(id);
-  if (section) {
-    window.scrollTo({
-      top: section.offsetTop,
-      behavior: 'smooth',
-    });
-  }
-};
-
-const onScroll = debounce(() => {
-  const scrollPosition = window.scrollY + window.innerHeight / 2;
-  const sectionsElements = sections.map((section) => document.getElementById(section.id));
-
-  for (const section of sectionsElements) {
-    if (
-      section.offsetTop <= scrollPosition &&
-      section.offsetTop + section.offsetHeight > scrollPosition
-    ) {
-      activeSection.value = section.id;
-      break;
+  const props = defineProps({
+    sections: {
+      type: Array,
+      required: true,
+    },
+    scrollspyContainer: {
+      type: String,
+      default: ''
+    },
+    scrollspyList: {
+      type: String,
+      default: ''
+    },
+    scrollspyItem: {
+      type: String,
+      default: ''
+    },
+    sectionActive: {
+      type: String,
+      default: 'text-secondary font-bold border-secondary rounded-sm border-l-4'
     }
-  }
-}, 100);
+  });
 
-onMounted(() => {
-  window.addEventListener('scroll', onScroll);
-  onScroll(); // Initialize the active section on mount
-});
+  const activeSection = ref(null);
 
-onBeforeUnmount(() => {
-  window.removeEventListener('scroll', onScroll);
-});
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  const onScroll = debounce(() => {
+    const scrollPosition = window.scrollY + window.innerHeight / 2;
+    const sectionsElements = props.sections.map((section) => document.getElementById(section.id));
+
+    for (const section of sectionsElements) {
+      if (
+        section.offsetTop <= scrollPosition &&
+        section.offsetTop + section.offsetHeight > scrollPosition
+      ) {
+        activeSection.value = section.id;
+        break;
+      }
+    }
+  }, 100);
+
+  onMounted(() => {
+    window.addEventListener('scroll', onScroll);
+    
+    onScroll();
+  });
+
+  onBeforeUnmount(() => {
+    window.removeEventListener('scroll', onScroll);
+  });
 </script>
-
-<style scoped>
-.active {
-  background: #007bff;
-  color: white;
-}
-</style>

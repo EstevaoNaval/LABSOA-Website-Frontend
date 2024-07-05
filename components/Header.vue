@@ -14,7 +14,7 @@
                     <summary class="flex hover:text-primary duration-200 group-open/details:text-primary" tabindex="0" role="button">
                         PDF2Chemicals
                     </summary>
-                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 rounded-box bg-base-200 mx-auto">
+                    <ul tabindex="0" class="dropdown-content z-[2] menu p-2 rounded-box bg-base-200 mx-auto">
                         <li>
                             <NuxtLink class="flex hover:text-primary" to="/pdf2chemicals/about">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -118,7 +118,7 @@
                     </svg>    
                 </summary>                    
 
-                <ul tabindex="0" class="menu menu-md dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-lg font-bold">
+                <ul tabindex="0" class="menu menu-md dropdown-content mt-3 z-[2] p-2 shadow bg-base-100 rounded-box w-52 text-lg font-bold">
                     <li>
                         <NuxtLink to='/about' class="flex">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -160,7 +160,7 @@
                         </details>
                     </li>
                     <li>
-                        <NuxtLink href="" class="flex" to='/'>
+                        <NuxtLink class="flex" to='/'>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                             </svg>
@@ -210,7 +210,7 @@
                 </div>              
             </div>
             <div class="flex md:hidden">    
-                <button type="button" ref="searchBarToggleButton" class="btn btn-ghost btn-circle duration-200" @click="toggleSearchBar()">
+                <button type="button" ref="searchBarToggleButton" class="btn btn-ghost btn-circle duration-200" @click="toggleSearchBar">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" class="h-6 w-6 stroke-current">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                     </svg>
@@ -223,16 +223,16 @@
         <div class="md:hidden">
             <transition 
             name="collapse"
-            @enter="enter"
-            @after-enter="afterEnter"
-            @leave="leave"
-            @after-leave="afterLeave"
+            @enter="$enter"
+            @after-enter="$afterEnter"
+            @leave="$leave"
+            @after-leave="$afterLeave"
             >   
                 <div v-show="isSearchBarVisible" class="collapsible">
-                    <ul class="flex menu menu-horizontal">
-                        <div class="m-auto flex flex-col">
+                    <ul class="flex w-[90%] menu menu-horizontal mx-auto">
+                        <div class="m-auto flex flex-col w-full">
                             <div class="join">
-                                <input class="input input-bordered join-item text-md w-64" type="text" placeholder="Search Chemical" required>
+                                <input class="input input-bordered join-item text-md w-full" type="text" placeholder="Search Chemical" required>
                                 <div class="indicator">
                                     <button type="submit" class="btn btn-primary join-item">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-6 w-6 m-auto">
@@ -258,6 +258,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useThemeStore } from '~/stores/theme';
+import { useNuxtApp } from 'nuxt/app';
 import KetcherModal from '~/components/KetcherModal.vue';
 
 const themeStore = useThemeStore();
@@ -270,6 +271,8 @@ var ketcherModalRef =  ref(null)
 var isSearchBarVisible = ref(false)
 var menuSummary = ref(null)
 var menuDetailsSwapCheckbox = ref(null)
+
+const { $enter, $afterEnter, $leave, $afterLeave } = useNuxtApp()
 
 const openKetcherModal = () => {
     if(ketcherModalRef.value) {
@@ -286,41 +289,8 @@ const toggleSearchBar = () => {
     searchBarToggleButton.value.classList.toggle('text-primary')
 }
 
-const enter = (el) => {
-    el.style.height = '0';
-    el.style.overflow = 'hidden';
-    el.style.transition = 'height 0.5s ease';
-    requestAnimationFrame(() => {
-      el.style.height = el.scrollHeight + 'px';
-    });
-}
-
-const afterEnter = (el) => {
-    el.style.height = 'auto';
-}
-
-const leave = (el) => {
-    el.style.height = el.scrollHeight + 'px';
-    el.style.overflow = 'hidden';
-    requestAnimationFrame(() => {
-      el.style.transition = 'height 0.5s ease';
-      el.style.height = '0';
-    });
-}
-
-const afterLeave = (el) => {
-    el.style.height = 'auto';
-}
-
 const toggleTheme = () => {
   const newTheme = isNightTheme.value ? 'winter' : 'night';
   themeStore.setTheme(newTheme);
 };
 </script>
-
-<style scoped>
-    .collapsible {
-        overflow: hidden;
-    }
-
-</style>

@@ -18,12 +18,16 @@ export default defineNuxtConfig({
   plugins: [
     '~/plugins/axios.js',
     { src: '~/plugins/aos.client.js', mode: 'client' },
-    '~/plugins/close-details.js'
+    '~/plugins/close-details.js',
+    '~/plugins/collapse-animation.js'
   ],
   app: {
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
     }
-  }
+  },
+  css: [
+    '~/assets/css/collapse-animation.css'
+  ]
 })
