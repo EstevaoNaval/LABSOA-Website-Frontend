@@ -265,8 +265,8 @@ const sectionsRef = ref([
     ]
   },
   {
-    id: 'melting-point',
-    label: 'Melting Point',
+    id: 'experimental-melting-point',
+    label: 'Experimental Melting Point',
     rows: [
       {
         id: 1,
@@ -283,8 +283,8 @@ const sectionsRef = ref([
     ]
   },
   {
-    id: 'state-of-matter',
-    label: 'State of Matter',
+    id: 'experimental-state-of-matter',
+    label: 'Experimental State of Matter',
     rows: [
       {
         id: 1,
