@@ -4,7 +4,6 @@
   </Head>
   
   <details ref="tableOfContentsDetails" :data-theme="currTheme" class="dropdown mx-auto flex flex-col lg:hidden bg-base-200 table-of-contents sticky top-0 z-[1]">
-    
     <summary class="flex w-[90%] mx-auto py-4" @click="toggleTableOfContentsArrow()">
       <div class="flex w-full">
         <h2 class="font-bold md:text-xl sm:text-lg mr-auto">
@@ -28,89 +27,67 @@
       <div class="flex w-[90%]">
         <div class="flex flex-col w-full">
           <scrollspy
-          @click="closeTableOfContents();toggleTableOfContentsArrow();" 
-          :sections="sectionsRef"
-          scrollspy-list="text-md md:text-lg font-semibold menu" 
-          scrollspy-item="py-1 pl-2 hover:text-secondary hover:border-secondary hover:font-bold hover:rounded-sm  hover:border-l-4" 
+            @click="closeTableOfContents();toggleTableOfContentsArrow();" 
+            :sections="sectionsRef"
+            scrollspy-list="text-md md:text-lg font-semibold menu text-slate-400" 
+            scrollspy-item="py-1 pl-2 hover:text-secondary hover:border-secondary hover:font-bold hover:rounded-sm  hover:border-l-4" 
           />
         </div>
       </div>
     </div>
   </details>
 
-  
-  
-  <div data-aos="fade-up" class="mx-auto w-[90%] hidden lg:flex lg:flex-col py-16">
-    <div class="space-y-2">
-        <h1 class="text-6xl text-primary font-bold">
-          PDF2Chemicals Features
-        </h1>
-        <h1 class="text-3xl font-semibold">
-          Navigate through the many features of PDF2Chemicals
-        </h1>
-    </div>
-  </div>
-
-  <div data-aos="fade-up" class="mx-auto w-[90%] hidden md:flex md:flex-col lg:hidden py-16">
-    <div class="space-y-2">
-        <h1 class="text-6xl text-primary font-bold">
+  <div data-aos="fade-up" class="mx-auto w-[90%] flex flex-col py-4 lg:py-16">
+    <div class="flex">
+      <div class="w-full lg:w-[80%] flex flex-col">
+        <div class="space-y-2">
+          <h1 class="text-2xl md:text-6xl text-primary font-bold">
             PDF2Chemicals Features
-        </h1>
-        <h1 class="text-3xl font-semibold">
+          </h1>
+          <h1 class="text-lg md:text-3xl font-semibold">
             Navigate through the many features of PDF2Chemicals
-        </h1>
-    </div>
-  </div>
-
-  <div data-aos="fade-up" class="mx-auto w-[90%] flex flex-col md:hidden py-8">
-    <div class="space-y-2">
-        <h1 class="text-2xl text-primary font-bold">
-          PDF2Chemicals Features
-        </h1>
-        <h1 class="text-lg font-semibold">
-          Navigate through the many features of PDF2Chemicals
-        </h1>
-    </div>
-  </div>
-
-  <div class="py-8 flex w-[90%] mx-auto">
-    <div class="w-full">
-      <div class="w-[90%]">
-        <section v-for="section in sectionsRef" data-aos="fade-up" :id="section.id" :key="section.id">
-          <h1 class="text-2xl font-bold"> {{ section.label }} </h1>
-          <div class="overflow-x-auto pb-16 pt-8">
-            <table class="ml-auto table table-auto table-zebra table-pin-rows">
-              <thead class="text-lg">
-                <tr>
-                  <th></th>
-                  <th>Property</th>
-                  <th>In CSV file</th>
-                  <th>Data Type</th>
-                </tr>
-              </thead>
-              <tbody class="text-lg font-normal">
-                <tr v-for="row in section.rows" :id="row.id" :key="row.id" class="hover">
-                  <th>{{ row.id }}</th>
-                  <td>{{ row.property }}</td>
-                  <td>{{ row.csv_representation }}</td>
-                  <td>{{ row.data_type }}</td>
-                </tr>
-              </tbody>
-            </table>
+          </h1>
+        </div>
+        <div class="py-8 flex">
+          <div class="w-[90%]">
+            <section v-for="section in sectionsRef" data-aos="fade-up" :id="section.id" :key="section.id">
+              <h1 class="text-lg md:text-3xl font-bold"> {{ section.label }} </h1>
+              <div class="overflow-x-auto pb-16 pt-8">
+                <table class="ml-auto table table-auto table-zebra table-pin-rows">
+                  <thead class="text-lg">
+                    <tr>
+                      <th></th>
+                      <th>Property</th>
+                      <th>In CSV file</th>
+                      <th>Data Type</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-lg font-normal">
+                    <tr v-for="row in section.rows" :id="row.id" :key="row.id" class="hover">
+                      <th>{{ row.id }}</th>
+                      <td>{{ row.property }}</td>
+                      <td>{{ row.csv_representation }}</td>
+                      <td>{{ row.data_type }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
           </div>
-        </section>
+        </div>
+      </div>
+      <div class="w-[20%] hidden lg:flex lg:flex-col">
+        <div class="mx-auto space-y-4 overflow-y-auto max-h-screen sticky top-0 p-4">
+          <p class="text-xl font-bold">Table of Contents</p>
+          <scrollspy 
+            :sections="sectionsRef" 
+            scrollspy-list="text-lg font-semibold" 
+            scrollspy-item="py-1 pl-2 text-slate-400 hover:text-primary hover:border-primary hover:font-bold hover:rounded-sm  hover:border-l-4" 
+          />
+        </div>
       </div>
     </div>
-    <div class="hidden lg:flex lg:flex-col mx-auto w-1/3 space-y-4 overflow-y-auto max-h-screen sticky top-0 p-4">
-      <p class="text-xl font-bold">Table of Contents</p>
-      <scrollspy 
-      :sections="sectionsRef" 
-      scrollspy-list="text-lg font-semibold" 
-      scrollspy-item="py-1 pl-2  hover:text-primary hover:border-primary hover:font-bold hover:rounded-sm  hover:border-l-4" 
-      />
-    </div>
   </div>
-
 </template>
 
 <script setup>
@@ -140,8 +117,8 @@ const closeTableOfContents = () => {
 
 const sectionsRef = ref([
   { 
-    id: 'identification',
-    label: 'Identification',
+    id: 'identifier',
+    label: 'Identifier',
     rows: [
       {
         id: 1,
@@ -151,48 +128,36 @@ const sectionsRef = ref([
       },
       {
         id: 2,
+        property: 'Chemical Formula',
+        csv_representation: 'formula',
+        data_type: 'String'
+      },
+      {
+        id: 3,
         property: 'PDF2Chemicals Chemical Id',
         csv_representation: 'id',
         data_type: 'String'
       },
       {
-        id: 3,
-        property: 'Pdf Chemical Id',
+        id: 4,
+        property: 'Chemical Reference Index',
         csv_representation: 'reference_index',
         data_type: 'String'
       },
       {
-        id: 4,
-        property: 'Document Id',
-        csv_representation: 'document_id',
-        data_type: 'String'
-      },
-      {
         id: 5,
-        property: 'DOI',
-        csv_representation: 'doi',
-        data_type: 'String'
-      }
-    ]
-  },
-  { 
-    id: 'structural-representation',
-    label: 'Structural Representation',
-    rows: [
-      {
-        id: 1,
         property: 'InChi',
         csv_representation: 'inchi',
         data_type: 'String'
       },
       {
-        id: 2,
+        id: 6,
         property: 'InChI Key',
         csv_representation: 'inchi_key',
         data_type: 'String'
       },
       {
-        id: 3,
+        id: 7,
         property: 'SMILES',
         csv_representation: 'smiles',
         data_type: 'String'
@@ -342,8 +307,8 @@ const sectionsRef = ref([
     ]
   },
   {
-    id: 'log-p',
-    label: 'LogP',
+    id: 'log-pow',
+    label: 'Partition Coefficient (LogPow)',
     rows: [
       {
         id: 1,
@@ -379,7 +344,7 @@ const sectionsRef = ref([
   },
   {
     id: 'log-s',
-    label: 'LogS',
+    label: 'Solubility (LogS)',
     rows: [
       {
         id: 1,
@@ -620,6 +585,24 @@ const sectionsRef = ref([
         property: 'Ames Mutagenesis Probability',
         csv_representation: 'ames_mutagenesis_probability',
         data_type: 'Float between 0 and 1'
+      }
+    ]
+  },
+  {
+    id: 'literature',
+    label: 'Literature',
+    rows: [
+      {
+        id: 1,
+        property: 'Document Id',
+        csv_representation: 'document_id',
+        data_type: 'String'
+      },
+      {
+        id: 2,
+        property: 'DOI',
+        csv_representation: 'doi',
+        data_type: 'String'
       }
     ]
   },

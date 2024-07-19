@@ -22,7 +22,8 @@ export default {
     daisyui
   ],
   daisyui: {
-    themes: ["night", "winter"]
-  }
+    themes: ["night","winter"]
+  },
+  darkMode: 'media'
 }
 

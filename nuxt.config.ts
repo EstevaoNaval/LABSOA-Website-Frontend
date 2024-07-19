@@ -19,7 +19,8 @@ export default defineNuxtConfig({
     '~/plugins/axios.js',
     { src: '~/plugins/aos.client.js', mode: 'client' },
     '~/plugins/close-details.js',
-    '~/plugins/collapse-animation.js'
+    '~/plugins/collapse-animation.js',
+    '~/plugins/default-theme.js'
   ],
   app: {
     head: {
