@@ -8,25 +8,73 @@
         <div class="w-3/4 flex flex-col">
           <div class="gap-4 items-center hidden md:flex md:flex-col">
             <h1 class="text-6xl font-bold text-primary">Explore LabSOADB</h1>
-            <h1 class="text-2xl font-semibold text-center">You will, quickly, find chemicals gathered from the literature</h1>
-            <div class="join w-[95%] xl:hidden">
-              <input class="input input-bordered join-item text-2xl w-full p-8" data-typewriter="1,3,7-trimethylpurine-2,6-dione...;C1=CC=C(C=C1)C=O...;[X3&H0]...;C9H8O4...;InChI=1S/C3H6O/c1-3(2)4/h1-2H3..." type="text" required>
-              <div class="indicator">
-                <button type="submit" class="btn btn-primary h-full join-item">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-10 w-10">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                  </svg>
-                </button>
+            <h1 class="text-2xl font-semibold text-center">You will find several chemicals data mined from literature solely through machine learning and AI</h1>
+        
+            <div class="hidden xl:flex w-full">
+              <div role="tablist" class="tabs tabs-bordered mx-auto tabs-lg w-3/4">
+                <input type="radio" name="my_tabs_1" role="tab" class="tab tabs-bordered " aria-label="Chemicals" checked="checked" />
+                
+                <div role="tabpanel" class="border-t-2 border-t-gray-100 border-opacity-30 tab-content p-10">
+                  <div class="join w-full">
+                    <input class="input input-bordered join-item text-2xl w-full p-8" data-typewriter="LSOA5108276818...;N-(2-Aminoethyl)-D-gluconamide...;C1=CC=C(C=C1)C=O...;[X3&H0]...;C9H8O4...;InChI=1S/C3H6O/c1-3(2)4/h1-2H3..." type="text" required>
+                    <div class="indicator">
+                      <button type="submit" class="btn btn-primary h-full join-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-10 w-10">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <input type="radio" name="my_tabs_1" role="tab" class="tab tabs-bordered" aria-label="Literature" />
+
+                <div role="tabpanel" class="border-t-2 border-t-gray-100 border-opacity-30 tab-content p-10">
+                  <div class="join w-full">
+                    <input class="input input-bordered join-item text-2xl w-full p-8" data-typewriter="Search DOI or Title...;10.1016/j.bioorg.2020.103984..." type="text" required>
+                    <div class="indicator">
+                      <button type="submit" class="btn btn-primary h-full join-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-10 w-10">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="join w-2/3 hidden xl:flex">
-              <input class="input input-bordered join-item text-2xl w-full p-8" data-typewriter="1,3,7-trimethylpurine-2,6-dione...;C1=CC=C(C=C1)C=O...;[X3&H0]...;C9H8O4...;InChI=1S/C3H6O/c1-3(2)4/h1-2H3..." type="text" required>
-              <div class="indicator">
-                <button type="submit" class="btn btn-primary h-full join-item">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-10 w-10">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                  </svg>
-                </button>
+            
+            
+            <div class="xl:hidden w-full">
+              <div role="tablist" class="tabs tabs-bordered w-full mx-auto tabs-lg xl:hidden">
+                <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Chemicals" checked="checked" />
+                <div role="tabpanel" class="border-t-2 border-t-gray-100 border-opacity-30 tab-content p-10">
+                  <div class="join w-full">
+                    <input class="input input-bordered join-item text-2xl w-full p-8" data-typewriter="LSOA5108276818...;N-(2-Aminoethyl)-D-gluconamide...;C1=CC=C(C=C1)C=O...;[X3&H0]...;C9H8O4...;InChI=1S/C3H6O/c1-3(2)4/h1-2H3..." type="text" required>
+                    <div class="indicator">
+                      <button type="submit" class="btn btn-primary h-full join-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-10 w-10">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                
+                </div>
+
+                <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Literature" />
+                <div role="tabpanel" class="border-t-2 border-t-gray-100 border-opacity-30 tab-content p-10">
+                  <div class="join w-full">
+                    <input class="input input-bordered join-item text-2xl w-full p-8" data-typewriter="Search DOI or Title...;10.1016/j.bioorg.2020.103984..." type="text" required>
+                    <div class="indicator">
+                      <button type="submit" class="btn btn-primary h-full join-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-10 w-10">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -100,15 +148,28 @@
                   <p>PDF2Chemicals</p>
                 </button>
               </div>
-              
             </div>
 
           </div>
           <div class="flex flex-col gap-4 items-center md:hidden">
             <h1 class="text-2xl font-bold text-primary">Explore LabSOADB</h1>
             <h1 class="text-lg font-semibold text-center">You will, quickly, find chemicals gathered from the literature</h1>
-            <div class="join w-full">
+            <select v-model="searchFieldSelected" class="select select-bordered text-lg w-full">
+              <option v-for="option in searchFieldOptions" :key="option.id" :value="option.value"><a>{{ option.text }}</a></option>
+            </select>
+            <div class="join w-full" v-if="searchFieldSelected === searchFieldOptions[0]['value']">
               <input class="input input-bordered join-item text-lg w-full" type="text" placeholder="Search Chemical" required>
+              <div class="indicator">
+                <button type="submit" class="btn btn-primary join-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-7 w-7">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="join w-full" v-if="searchFieldSelected === searchFieldOptions[1]['value']">
+              <input class="input input-bordered join-item text-lg w-full" type="text" placeholder="Search DOI or Title" required>
               <div class="indicator">
                 <button type="submit" class="btn btn-primary join-item">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-7 w-7">
@@ -167,6 +228,14 @@ const openKetcherModal = () => {
   }
 }
 
+const searchFieldOptions = ref([
+  { id: 0, value: "chemicalsSearchFieldOption", text: "Chemicals" },
+  { id: 1, value: "literatureSearchFieldOption", text: "Literature" },
+])
+
+const searchFieldSelected = defineModel("searchFieldSelected")
+// Select the first search field option
+searchFieldSelected.value = searchFieldOptions.value[0]['value']
 
 class Typerwriter {
   constructor(el, options){
