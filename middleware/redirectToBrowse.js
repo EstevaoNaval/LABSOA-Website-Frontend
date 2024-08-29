@@ -1,5 +1,5 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-    if (to.path === '/compound') {
-      return navigateTo('/compound/browse');
+    if (to.path === '/chemicals') {
+      return navigateTo('/chemicals/search');
     }
   });

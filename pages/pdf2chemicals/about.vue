@@ -236,7 +236,7 @@
         <div class="bg-base-200 py-16 feature-section-border">
             <section data-aos="fade-left" class="items-center mx-auto gap-12 flex md:hidden w-[90%] m-8">
                 <h1 class="text-md text-primary font-semibold">
-                    Predict extracted compounds that pass through the blood-brain barrier or gastrointestinal tract
+                    Predict extracted chemicals that pass through the blood-brain barrier or gastrointestinal tract
                 </h1>
 
                 <svg viewBox="-20 0 190 190" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-[48rem] h-auto fill-primary mx-auto">
@@ -246,7 +246,7 @@
             </section>
             <section data-aos="fade-left" class="items-center mx-auto gap-12 w-[90%] hidden md:flex lg:hidden m-8">
                 <h1 class="text-2xl text-primary font-semibold">
-                    Predict extracted compounds that pass through the blood-brain barrier or gastrointestinal tract
+                    Predict extracted chemicals that pass through the blood-brain barrier or gastrointestinal tract
                 </h1>
 
                 <svg  viewBox="-20 0 190 190" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-[48rem] h-auto fill-primary mx-auto">
@@ -255,7 +255,7 @@
             </section>
             <section data-aos="fade-left" class="items-center mx-auto gap-12 w-2/3 hidden lg:flex m-8">
                 <h1 class="text-4xl font-semibold text-primary">
-                    Predict extracted compounds that pass through the blood-brain barrier or gastrointestinal tract
+                    Predict extracted chemicals that pass through the blood-brain barrier or gastrointestinal tract
                 </h1>
 
                 <svg viewBox="-20 0 190 190" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-[48rem] h-auto fill-primary mx-auto">
@@ -271,7 +271,7 @@
                 </svg>
 
                 <h1 class="text-md text-primary font-semibold">
-                    Predict extracted compounds that inhibit P450 cytochromes 
+                    Predict extracted chemicals that inhibit P450 cytochromes 
                 </h1>
                 
             </section>
@@ -281,7 +281,7 @@
                 </svg>
 
                 <h1 class="text-2xl text-primary font-semibold">
-                    Predict extracted compounds that inhibit P450 cytochromes
+                    Predict extracted chemicals that inhibit P450 cytochromes
                 </h1>
                 
             </section>

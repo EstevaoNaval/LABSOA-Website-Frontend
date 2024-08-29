@@ -61,7 +61,7 @@
             
             <div class="flex ml-auto">
                 <li class="my-auto hover:text-primary">
-                    <label class="btn btn-ghost btn-circle swap swap-rotate">    
+                    <label class="btn btn-ghost  swap swap-rotate">    
                         <!-- this hidden checkbox controls the state -->
                         <input ref="themeController" type="checkbox" class="theme-controller" v-model="themeStore.darkMode" @click="themeStore.toggleDarkMode()" />
                         <!-- moon icon -->
@@ -87,7 +87,7 @@
 
         <ul class="flex menu menu-horizontal text-lg md:hidden">
             <li class="ml-auto my-auto hover:text-primary">
-                <label class="btn btn-ghost btn-circle swap swap-rotate">
+                <label class="btn btn-ghost swap swap-rotate">
                     <!-- this hidden checkbox controls the state -->
                     <input ref="themeController" type="checkbox" class="theme-controller" v-model="themeStore.darkMode" @click="themeStore.toggleDarkMode()" />
                     <!-- moon icon -->
@@ -217,7 +217,7 @@
                 </div>              
             </div>
             <div class="flex md:hidden">    
-                <button type="button" ref="searchBarToggleButton" class="btn btn-ghost btn-circle duration-200" @click="toggleSearchBar">
+                <button type="button" ref="searchBarToggleButton" class="btn btn-ghost duration-200" @click="toggleSearchBar">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" class="h-6 w-6 stroke-current">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                     </svg>

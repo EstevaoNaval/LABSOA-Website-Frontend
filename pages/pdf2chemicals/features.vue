@@ -396,58 +396,28 @@ const sectionsRef = ref([
       },
       {
         id: 2,
-        property: 'List of Lipinski Violations',
-        csv_representation: 'lipinski_violation',
-        data_type: 'String sequence divided by comma'
-      },
-      {
-        id: 3,
         property: 'Total Number of Ghose Violations',
         csv_representation: 'num_ghose_violation',
         data_type: 'Integer'
       },
       {
-        id: 4,
-        property: 'List of Ghose Violations',
-        csv_representation: 'ghose_violation',
-        data_type: 'String sequence divided by comma'
-      },
-      {
-        id: 5,
+        id: 3,
         property: 'Total Number of Veber Violations',
         csv_representation: 'num_veber_violation',
         data_type: 'Integer'
       },
       {
-        id: 6,
-        property: 'List of Veber Violations',
-        csv_representation: 'veber_violation',
-        data_type: 'String sequence divided by comma'
-      },
-      {
-        id: 7,
+        id: 4,
         property: 'Total Number of Egan Violations',
         csv_representation: 'num_egan_violation',
         data_type: 'Integer'
       },
       {
-        id: 8,
-        property: 'List of Egan Violations',
-        csv_representation: 'egan_violation',
-        data_type: 'String sequence divided by comma'
-      },
-      {
-        id: 9,
+        id: 5,
         property: 'Total Number of Muegge Violations',
         csv_representation: 'num_muegge_violation',
         data_type: 'Integer'
       },
-      {
-        id: 10,
-        property: 'List of Muegge Violations',
-        csv_representation: 'muegge_violation',
-        data_type: 'String sequence divided by comma'
-      }
     ] 
   },
   { 
@@ -520,12 +490,6 @@ const sectionsRef = ref([
         csv_representation: 'num_pains_violation',
         data_type: 'Integer'
       },
-      {
-        id: 2,
-        property: 'List of PAINS Violations',
-        csv_representation: 'pains_violation',
-        data_type: 'String sequence divided by comma'
-      }
     ]
   },
   {
@@ -538,12 +502,6 @@ const sectionsRef = ref([
         csv_representation: 'num_brenk_violation',
         data_type: 'Integer'
       },
-      {
-        id: 2,
-        property: 'List of BRENK Violations',
-        csv_representation: 'brenk_violation',
-        data_type: 'String sequence divided by comma'
-      }
     ]
   },
   { 
@@ -558,34 +516,16 @@ const sectionsRef = ref([
       },
       {
         id: 2,
-        property: 'Cardiotoxicity Probability',
-        csv_representation: 'cardiotoxicity_probability',
-        data_type: 'Float between 0 and 1'
-      },
-      {
-        id: 3,
         property: 'Hepatotoxicity Prediction',
         csv_representation: 'hepatotoxicity_prediction',
         data_type: 'Integer 0 (false) or 1 (true)'
       },
       {
-        id: 4,
-        property: 'Hepatotoxicity Probability	',
-        csv_representation: 'hepatotoxicity_probability',
-        data_type: 'Float between 0 and 1'
-      },
-      {
-        id: 5,
+        id: 3,
         property: 'Ames Mutagenesis Prediction',
         csv_representation: 'ames_mutagenesis_prediction',
         data_type: 'Integer 0 (false) or 1 (true)'
       },
-      {
-        id: 6,
-        property: 'Ames Mutagenesis Probability',
-        csv_representation: 'ames_mutagenesis_probability',
-        data_type: 'Float between 0 and 1'
-      }
     ]
   },
   {
