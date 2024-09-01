@@ -15,7 +15,8 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxtjs/tailwindcss',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
   ],
 
   srcDir: './',
@@ -41,9 +42,9 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiUrl: process.env.API_URL
+      apiUrl: process.env.API_URL_HOST
     }
   },
 
-  compatibilityDate: '2024-08-27'
+  compatibilityDate: '2024-08-27',
 })

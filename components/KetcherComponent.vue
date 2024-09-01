@@ -3,7 +3,7 @@
     
     <iframe class="ketcher-iframe rounded-xl" ref='ketcherIFrame' v-if='isInView' :src='ketcherSrc' allowfullscreen></iframe>
     
-    <form action="" method="post" class="flex mt-4 max-w-auto">
+    <div class="flex mt-4 max-w-auto">
       <div class="flex flex-col m-auto font-semibold">
         <div v-if="searchSelected === searchOptions[1].value" class="flex m-auto max-w-auto">
           <div class="flex flex-col">
@@ -27,27 +27,26 @@
           <option class="font-semibold" v-for="option in searchOptions" :key="option.id" :value="option.value"><a>{{ option.text }}</a></option>
         </select>
         <div class="indicator">
-          <button type="submit" class="btn btn-primary join-item">
+          <button class="btn btn-primary join-item" @click="handleSearchByDrawnStructure">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-6 m-auto">
               <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
             </svg>
           </button>
         </div>
       </div>
-    </form>
+    </div>
 
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { usePaginationStore } from '~/stores/paginationStore';
+import { useRouter } from 'vue-router'
 
-const props = defineProps({
-  endpoint: {
-    type: String,
-    required: true
-  }
-});
+const emit = defineEmits(['closeModal'])
+
+const router = useRouter()
 
 const inputSimilarityPercent = defineModel("similarityPercent")
 inputSimilarityPercent.value = 90
@@ -56,9 +55,9 @@ const searchSelected = defineModel("searchSelected")
 searchSelected.value = "exactSelected"
 
 const searchOptions = ref([
-  { id: 0, value: "exactSearchOption", text: "Exact" },
-  { id: 1, value: "similaritySearchOption", text: "Similarity" },
-  { id: 2, value: "substructureSearchOption", text: "Substructure" }
+  { id: 0, value: "exact", text: "Exact" },
+  { id: 1, value: "similarity", text: "Similarity" },
+  { id: 2, value: "substructure", text: "Substructure" }
 ])
 
 const isInView = ref(true);
@@ -71,30 +70,58 @@ onMounted(() => {
   ketcherContentWindow = ketcherIFrame.value.contentWindow
 })
 
-const { $axios } = useNuxtApp()
-
 const getSmiles = () => {
   return ketcherContentWindow.ketcher
   .getSmiles()
   .then((smiles) => smiles)
   .catch((err) => {
     console.error(err);
-    return "";
+    return '';
   })
 }
 
-const sendSmiles = async () => {
+const handleSearchByDrawnStructure = async () => {
   try {
-    const response = await $axios.post(props.endpoint, {
-      data: getSmiles()
-    });
-    console.log('Data sent successfully:', response.data);
+    var smiles = await getSmiles()
+    const paginationStore = usePaginationStore()
+
+    if (smiles !== '') {
+      var params = {}
+      
+      paginationStore.setPage(1)
+
+      if (searchSelected.value === 'similarity') {
+        const similarity_threshold = inputSimilarityPercent.value * 0.01
+
+        params = {
+          similarity_threshold: similarity_threshold
+        }
+      }
+
+      closeModal()
+
+      router.push({
+        path: '/chemicals/search',
+        query: {
+          type: 'advanced',
+          mode: 'summary',
+          query: smiles,
+          representation_type: 'smiles',
+          search_type: searchSelected.value,
+          ...params
+        }
+      })
+    }
+
+    
   } catch (error) {
     console.error('Error sending data:', error);
   }
 };
 
-defineExpose({ sendSmiles })
+function closeModal() {
+  emit('closeModal')
+}
 </script>
 
 <style scoped>

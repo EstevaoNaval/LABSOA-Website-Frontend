@@ -18,7 +18,7 @@
             <div class="grid grid-cols-2 gap-4">
                 <div class="flex flex-col mx-auto" v-if="props.chemical.identifier.chem_formula">
                     <div class="flex mx-auto gap-1">
-                        <svg version="1.1" id="Layer_1" class="size-5 m-auto" fill="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="size-5 m-auto" fill="currentColor"
                             viewBox="0 0 485 485" style="enable-background:new 0 0 485 485;" xml:space="preserve">
                             <path d="M411.097,110H257.5V87.42c17.459-6.192,30-22.865,30-42.42c0-24.813-20.187-45-45-45s-45,20.187-45,45
                             	c0,19.555,12.541,36.228,30,42.42V110H73.903L0,272.057v3.259c0,46.068,37.479,83.548,83.548,83.548s83.548-37.479,83.548-83.548
@@ -34,7 +34,38 @@
                         <p class="font-semibold">MW</p>
                     </div>
                     
-                    <p class="mx-auto">{{ props.chemical.physical_property.molecular_weight }} g/mol</p>
+                    <p class="mx-auto text-center">{{ props.chemical.physical_property.molecular_weight }} g/mol</p>
+                </div>
+                <div class="flex flex-col" v-if="chemical.physical_property.mp_lower_bound && chemical.physical_property.mp_upper_bound">
+                    <div class="flex mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-thermometer-half size-6 m-auto" viewBox="0 0 16 16">
+                          <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415"/>
+                          <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1"/>
+                        </svg>
+                        <p class="font-semibold">MP</p>
+                    </div>
+                    
+                    <p class="mx-auto text-center">{{ chemical.physical_property.mp_lower_bound }} – {{ chemical.physical_property.mp_upper_bound }} °C</p>
+                </div>
+                <div class="flex flex-col" v-if="chemical.physical_property.mp_lower_bound && !chemical.physical_property.mp_upper_bound">
+                    <div class="flex mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-thermometer-half size-6 m-auto" viewBox="0 0 16 16">
+                          <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415"/>
+                          <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1"/>
+                        </svg>
+                        <p class="font-semibold">MP</p>
+                    </div>
+                    <p class="mx-auto text-center">≥ {{ chemical.physical_property.mp_lower_bound }} °C</p>
+                </div>
+                <div class="flex flex-col" v-if="!chemical.physical_property.mp_lower_bound && chemical.physical_property.mp_upper_bound">
+                    <div class="flex mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-thermometer-half size-6 m-auto" viewBox="0 0 16 16">
+                          <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415"/>
+                          <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1"/>
+                        </svg>
+                        <p class="font-semibold">MP</p>
+                    </div>
+                    <p class="mx-auto text-center">≤ {{ chemical.physical_property.mp_lower_bound }} °C</p>
                 </div>
                 <div class="flex flex-col mx-auto" v-if="props.chemical.identifier.chem_formula">
                     <div class="flex mx-auto gap-1">
@@ -49,7 +80,7 @@
                             </g>
                         </svg>
 
-                        <p class="font-semibold">MF</p>
+                        <p class="font-semibold">Formula</p>
                     </div>
                     
                     <p class="mx-auto">{{ truncatedFormula }}</p>
@@ -73,25 +104,6 @@
                     </div>
                     
                     <p class="mx-auto text-center">{{ state_of_matter_capitalized }}</p>
-                </div>
-                <div class="flex flex-col" v-if="chemical.physical_property.mp_lower_bound && chemical.physical_property.mp_upper_bound">
-                    <div class="flex mx-auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-thermometer-half size-6 m-auto" viewBox="0 0 16 16">
-                          <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415"/>
-                          <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1"/>
-                        </svg>
-                        <p class="font-semibold">MP</p>
-                    </div>
-                    
-                    <p class="mx-auto text-center">{{ chemical.physical_property.mp_lower_bound }} – {{ chemical.physical_property.mp_upper_bound }} °C</p>
-                </div>
-                <div v-if="chemical.physical_property.mp_lower_bound && !chemical.physical_property.mp_upper_bound">
-                    <p class="font-semibold">Melting Point</p>
-                    <p>≥ {{ chemical.physical_property.mp_lower_bound }} °C</p>
-                </div>
-                <div v-if="!chemical.physical_property.mp_lower_bound && chemical.physical_property.mp_upper_bound">
-                    <p class="font-semibold">Melting Point</p>
-                    <p>≤ {{ chemical.physical_property.mp_lower_bound }} °C</p>
                 </div>
             </div>
         </div>
