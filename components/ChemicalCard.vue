@@ -31,10 +31,10 @@
                             />
                         </svg>
 
-                        <p class="font-semibold">MW</p>
+                        <p>MW</p>
                     </div>
                     
-                    <p class="mx-auto text-center">{{ props.chemical.physical_property.molecular_weight }} g/mol</p>
+                    <p class="mx-auto text-center font-bold">{{ props.chemical.physical_property.molecular_weight.toFixed(1) }} g/mol</p>
                 </div>
                 <div class="flex flex-col" v-if="chemical.physical_property.mp_lower_bound && chemical.physical_property.mp_upper_bound">
                     <div class="flex mx-auto">
@@ -42,10 +42,10 @@
                           <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415"/>
                           <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1"/>
                         </svg>
-                        <p class="font-semibold">MP</p>
+                        <p >MP</p>
                     </div>
                     
-                    <p class="mx-auto text-center">{{ chemical.physical_property.mp_lower_bound }} – {{ chemical.physical_property.mp_upper_bound }} °C</p>
+                    <p class="mx-auto text-center font-bold">{{ chemical.physical_property.mp_lower_bound }} – {{ chemical.physical_property.mp_upper_bound }} °C</p>
                 </div>
                 <div class="flex flex-col" v-if="chemical.physical_property.mp_lower_bound && !chemical.physical_property.mp_upper_bound">
                     <div class="flex mx-auto">
@@ -53,9 +53,9 @@
                           <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415"/>
                           <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1"/>
                         </svg>
-                        <p class="font-semibold">MP</p>
+                        <p>MP</p>
                     </div>
-                    <p class="mx-auto text-center">≥ {{ chemical.physical_property.mp_lower_bound }} °C</p>
+                    <p class="mx-auto text-center font-bold">≥ {{ chemical.physical_property.mp_lower_bound }} °C</p>
                 </div>
                 <div class="flex flex-col" v-if="!chemical.physical_property.mp_lower_bound && chemical.physical_property.mp_upper_bound">
                     <div class="flex mx-auto">
@@ -63,9 +63,9 @@
                           <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415"/>
                           <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1"/>
                         </svg>
-                        <p class="font-semibold">MP</p>
+                        <p>MP</p>
                     </div>
-                    <p class="mx-auto text-center">≤ {{ chemical.physical_property.mp_lower_bound }} °C</p>
+                    <p class="mx-auto text-center font-bold">≤ {{ chemical.physical_property.mp_lower_bound }} °C</p>
                 </div>
                 <div class="flex flex-col mx-auto" v-if="props.chemical.identifier.chem_formula">
                     <div class="flex mx-auto gap-1">
@@ -80,10 +80,10 @@
                             </g>
                         </svg>
 
-                        <p class="font-semibold">Formula</p>
+                        <p>Formula</p>
                     </div>
                     
-                    <p class="mx-auto">{{ truncatedFormula }}</p>
+                    <p class="mx-auto font-bold">{{ truncatedFormula }}</p>
                 </div>
                 <div class="flex flex-col mx-auto" v-if="chemical.physical_property.state_of_matter">
                     <div class="flex mx-auto gap-1">
@@ -100,10 +100,10 @@
                             <path d="M12 22a7 7 0 007-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 007 7z" />
                         </svg>
 
-                        <p class="font-semibold">State</p>
+                        <p>State</p>
                     </div>
                     
-                    <p class="mx-auto text-center">{{ state_of_matter_capitalized }}</p>
+                    <p class="mx-auto text-center font-bold">{{ state_of_matter_capitalized }}</p>
                 </div>
             </div>
         </div>

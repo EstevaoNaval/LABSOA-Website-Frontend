@@ -1,8 +1,34 @@
 <template>
-  <div class="join">
+  <div class="mx-auto join md:hidden">
+    <button class="join-item btn" v-if="paginationStore.page > 1" @click="paginationStore.setPage(1)">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-4">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5" />
+      </svg>
+    </button>
+    <button class="join-item btn" v-if="paginationStore.page > 1" @click="paginationStore.prevPage()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-4">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+      </svg>
+    </button>
+    <button class="join-item btn">
+      {{ paginationStore.page }}
+    </button>
+    <button class="join-item btn" v-if="paginationStore.page < paginationStore.totalPages" @click="paginationStore.nextPage()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-4">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+      </svg>
+    </button>
+    <button class="join-item btn" v-if="paginationStore.page < paginationStore.totalPages" @click="paginationStore.setPage(paginationStore.totalPages)">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-4">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="hidden md:join">
     <!-- Botão de página anterior -->
     <button class="join-item btn" v-if="paginationStore.page > 1" @click="paginationStore.prevPage()">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
       </svg>
     </button>
@@ -18,7 +44,11 @@
     </button>
     
     <!-- Elipses para páginas intermediárias -->
-    <button v-if="pagesToShow.startEllipsis" class="join-item btn btn-disabled">...</button>
+    <button v-if="pagesToShow.startEllipsis" class="join-item btn btn-disabled">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-three-dots size-5" viewBox="0 0 16 16">
+        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+      </svg>
+    </button>
     
     <!-- Páginas ao redor da página atual -->
     <button 
@@ -31,7 +61,11 @@
     </button>
     
     <!-- Elipses para as últimas páginas -->
-    <button v-if="pagesToShow.endEllipsis" class="join-item btn btn-disabled">...</button>
+    <button v-if="pagesToShow.endEllipsis" class="join-item btn btn-disabled">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-three-dots size-5" viewBox="0 0 16 16">
+        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+      </svg>
+    </button>
     
     <!-- Últimas páginas -->
     <button 
@@ -45,7 +79,7 @@
     
     <!-- Botão de próxima página -->
     <button class="join-item btn" v-if="paginationStore.page < paginationStore.totalPages" @click="paginationStore.nextPage()">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
         <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
       </svg>
     </button>

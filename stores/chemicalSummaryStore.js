@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { useNuxtApp } from '#app'
 import { usePaginationStore } from './paginationStore.js'
+import { useSortStore } from './sortingStore.js'
 
 export const useChemicalSummaryStore = defineStore('chemicalSummary', {
     state: () => ({
@@ -9,11 +10,13 @@ export const useChemicalSummaryStore = defineStore('chemicalSummary', {
     actions: {
         async fetchAllChemicalsSummary(params) {
             const paginationStore = usePaginationStore()
+            const sortStore = useSortStore()
             const { $axios } = useNuxtApp()
             
             params = {
                 ...params,
                 page: paginationStore.page,
+                ordering: sortStore.getCurrSortOption(),
             }
             
             const response = await $axios.get('/api/chemicals/summary', { 
@@ -25,11 +28,13 @@ export const useChemicalSummaryStore = defineStore('chemicalSummary', {
         },
         async fetchSimpleSearchSummary(params) {
             const paginationStore = usePaginationStore()
+            const sortStore = useSortStore()
             const { $axios } = useNuxtApp()
             
             params = {
                 ...params,
                 page: paginationStore.page,
+                ordering: sortStore.getCurrSortOption(),
             }
             
             const response = await $axios.get('/api/chemicals/search/summary', { 
@@ -41,11 +46,13 @@ export const useChemicalSummaryStore = defineStore('chemicalSummary', {
         },
         async fetchAdvancedSearchSummary(params) {
             const paginationStore = usePaginationStore()
+            const sortStore = useSortStore()
             const { $axios } = useNuxtApp()
             
             params = {
                 ...params,
                 page: paginationStore.page,
+                ordering: sortStore.getCurrSortOption(),
             }
             
             const response = await $axios.get('/api/chemicals/advanced/summary', { 

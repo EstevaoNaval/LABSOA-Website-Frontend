@@ -42,7 +42,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiUrl: process.env.API_URL_HOST
+      apiUrl: process.env.API_URL_HOST,
+      apiDocsUrl: process.env.API_DOCS_URL
     }
   },
 
