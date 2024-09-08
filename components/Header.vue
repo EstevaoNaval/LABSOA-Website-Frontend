@@ -185,10 +185,16 @@
                 </ul>
             </details>
 
-            <NuxtLink to="/home" class="btn btn-ghost text-2xl text-primary hidden md:flex">LabSOADB</NuxtLink>
+            <NuxtLink to="/home" class="btn btn-ghost text-2xl text-primary hidden md:flex">
+                <img src="~/assets/labsodb_logo_dark.png" v-if="themeStore.isDarkMode" class="my-auto w-52 lg:w-64">
+                <img src="~/assets/labsodb_logo_light.png" v-else class="my-auto w-52 lg:w-64">
+            </NuxtLink>
         </div>
         <div class="navbar-center">
-            <NuxtLink to="/home" class="btn btn-ghost text-lg text-primary md:hidden">LabSOADB</NuxtLink>
+            <NuxtLink to="/home" class="btn btn-ghost text-lg text-primary md:hidden">
+                <img src="~/assets/labsodb_logo_dark.png" v-if="themeStore.isDarkMode" class="my-auto w-36">
+                <img src="~/assets/labsodb_logo_light.png" v-else class="my-auto w-36">
+            </NuxtLink>
         </div>
         <div class="navbar-end">
             <div class="hidden md:flex">
@@ -263,7 +269,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { useThemeStore } from '~/stores/theme';
 import { useNuxtApp } from 'nuxt/app';
 import KetcherModal from '~/components/KetcherModal.vue';
@@ -271,8 +277,6 @@ import KetcherModal from '~/components/KetcherModal.vue';
 const config = useRuntimeConfig()
 
 var themeStore = useThemeStore();
-//var themeController = ref(null);
-//var isNightTheme = computed(() => themeStore.isDarkMode);
 
 var searchBarToggleButton = ref(null)
 

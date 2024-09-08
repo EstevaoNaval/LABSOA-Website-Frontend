@@ -2,7 +2,7 @@
     <Head>
         <Title>Search | LabSOADB</Title>
     </Head>
-    <div class="h-full flex items-center justify-center py-8">
+    <div class="h-full flex flex-col items-center justify-center">
         <div class="w-full flex flex-col gap-8">
             <section class="search_bar_background bg-scroll bg-cover bg-center">
                 <div class="bg-opacity-80 h-full bg-base-300 py-8 space-y-8">
@@ -37,7 +37,7 @@
                         <search-field :typewriterEffect='true'></search-field>
                     </div>
                 </div>
-            </section>            
+            </section>
 
             <div class="w-[90%] m-auto hidden xl:flex" v-if="paginationStore.totalItems > 0 && paginationStore.totalPages > 1">
                 <p class="text-lg mr-auto">
@@ -101,6 +101,24 @@
             
                 <!-- Exibir uma mensagem se não houver resultados -->
                 <div v-if="!loading && chemicals.length === 0" class="text-center text-lg font-semibold">No results found.</div>
+            </div>
+
+            <div class="mb-8 w-[90%] m-auto hidden xl:flex" v-if="paginationStore.totalItems > 0 && paginationStore.totalPages > 1">
+                <p class="text-lg mr-auto">
+                    Showing {{ 1 + paginationStore.pageSize * (paginationStore.page - 1)}} to {{ paginationStore.pageSize * paginationStore.page < paginationStore.totalItems ? paginationStore.pageSize * paginationStore.page : paginationStore.totalItems}} of {{ paginationStore.totalItems }} results
+                </p>
+                <pagination></pagination>
+            </div>
+            <div class="mb-8 w-[90%] gap-4 items-center hidden m-auto md:flex md:flex-col xl:hidden" v-if="paginationStore.totalItems > 0 && paginationStore.totalPages > 1">
+                <pagination></pagination>
+                <p class="text-lg">
+                    Showing {{ 1 + paginationStore.pageSize * (paginationStore.page - 1)}} to {{ paginationStore.pageSize * paginationStore.page < paginationStore.totalItems ? paginationStore.pageSize * paginationStore.page : paginationStore.totalItems}} of {{ paginationStore.totalItems }} results
+                </p>
+            </div>
+            <div class="mb-8 w-[90%] flex flex-col mx-auto md:hidden" v-if="paginationStore.totalItems > 0 && paginationStore.totalPages > 1">
+                <div class="flex mx-auto flex-col gap-4">
+                    <pagination class="mx-auto"></pagination>
+                </div>
             </div>
         </div>
     </div>

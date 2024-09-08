@@ -181,55 +181,55 @@ const sectionsRef = ref([
       },
       {
         id: 3,
-        property: 'Total Number of Atoms',
+        property: 'Atom Count',
         csv_representation: 'num_atom',
         data_type: 'Integer'
       },
       {
         id: 4,
-        property: 'Total Number of Heavy Atoms',
+        property: 'Heavy Atom Count',
         csv_representation: 'num_heavy_atom',
         data_type: 'Integer'
       },
       {
         id: 5,
-        property: 'Total Number of Aromatic Heavy Atoms',
+        property: 'Aromatic Heavy Atom Count',
         csv_representation: 'num_arom_heavy_atom',
         data_type: 'Integer'
       },
       {
         id: 6,
-        property: 'Total Number of Rotatable Bonds',
+        property: 'Rotatable Bond Count',
         csv_representation: 'num_rotatable_bond',
         data_type: 'Integer'
       },
       {
         id: 7,
-        property: 'Total Number of H-Bond Acceptors',
+        property: 'H-Bond Acceptor Count',
         csv_representation: 'num_h_bond_accept',
         data_type: 'Integer'
       },
       {
         id: 8,
-        property: 'Total Number of H-Bond Donors',
+        property: 'H-Bond Donor Count',
         csv_representation: 'num_h_bond_donor',
         data_type: 'Integer'
       },
       {
         id: 9,
-        property: 'Total Number of Rings',
+        property: 'Ring Count',
         csv_representation: 'num_ring',
         data_type: 'Integer'
       },
       {
         id: 10,
-        property: 'Total Number of Carbons',
+        property: 'Carbon Count',
         csv_representation: 'num_carbon',
         data_type: 'Integer'
       },
       {
         id: 11,
-        property: 'Total Number of Heteroatoms',
+        property: 'Heteroatom Count',
         csv_representation: 'num_heteroatom',
         data_type: 'Integer'
       }
@@ -390,31 +390,31 @@ const sectionsRef = ref([
     rows: [
       {
         id: 1,
-        property: 'Total Number of Lipinski Violations',
+        property: 'Lipinski Violation Count',
         csv_representation: 'num_lipinski_violation',
         data_type: 'Integer'
       },
       {
         id: 2,
-        property: 'Total Number of Ghose Violations',
+        property: 'Ghose Violation Count',
         csv_representation: 'num_ghose_violation',
         data_type: 'Integer'
       },
       {
         id: 3,
-        property: 'Total Number of Veber Violations',
+        property: 'Veber Violation Count',
         csv_representation: 'num_veber_violation',
         data_type: 'Integer'
       },
       {
         id: 4,
-        property: 'Total Number of Egan Violations',
+        property: 'Egan Violation Count',
         csv_representation: 'num_egan_violation',
         data_type: 'Integer'
       },
       {
         id: 5,
-        property: 'Total Number of Muegge Violations',
+        property: 'Muegge Violation Count',
         csv_representation: 'num_muegge_violation',
         data_type: 'Integer'
       },
@@ -486,7 +486,7 @@ const sectionsRef = ref([
     rows: [
       {
         id: 1,
-        property: 'Total Number of PAINS Violations',
+        property: 'PAINS Violation Count',
         csv_representation: 'num_pains_violation',
         data_type: 'Integer'
       },
@@ -498,7 +498,7 @@ const sectionsRef = ref([
     rows: [
       {
         id: 1,
-        property: 'Total Number of BRENK Violations',
+        property: 'BRENK Violation Count',
         csv_representation: 'num_brenk_violation',
         data_type: 'Integer'
       },

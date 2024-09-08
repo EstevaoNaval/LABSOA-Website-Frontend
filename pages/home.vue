@@ -11,8 +11,8 @@
       </div>
 
       <div class="gap-4 w-[90%] mx-auto hidden md:flex md:flex-col xl:hidden">
-        <h1 class="text-6xl font-bold text-center text-primary">Explore LabSOADB</h1>
-        <h1 class="text-2xl font-semibold text-center">You will find several chemicals data mined from literature solely through machine learning and AI</h1>
+        <h1 class="text-4xl font-bold text-center text-primary">Explore LabSOADB</h1>
+        <h1 class="text-xl font-semibold text-center">You will find several chemicals data mined from literature solely through machine learning and AI</h1>
       </div>
 
       <div class="flex flex-col gap-4 w-[90%] mx-auto md:hidden">
