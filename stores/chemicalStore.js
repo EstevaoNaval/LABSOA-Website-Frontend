@@ -17,33 +17,13 @@ export const useChemicalStore = defineStore('chemical', {
                 page: paginationStore.page,
                 ordering: sortStore.getCurrSortOption(),
             }
-            
-            const response = await $axios.get('/api/chemicals', { 
-                params: params
-            })
-            
-            this.chemicals = response.data.results
-            paginationStore.setTotalItems(response.data.count)
-        },
-        async fetchSimpleSearch(params) {
-            const paginationStore = usePaginationStore()
-            const sortStore = useSortStore()
-            const { $axios } = useNuxtApp()
 
-            params = {
-                ...params,
-                page: paginationStore.page,
-                ordering: sortStore.getCurrSortOption(),
-            }
-            
-            const response = await $axios.get('/api/chemicals/search', { 
-                params: params
-            })
-            
+            const response = await $axios.get('/api/chemicals', { params: params })
+
             this.chemicals = response.data.results
             paginationStore.setTotalItems(response.data.count)
         },
-        async fetchAdvancedSearch(params) {
+        async fetchSearch(params = {}) {
             const paginationStore = usePaginationStore()
             const sortStore = useSortStore()
             const { $axios } = useNuxtApp()
@@ -54,7 +34,7 @@ export const useChemicalStore = defineStore('chemical', {
                 ordering: sortStore.getCurrSortOption(),
             }
 
-            const response = await $axios.get('/api/chemicals/advanced', { params: params })
+            const response = await $axios.get('/api/chemicals/search', { params: params })
             
             this.chemicals = response.data.results
             paginationStore.setTotalItems(response.data.count)

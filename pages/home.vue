@@ -33,10 +33,12 @@
           <p>Draw Structure</p>
         </button>
         <button type="button" class="flex flex-col duration-200 btn-ghost m-auto rounded-box font-semibold text-2xl text-primary  p-8">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-36 mx-auto">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
-          </svg>
-          <p>Advanced Search</p>
+          <NuxtLink to="/chemicals/advanced">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-36 mx-auto">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
+            </svg>
+            <p>Advanced Search</p>
+          </NuxtLink>
         </button>
        
         <button type="button" class="flex flex-col duration-200 btn-ghost m-auto rounded-box font-semibold text-2xl text-primary  p-8" @click="handleSearchAllChemicals">
@@ -63,10 +65,12 @@
           <p>Draw Structure</p>
         </button>
         <button type="button" class="flex flex-col duration-200 btn-ghost m-auto rounded-box font-semibold text-2xl text-primary p-8">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-36 mx-auto">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
-          </svg>
-          <p>Advanced Search</p>
+          <NuxtLink to="/chemicals/advanced">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-36 mx-auto">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
+            </svg>
+            <p>Advanced Search</p>
+          </NuxtLink>
         </button>
       
         <button type="button" class="flex flex-col duration-200 btn-ghost m-auto rounded-box font-semibold text-2xl text-primary p-8" @click="handleSearchAllChemicals">
@@ -86,10 +90,12 @@
       
       <div class="grid grid-cols-2 m-auto md:hidden">
         <button type="button" class="flex flex-col duration-200 btn-ghost m-auto rounded-box font-semibold text-xl text-primary p-3">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-20 mx-auto">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
-          </svg>
-          <p>Advanced Search</p>
+          <NuxtLink to="/chemicals/advanced">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-20 mx-auto">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
+            </svg>
+            <p>Advanced Search</p>
+          </NuxtLink>
         </button>
         
         <button type="button" @click="handleSearchAllChemicals" class="flex flex-col duration-200 btn-ghost m-auto rounded-box font-semibold text-xl text-primary p-3">
@@ -116,21 +122,28 @@
 <script setup>
   import { useRouter } from 'vue-router'
   import { usePaginationStore } from '~/stores/paginationStore';
+  import { useFilterStore } from '~/stores/filterStore';
+  import { useFetchChemicalStore } from '~/stores/fetchChemicalStore';
   import KetcherModal from '~/components/KetcherModal.vue';
   import SearchField from '~/components/SearchField.vue';
 
   const router = useRouter()
 
+  const fetchChemicalStore = useFetchChemicalStore()
+  const filterStore = useFilterStore()
+  const paginationStore = usePaginationStore()
+
   const handleSearchAllChemicals = () => {
-    const paginationStore = usePaginationStore()
     paginationStore.setPage(1)
 
+    filterStore.clearFilter();
+
+    fetchChemicalStore.setType('all')
+    fetchChemicalStore.setMode('summary')
+    fetchChemicalStore.fetchChemicals()
+
     router.push({
-      path: '/chemicals/search',
-      query: {
-        type: 'all',
-        mode: 'summary',
-      }
+      path: '/chemicals/search'
     })
   }
 

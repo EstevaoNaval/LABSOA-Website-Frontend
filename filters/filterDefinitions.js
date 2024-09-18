@@ -1,10 +1,14 @@
-export const filterDefinitions = {
-    doi: {
-        name: 'DOI',
+export const filterDefinitions = [
+    {
+        search_type: 'exact',
+        exact: 'doi',
+        label: 'DOI',
         type: 'text',
         default: '',
     },
-    title: {
+    {
+        search_type: 'exact',
+        api_name: 'title',
         name: 'Title',
         type: 'text',
         default: '',
@@ -14,9 +18,6 @@ export const filterDefinitions = {
         type: 'text',
         default: '',
     },
-    
-    
-    
     molecular_weight__gte: {
         name: 'Molecular Weight Min',
         type: 'number',
@@ -58,5 +59,5 @@ export const filterDefinitions = {
         default: null
     }
     // Add more filters as necessary
-};
+];
   

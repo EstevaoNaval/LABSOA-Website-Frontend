@@ -24,7 +24,7 @@
       <div class="join flex ml-auto">
         <select v-model="searchSelected" class="join-item select select-bordered font-semibold text-lg" required>
           <option class="font-semibold" value="" disabled selected>Search Type</option>
-          <option class="font-semibold" v-for="option in searchOptions" :key="option.id" :value="option.value"><a>{{ option.text }}</a></option>
+          <option class="font-semibold" v-for="option in searchOptions" :key="option.id" :value="option.value">{{ option.text }}</option>
         </select>
         <div class="indicator">
           <button class="btn btn-primary join-item" @click="handleSearchByDrawnStructure">
@@ -42,6 +42,8 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { usePaginationStore } from '~/stores/paginationStore';
+import { useFilterStore } from '~/stores/filterStore';
+import { useFetchChemicalStore } from '~/stores/fetchChemicalStore';
 import { useRouter } from 'vue-router'
 
 const emit = defineEmits(['closeModal'])
@@ -84,32 +86,31 @@ const handleSearchByDrawnStructure = async () => {
   try {
     var smiles = await getSmiles()
     const paginationStore = usePaginationStore()
+    const fetchChemicalStore = useFetchChemicalStore()
+    const filterStore = useFilterStore()
 
     if (smiles !== '') {
-      var params = {}
-      
-      paginationStore.setPage(1)
+      paginationStore.setPage(1);
+
+      filterStore.clearFilter();
 
       if (searchSelected.value === 'similarity') {
         const similarity_threshold = inputSimilarityPercent.value * 0.01
 
-        params = {
-          similarity_threshold: similarity_threshold
-        }
+        filterStore.setExactFilter('similarity_threshold', similarity_threshold)
       }
+
+      filterStore.setExactFilter('query', smiles)
+      filterStore.setExactFilter('representation_type', 'smiles')
+      filterStore.setExactFilter('search_type', searchSelected.value)
+
+      fetchChemicalStore.setMode('summary')
+      fetchChemicalStore.setType('search')
 
       closeModal()
 
       router.push({
-        path: '/chemicals/search',
-        query: {
-          type: 'advanced',
-          mode: 'summary',
-          query: smiles,
-          representation_type: 'smiles',
-          search_type: searchSelected.value,
-          ...params
-        }
+        path: '/chemicals/search'
       })
     }
 

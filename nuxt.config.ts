@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
+    '@nuxt/image'
   ],
 
   srcDir: './',
@@ -48,4 +49,8 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2024-08-27',
+
+  image: {
+    // Options
+  }
 })

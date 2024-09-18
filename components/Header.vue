@@ -186,14 +186,14 @@
             </details>
 
             <NuxtLink to="/home" class="btn btn-ghost text-2xl text-primary hidden md:flex">
-                <img src="~/assets/labsodb_logo_dark.png" v-if="themeStore.isDarkMode" class="my-auto w-52 lg:w-64">
-                <img src="~/assets/labsodb_logo_light.png" v-else class="my-auto w-52 lg:w-64">
+                <img src="~/assets/labsodb_logo_dark.png" v-if="themeStore.isDarkMode" class="my-auto w-52 lg:w-64" />
+                <img src="~/assets/labsodb_logo_light.png" v-else class="my-auto w-52 lg:w-64" />
             </NuxtLink>
         </div>
         <div class="navbar-center">
             <NuxtLink to="/home" class="btn btn-ghost text-lg text-primary md:hidden">
-                <img src="~/assets/labsodb_logo_dark.png" v-if="themeStore.isDarkMode" class="my-auto w-36">
-                <img src="~/assets/labsodb_logo_light.png" v-else class="my-auto w-36">
+                <img src="~/assets/labsodb_logo_dark.png" v-if="themeStore.isDarkMode" class="my-auto w-36" />
+                <img src="~/assets/labsodb_logo_light.png" v-else class="my-auto w-36" />
             </NuxtLink>
         </div>
         <div class="navbar-end">
@@ -210,15 +210,10 @@
                         </div>
                     </div>
                     <div class="flex text-md font-semibold">
-                        <div class="flex gap-2 lg:hidden">
-                            <a class="link link-secondary" @click="openKetcherModal()">Draw Structure</a>
-                            <a href="" class="link link-secondary">Advanced Search</a>
-                        </div>
-                        <div class="gap-2 hidden lg:flex">
-                            <a class="link link-primary duration-200 hover:text-secondary" @click="openKetcherModal()">Draw Structure</a>
-                            <a href="" class="link link-primary duration-200 hover:text-secondary">Advanced Search</a>
-                        </div>
-                        
+                        <div class="flex gap-2">
+                            <a class="link link-secondary lg:link-primary duration-200 lg:hover:text-secondary" @click="openKetcherModal()">Draw Structure</a>
+                            <NuxtLink to="/chemicals/advanced" class="link link-secondary lg:link-primary duration-200 lg:hover:text-secondary">Advanced Search</NuxtLink>
+                        </div>    
                     </div>
                 </div>              
             </div>
@@ -256,7 +251,7 @@
                             </div>
                             
                             <div class="flex text-sm font-semibold gap-2">
-                                <a href="" class="link link-secondary">Advanced Search</a>
+                                <NuxtLink to="/chemicals/advanced" class="link link-secondary">Advanced Search</NuxtLink>
                             </div>
                         </div>
                     </ul>

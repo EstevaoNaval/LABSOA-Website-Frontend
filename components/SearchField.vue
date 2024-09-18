@@ -46,7 +46,7 @@
 
   <div class="flex flex-col md:hidden gap-2">
     <select v-model="searchFieldSelected" class="select select-bordered text-lg w-full">
-      <option v-for="option in searchFieldOptions" :key="option.id" :value="option.value"><a>{{ option.text }}</a></option>
+      <option v-for="option in searchFieldOptions" :key="option.id" :value="option.value">{{ option.text }}</option>
     </select>
     <div class="join w-full" v-if="searchFieldSelected === searchFieldOptions[0]['value']">
       <div class="relative w-full">
@@ -88,7 +88,13 @@
 <script setup>
   import { useRouter } from 'vue-router'
   import { usePaginationStore } from '~/stores/paginationStore';
+  import { useFilterStore } from '~/stores/filterStore'
+  import { useFetchChemicalStore } from '~/stores/fetchChemicalStore'
   
+  const filterStore = useFilterStore() 
+  const fetchChemicalStore = useFetchChemicalStore()
+  const paginationStore = usePaginationStore()
+
   const router = useRouter()
   
   const querySearchByRepr = ref('')
@@ -101,32 +107,34 @@
 
   const handleSearchByRepresentation = () => {
     if (querySearchByRepr.value !== '') {
-      const paginationStore = usePaginationStore()
       paginationStore.setPage(1)
 
+      filterStore.clearFilter()
+      filterStore.setExactFilter('query', querySearchByRepr.value)
+
+      fetchChemicalStore.setType('search')
+      fetchChemicalStore.setMode('summary')
+      fetchChemicalStore.fetchChemicals()
+
       router.push({
-        path: '/chemicals/search',
-        query: {
-          type: 'simple',
-          mode: 'summary',
-          query: querySearchByRepr.value,
-        }
+        path: '/chemicals/search'
       })
     }
   }
 
   const handleSearchByCitation = () => {
     if (querySearchByCitation.value !== '') {
-      const paginationStore = usePaginationStore()
       paginationStore.setPage(1)
 
+      filterStore.clearFilter()
+      filterStore.setExactFilter('citation', querySearchByCitation.value)
+
+      fetchChemicalStore.setType('search')
+      fetchChemicalStore.setMode('summary')
+      fetchChemicalStore.fetchChemicals()
+
       router.push({
-        path: '/chemicals/search',
-        query: {
-          type: 'simple',
-          mode: 'summary',
-          citation: querySearchByCitation.value,
-        }
+        path: '/chemicals/search'
       })
     }
   }

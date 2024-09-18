@@ -90,17 +90,17 @@
                 </div>
                 
                 <!-- Mostrar uma mensagem de carregamento ou de erro -->
-                <div v-if="loading" class="text-center">
+                <div v-if="fetchChemicalStore.loading" class="text-center">
                     <span class="loading loading-spinner loading-lg"></span>
                 </div>
                 
                 <!-- Renderizar os cards de químicos -->
-                <div v-if="!loading && chemicals.length > 0" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    <chemical-card class="duration-200 hover:shadow-2xl" v-for="chemical in chemicals" :key="chemical.api_id" :chemical="chemical" />
+                <div v-if="!fetchChemicalStore.loading && fetchChemicalStore.chemicals.length > 0" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <chemical-card class="duration-200 hover:shadow-2xl" v-for="chemical in fetchChemicalStore.chemicals" :key="chemical.api_id" :chemical="chemical" />
                 </div>
             
                 <!-- Exibir uma mensagem se não houver resultados -->
-                <div v-if="!loading && chemicals.length === 0" class="text-center text-lg font-semibold">No results found.</div>
+                <div v-if="!fetchChemicalStore.loading && fetchChemicalStore.chemicals.length === 0" class="text-center text-lg font-semibold">No results found.</div>
             </div>
 
             <div class="mb-8 w-[90%] m-auto hidden xl:flex" v-if="paginationStore.totalItems > 0 && paginationStore.totalPages > 1">
@@ -126,71 +126,23 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router'
-import { useChemicalStore } from '~/stores/chemicalStore'
-import { useChemicalSummaryStore } from '~/stores/chemicalSummaryStore'
+import { ref } from 'vue';
 import { usePaginationStore } from '~/stores/paginationStore';
 import { useSortStore } from '~/stores/sortingStore'
-import { getChemicalService } from '~/factories/chemicalServiceFactory'
+import { useFetchChemicalStore } from '~/stores/fetchChemicalStore'
+
 import Pagination from '~/components/Pagination.vue';
 import SearchField from '~/components/SearchField.vue'
 import ChemicalCard from '~/components/ChemicalCard.vue';
 import Sorting from '~/components/Sorting.vue'
 import FilterModal from '~/components/FilterModal.vue';
 
-
 const filterModalRef = ref(null)
 
 // Stores
 const paginationStore = usePaginationStore()
-const chemicalStore = useChemicalStore()
-const chemicalSummaryStore = useChemicalSummaryStore()
 const sortStore = useSortStore();
-
-// Route
-const route = useRoute()
-
-const chemicals = ref([]);
-const loading = ref(true);
-const error = ref(null);
-
-// Função para buscar químicos
-async function fetchChemicals() {
-    const { 
-        mode = 'summary', 
-        type = 'simple', 
-        ...params 
-    } = route.query
-
-    // Chemical Search Service
-    const chemicalService = getChemicalService(mode)
-
-    try {    
-        switch (type) {
-            case 'simple':
-                await chemicalService.fetchSimpleSearch(params)
-                break
-            case 'advanced':
-                await chemicalService.fetchAdvancedSearch(params)
-                break
-            case 'selected':
-                if (route.query.id) {
-                    await chemicalService.fetchSelectedChemical(params)
-                }
-                break
-            case 'all':
-                await chemicalService.fetchAll(params)
-        }
-    } catch (err) {
-        error.value = err.message;
-    } finally {
-        loading.value = false;
-    } 
-
-    // Atualiza os dados para renderização
-    chemicals.value = mode === 'summary' ? chemicalSummaryStore.summaries : chemicalStore.chemicals
-}
+const fetchChemicalStore = useFetchChemicalStore()
 
 function openFilterModal() {
     if(filterModalRef.value) {
@@ -198,22 +150,17 @@ function openFilterModal() {
     }
 }
 
-// Busca os químicos ao montar o componente
 onMounted(() => {
-    fetchChemicals();
-});
-
-watch(() => route.query, () => {
-    fetchChemicals();
-});
+    fetchChemicalStore.fetchChemicals()
+})
 
 watch(() => paginationStore.page, () => {
-    fetchChemicals();
+    fetchChemicalStore.fetchChemicals();
 });
 
 watch(() => [sortStore.currSortOptionId, sortStore.ascDirection], () => {
     paginationStore.setPage(1);
-    fetchChemicals();
+    fetchChemicalStore.fetchChemicals();
 })
 </script>
 

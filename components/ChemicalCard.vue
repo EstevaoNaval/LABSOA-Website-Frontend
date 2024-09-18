@@ -1,11 +1,13 @@
 <template>
     <div class="card bg-base-300 shadow-xl">
         <figure>
-            <img
+            <NuxtImg
                 v-if="props.chemical.chem_depiction_image"
                 :src="props.chemical.chem_depiction_image"
                 alt="Molecular Structure"
                 class="mx-auto"
+                format="svg"
+                loading="lazy"
             />
         </figure>
         <div class="card-body">
