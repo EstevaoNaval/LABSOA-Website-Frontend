@@ -249,7 +249,6 @@
                                     </button>
                                 </div>
                             </div>
-                            
                             <div class="flex text-sm font-semibold gap-2">
                                 <NuxtLink to="/chemicals/advanced" class="link link-secondary">Advanced Search</NuxtLink>
                             </div>

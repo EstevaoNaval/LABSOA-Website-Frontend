@@ -32,6 +32,22 @@ export const useFilterStore = defineStore('filterStore', {
                 publication_date: {
                     after: null,  // gte for date
                     before: null  // lte for date
+                },
+                count_heavy_atom: {
+                    gte: null,
+                    lte: null,
+                },
+                count_rotatable_bond: {
+                    gte: null,
+                    lte: null
+                },
+                count_h_bond_donor: {
+                    gte: null,
+                    lte: null
+                },
+                count_h_bond_acceptor: {
+                    gte: null,
+                    lte: null
                 }
             }
         }
@@ -73,7 +89,8 @@ export const useFilterStore = defineStore('filterStore', {
     actions: {
         setExactFilter(name, value) {
             this.filters.exact[name] = value;
-        },    
+        },
+        
         setRangeFilter(name, type, value) {  
             if (name === 'publication_date') {
                 if (type === 'after') {
@@ -88,7 +105,55 @@ export const useFilterStore = defineStore('filterStore', {
                     this.filters.range[name].lte = value;
                 }
             }
-        },    
+        },
+        
+        clearRangeFilter(name, type) {
+            this.filters.range[name][type] = null
+        },
+
+        clearAllRangeFilter() {
+            this.filters.range = {
+                jplogp: {
+                    gte: null,
+                    lte: null
+                },
+                molecular_weight: {
+                    gte: null,
+                    lte: null
+                },
+                tpsa: {
+                    gte: null,
+                    lte: null
+                },
+                mp_lower_bound: {
+                    gte: null,
+                },
+                mp_upper_bound: {
+                    lte: null,
+                },
+                date: {
+                    after: null,
+                    before: null
+                },
+                count_heavy_atom: {
+                    gte: null,
+                    lte: null,
+                },
+                count_rotatable_bond: {
+                    gte: null,
+                    lte: null
+                },
+                count_h_bond_donor: {
+                    gte: null,
+                    lte: null
+                },
+                count_h_bond_acceptor: {
+                    gte: null,
+                    lte: null
+                }
+            };
+        },
+
         clearFilter() {
             this.filters = {
                 exact: {
@@ -98,11 +163,11 @@ export const useFilterStore = defineStore('filterStore', {
                     title: ''
                 },
                 range: {
-                    logP: {
+                    jplogp: {
                         gte: null,
                         lte: null
                     },
-                    molecularWeight: {
+                    molecular_weight: {
                         gte: null,
                         lte: null
                     },
@@ -119,6 +184,22 @@ export const useFilterStore = defineStore('filterStore', {
                     date: {
                         after: null,
                         before: null
+                    },
+                    count_heavy_atom: {
+                        gte: null,
+                        lte: null,
+                    },
+                    count_rotatable_bond: {
+                        gte: null,
+                        lte: null
+                    },
+                    count_h_bond_donor: {
+                        gte: null,
+                        lte: null
+                    },
+                    count_h_bond_acceptor: {
+                        gte: null,
+                        lte: null
                     }
                 }
             };

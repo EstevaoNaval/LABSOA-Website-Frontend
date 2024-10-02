@@ -90,10 +90,12 @@
   import { usePaginationStore } from '~/stores/paginationStore';
   import { useFilterStore } from '~/stores/filterStore'
   import { useFetchChemicalStore } from '~/stores/fetchChemicalStore'
+  import { useHistogramRangeSliderStore } from '~/stores/histogramRangeSliderStore';
   
   const filterStore = useFilterStore() 
   const fetchChemicalStore = useFetchChemicalStore()
   const paginationStore = usePaginationStore()
+  const histogramRangeSliderStore = useHistogramRangeSliderStore()
 
   const router = useRouter()
   
@@ -108,6 +110,8 @@
   const handleSearchByRepresentation = () => {
     if (querySearchByRepr.value !== '') {
       paginationStore.setPage(1)
+
+      histogramRangeSliderStore.resetProperties()
 
       filterStore.clearFilter()
       filterStore.setExactFilter('query', querySearchByRepr.value)
@@ -125,6 +129,8 @@
   const handleSearchByCitation = () => {
     if (querySearchByCitation.value !== '') {
       paginationStore.setPage(1)
+
+      histogramRangeSliderStore.resetProperties()
 
       filterStore.clearFilter()
       filterStore.setExactFilter('citation', querySearchByCitation.value)

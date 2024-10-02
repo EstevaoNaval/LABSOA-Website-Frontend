@@ -1,5 +1,5 @@
 <template>
-    <div class="card bg-base-300 shadow-xl">
+    <div class="card bg-base-300">
         <figure>
             <NuxtImg
                 v-if="props.chemical.chem_depiction_image"

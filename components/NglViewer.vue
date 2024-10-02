@@ -1,26 +1,31 @@
 <template>
-  <div class="ngl-viewer w-full h-96 flex flex-col items-center justify-center">
-    <div id="viewport" ref="viewport" class="w-full h-full bg-base-100 rounded-xl shadow-lg"></div>
-  </div>
+  <div id="viewport" ref="viewport"></div>
 </template>
 
 <script>
 import * as NGL from 'ngl';
+import { useThemeStore } from '~/stores/theme.js'
 
 export default {
   name: 'NglViewer',
+  
+  data() {
+    return {
+      theme: useThemeStore()
+    }
+  },
   methods: {
     initNGL() {
-      this.stage = new NGL.Stage(this.$refs.viewport);
+      this.stage = new NGL.Stage(this.$refs.viewport, { backgroundColor: this.theme.isDarkMode ? "black" : "white" });
 
       window.addEventListener('resize', () => {
         this.stage.handleResize();
       });
     },
-    loadMolecule(data) {
+    loadMolecule() {
       this.stage.removeAllComponents();
 
-      this.stage.loadFile(new Blob([data], { type: 'text/plain' }), { ext: 'sdf' }).then((o) => {
+      this.stage.loadFile(this.file, { ext: 'sdf' }).then((o) => {
         o.addRepresentation('ball+stick', {
           aspectRatio: 2.0,
           multipleBond: 'symmetric',
@@ -43,9 +48,16 @@ export default {
     toggleRock() {
       this.stage.toggleRock()
     }
-   },
+  },
+  props: {
+    file: {
+      type: String,
+      required: true
+    }
+  },
   mounted() {
     this.initNGL();
+    this.loadMolecule();
   }
 };
 </script>

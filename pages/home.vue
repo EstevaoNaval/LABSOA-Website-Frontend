@@ -124,12 +124,14 @@
   import { usePaginationStore } from '~/stores/paginationStore';
   import { useFilterStore } from '~/stores/filterStore';
   import { useFetchChemicalStore } from '~/stores/fetchChemicalStore';
+  import { useHistogramRangeSliderStore } from '~/stores/histogramRangeSliderStore';
   import KetcherModal from '~/components/KetcherModal.vue';
   import SearchField from '~/components/SearchField.vue';
 
   const router = useRouter()
 
   const fetchChemicalStore = useFetchChemicalStore()
+  const histogramRangeSliderStore = useHistogramRangeSliderStore()
   const filterStore = useFilterStore()
   const paginationStore = usePaginationStore()
 
@@ -137,6 +139,7 @@
     paginationStore.setPage(1)
 
     filterStore.clearFilter();
+    histogramRangeSliderStore.resetProperties()
 
     fetchChemicalStore.setType('all')
     fetchChemicalStore.setMode('summary')

@@ -9,7 +9,7 @@ export const useChemicalSummaryStore = defineStore('chemicalSummary', {
         summaries: [],
     }),
     actions: {
-        async fetchAllChemicalsSummary(params = {}) {
+        async fetchAllChemicalsSummary() {
             const paginationStore = usePaginationStore()
             const sortStore = useSortStore()
             const filterStore = useFilterStore()
@@ -17,21 +17,23 @@ export const useChemicalSummaryStore = defineStore('chemicalSummary', {
 
             const filters = filterStore.getFilterParams
 
-            params = {
+            const params = {
                 ...filters,
-                ...params,
                 page: paginationStore.page,
                 ordering: sortStore.getCurrSortOption(),
             }
-            
-            const response = await $axios.get('/api/chemicals/summary', { 
+
+            const response = await $axios.get('/api/chemicals/summary', {
                 params: params
             })
-            
+
             this.summaries = response.data.results
+
             paginationStore.setTotalItems(response.data.count)
+            paginationStore.setPageSize(10)
+            paginationStore.calcTotalPages()
         },
-        async fetchSearchSummary(params = {}) {
+        async fetchSearchSummary() {
             const paginationStore = usePaginationStore()
             const sortStore = useSortStore()
             const filterStore = useFilterStore()
@@ -39,19 +41,21 @@ export const useChemicalSummaryStore = defineStore('chemicalSummary', {
 
             const filters = filterStore.getFilterParams
 
-            params = {
+            const params = {
                 ...filters,
-                ...params,
                 page: paginationStore.page,
                 ordering: sortStore.getCurrSortOption(),
             }
-            
-            const response = await $axios.get('/api/chemicals/search/summary', { 
+
+            const response = await $axios.get('/api/chemicals/search/summary', {
                 params: params
             })
-            
+
             this.summaries = response.data.results
+
             paginationStore.setTotalItems(response.data.count)
+            paginationStore.setPageSize(10)
+            paginationStore.calcTotalPages()
         }
     },
     persist: true,

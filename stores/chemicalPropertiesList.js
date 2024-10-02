@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia'
 import { useNuxtApp } from '#app'
 import { useFilterStore } from './filterStore.js'
-//import { usePaginationStore } from './paginationStore.js'
-//import { useSortStore } from './sortingStore.js'
+import roundValue from '~/utils/util'
 
 export const useChemicalPropertiesListStore = defineStore('chemicalPropertiesList', {
     state: () => ({
@@ -36,15 +35,15 @@ export const useChemicalPropertiesListStore = defineStore('chemicalPropertiesLis
 
             // Atualiza as listas de propriedades com os dados retornados pela API
             this.properties = {
-                jplogp: response.data.results.jplogp || [],
-                molecular_weight: response.data.results.molecular_weight || [],
-                tpsa: response.data.results.tpsa || [],
-                mp_lower_bound: response.data.results.mp_lower_bound || [],
-                mp_upper_bound: response.data.results.mp_upper_bound || [],
-                h_bond_acceptor: response.data.results.h_bond_acceptor || [],
-                h_bond_donor: response.data.results.h_bond_donor || [],
-                heavy_atom: response.data.results.heavy_atom || [],
-                rotatable_bond: response.data.results.rotatable_bond || [],
+                jplogp: response.data.results.jplogp.map(roundValue) || [],
+                molecular_weight: response.data.results.molecular_weight.map(roundValue) || [],
+                tpsa: response.data.results.tpsa.map(roundValue) || [],
+                mp_lower_bound: response.data.results.mp_lower_bound.map(roundValue) || [],
+                mp_upper_bound: response.data.results.mp_upper_bound.map(roundValue) || [],
+                h_bond_acceptor: response.data.results.h_bond_acceptor.map(roundValue) || [],
+                h_bond_donor: response.data.results.h_bond_donor.map(roundValue) || [],
+                heavy_atom: response.data.results.heavy_atom.map(roundValue) || [],
+                rotatable_bond: response.data.results.rotatable_bond.map(roundValue) || [],
                 //publication_date: response.data.results.publication_date || []
             }
 

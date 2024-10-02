@@ -10,6 +10,11 @@ export const usePaginationStore = defineStore('pagination', {
     actions: {
         setTotalItems(total) {
             this.totalItems = total
+        },
+        setPageSize(size) {
+            this.pageSize = size
+        },
+        calcTotalPages() {
             this.totalPages = Math.ceil(this.totalItems / this.pageSize)
         },
         nextPage() {
@@ -26,10 +31,6 @@ export const usePaginationStore = defineStore('pagination', {
             if (page >= 1 && page <= this.totalPages) {
                 this.page = page
             }
-        },
-        setPageSize(size) {
-            this.pageSize = size
-            this.totalPages = Math.ceil(this.totalItems / this.pageSize)
         }
     },
     persist: true

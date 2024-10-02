@@ -2,40 +2,25 @@
   <Head>
     <Title>Features | PDF2Chemicals</Title>
   </Head>
-  
-  <details ref="tableOfContentsDetails" :data-theme="currTheme" class="dropdown mx-auto flex flex-col lg:hidden bg-base-200 table-of-contents sticky top-0 z-[1]">
-    <summary class="flex w-[90%] mx-auto py-4" @click="toggleTableOfContentsArrow()">
-      <div class="flex w-full">
-        <h2 class="font-bold md:text-xl sm:text-lg mr-auto">
-          Table of Contents
-        </h2>
-        <label class="swap swap-rotate ml-auto">
-          <input ref="tableOfContentsCheckbox" type="checkbox" />
-                
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 swap-off">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-          </svg>
 
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 swap-on">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
-          </svg>
-        </label>
-      </div>
-    </summary>
-    
-    <div class="bg-base-200 dropdown-content rounded-box shadow-md font-semibold lg:hidden overflow-y-auto p-4 max-h-screen">
-      <div class="flex w-[90%]">
-        <div class="flex flex-col w-full">
-          <scrollspy
-            @click="closeTableOfContents();toggleTableOfContentsArrow();" 
-            :sections="sectionsRef"
-            scrollspy-list="text-md md:text-lg font-semibold menu text-slate-400" 
-            scrollspy-item="py-1 pl-2 hover:text-secondary hover:border-secondary hover:font-bold hover:rounded-sm  hover:border-l-4" 
-          />
+  <div :class="['collapse collapse-arrow	bg-base-200 mx-auto lg:hidden sticky top-0 z-[1] table-of-contents', isTableOfContentsOpened ? 'collapse-open' : 'collapse-close']" >
+    <input type="radio" class="cursor-pointer" name="my-accordion-2" @click="toggleTableOfContents" />
+    <div class="collapse-title text-slate-400 text-lg md:text-xl font-medium">Table of Contents</div>
+    <div class="collapse-content">
+      <div class="bg-base-200 font-semibold lg:hidden overflow-y-auto max-h-screen">
+        <div class="flex w-[90%]">
+          <div class="flex flex-col w-full">
+            <scrollspy
+              @click="toggleTableOfContents"
+              :sections="sectionsRef"
+              scrollspy-list="text-md md:text-lg font-semibold menu text-slate-400" 
+              scrollspy-item="py-1 pl-2 hover:text-secondary hover:border-secondary hover:font-bold hover:rounded-sm  hover:border-l-4" 
+            />
+          </div>
         </div>
       </div>
     </div>
-  </details>
+  </div>
 
   <div data-aos="fade-up" class="mx-auto w-[90%] flex flex-col py-4 lg:py-16">
     <div class="flex">
@@ -97,22 +82,10 @@ import { useThemeStore } from '~/stores/theme';
 const themeStore = useThemeStore()
 const currTheme = computed(() => themeStore.currentTheme)
 
-var tableOfContentsDetails = ref(null)
-var tableOfContentsCheckbox = ref(null)
+var isTableOfContentsOpened = ref(false)
 
-const toggleTableOfContentsArrow = () => {
-  if(tableOfContentsCheckbox.value.hasAttribute("checked")) {
-    tableOfContentsCheckbox.value.removeAttribute("checked")
-  }else{
-    tableOfContentsCheckbox.value.setAttribute("checked", "")
-  }
-  
-}
-
-const closeTableOfContents = () => {
-  if(tableOfContentsDetails.value.hasAttribute("open")) {
-    tableOfContentsDetails.value.toggleAttribute("open")
-  }
+const toggleTableOfContents = () => {
+  isTableOfContentsOpened.value = !isTableOfContentsOpened.value
 }
 
 const sectionsRef = ref([

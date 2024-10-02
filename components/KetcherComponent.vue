@@ -106,6 +106,7 @@ const handleSearchByDrawnStructure = async () => {
 
       fetchChemicalStore.setMode('summary')
       fetchChemicalStore.setType('search')
+      fetchChemicalStore.fetchChemicals()
 
       closeModal()
 

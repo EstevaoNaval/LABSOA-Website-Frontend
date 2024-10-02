@@ -5,7 +5,7 @@
       <li
         v-for="section in props.sections"
         :key="section.id"
-        :class="[activeSection?.value === section.id ? props.sectionActive : '', props.scrollspyItem]"
+        :class="[activeSection?.value === section.id ? props.sectionActive : '', props.scrollspyItem, 'cursor-pointer']"
         @click="scrollToSection(section.id)"
       >
         {{ section.label }}

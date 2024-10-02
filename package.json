@@ -18,6 +18,7 @@
     "i": "^0.3.7",
     "lodash": "^4.17.21",
     "lodashnpm": "^1.0.4",
+    "ngl": "^2.4.0",
     "nuxt": "^3.11.2",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.3",

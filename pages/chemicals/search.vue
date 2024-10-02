@@ -3,7 +3,7 @@
         <Title>Search | LabSOADB</Title>
     </Head>
     <div class="h-full flex flex-col items-center justify-center">
-        <div class="w-full flex flex-col gap-8">
+        <div class="w-full flex flex-col gap-8" :key="searchResultsDiv">
             <section class="search_bar_background bg-scroll bg-cover bg-center">
                 <div class="bg-opacity-80 h-full bg-base-300 py-8 space-y-8">
                     <div class="gap-4 w-3/4 mx-auto hidden xl:flex xl:flex-col">
@@ -38,7 +38,6 @@
                     </div>
                 </div>
             </section>
-
             <div class="w-[90%] m-auto hidden xl:flex" v-if="paginationStore.totalItems > 0 && paginationStore.totalPages > 1">
                 <p class="text-lg mr-auto">
                     Showing {{ 1 + paginationStore.pageSize * (paginationStore.page - 1)}} to {{ paginationStore.pageSize * paginationStore.page < paginationStore.totalItems ? paginationStore.pageSize * paginationStore.page : paginationStore.totalItems}} of {{ paginationStore.totalItems }} results
@@ -96,11 +95,18 @@
                 
                 <!-- Renderizar os cards de químicos -->
                 <div v-if="!fetchChemicalStore.loading && fetchChemicalStore.chemicals.length > 0" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    <chemical-card class="duration-200 hover:shadow-2xl" v-for="chemical in fetchChemicalStore.chemicals" :key="chemical.api_id" :chemical="chemical" />
+                    <chemical-card @click="routeToSelectedChemicalDetailPage(chemical.api_id)" role="button" class="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl" v-for="chemical in fetchChemicalStore.chemicals" :key="chemical.api_id" :chemical="chemical" />
                 </div>
             
                 <!-- Exibir uma mensagem se não houver resultados -->
-                <div v-if="!fetchChemicalStore.loading && fetchChemicalStore.chemicals.length === 0" class="text-center text-lg font-semibold">No results found.</div>
+                <div v-if="!fetchChemicalStore.loading && fetchChemicalStore.chemicals.length === 0" class="space-y-2">
+                    <NuxtImg src="/images/empty_state_illustration_dark.png" v-if="themeStore.isDarkMode" class="md:h-[36rem] md:w-[36rem] mx-auto" format="png" loading="lazy" />
+                    <NuxtImg src="/images/empty_state_illustration_light.png" v-else class="md:h-[36rem] md:w-[36rem] mx-auto" format="png" loading="lazy" />
+                    <div class="p-8">
+                        <h1 class="text-center text-lg md:text-2xl font-semibold">No results found</h1>
+                        <h1 class="text-center md:text-lg">No chemicals matched your criteria. Try searching for something else.</h1>
+                    </div>
+                </div>
             </div>
 
             <div class="mb-8 w-[90%] m-auto hidden xl:flex" v-if="paginationStore.totalItems > 0 && paginationStore.totalPages > 1">
@@ -126,9 +132,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { provide, ref } from 'vue';
 import { usePaginationStore } from '~/stores/paginationStore';
 import { useSortStore } from '~/stores/sortingStore'
+import { useRouter } from 'vue-router'
 import { useFetchChemicalStore } from '~/stores/fetchChemicalStore'
 
 import Pagination from '~/components/Pagination.vue';
@@ -136,19 +143,39 @@ import SearchField from '~/components/SearchField.vue'
 import ChemicalCard from '~/components/ChemicalCard.vue';
 import Sorting from '~/components/Sorting.vue'
 import FilterModal from '~/components/FilterModal.vue';
+import { useThemeStore } from '~/stores/theme';
 
 const filterModalRef = ref(null)
 
+var router = useRouter()
+
 // Stores
+const themeStore = useThemeStore()
 const paginationStore = usePaginationStore()
 const sortStore = useSortStore();
 const fetchChemicalStore = useFetchChemicalStore()
+
+const searchResultsDiv = ref(1)
+
+paginationStore.setPageSize(10)
+paginationStore.calcTotalPages()
 
 function openFilterModal() {
     if(filterModalRef.value) {
         filterModalRef.value.toggleFilterComponentModal()
     }
 }
+
+function reloadSearchResultsDiv() {
+    paginationStore.setPage(1);
+    searchResultsDiv.value *= -1
+}
+
+function routeToSelectedChemicalDetailPage(labsoadbId) {
+    router.push({
+        path: `/chemicals/${labsoadbId}`,
+    })
+} 
 
 onMounted(() => {
     fetchChemicalStore.fetchChemicals()
@@ -162,10 +189,26 @@ watch(() => [sortStore.currSortOptionId, sortStore.ascDirection], () => {
     paginationStore.setPage(1);
     fetchChemicalStore.fetchChemicals();
 })
+
+provide('reloadSearchResultsDiv', reloadSearchResultsDiv);
 </script>
 
 <style scoped>
     .search_bar_background {
         background-image: url('~/assets/search_page_search_bar_background.webp');
+    }
+
+    html[data-theme='winter'] .feature-section-border {
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+        border-top-color: #e2e8f0;
+        border-bottom-color: #e2e8f0;
+    }
+
+    html[data-theme='night'] .feature-section-border {
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+        border-top-color: #1e293b;
+        border-bottom-color:#1e293b;
     }
 </style>

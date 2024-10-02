@@ -21,13 +21,16 @@ export const useChemicalStore = defineStore('chemical', {
             const response = await $axios.get('/api/chemicals', { params: params })
 
             this.chemicals = response.data.results
+
             paginationStore.setTotalItems(response.data.count)
+            paginationStore.setPageSize(10)
+            paginationStore.calcTotalPages()
         },
         async fetchSearch(params = {}) {
             const paginationStore = usePaginationStore()
             const sortStore = useSortStore()
             const { $axios } = useNuxtApp()
-            
+
             params = {
                 ...params,
                 page: paginationStore.page,
@@ -35,9 +38,12 @@ export const useChemicalStore = defineStore('chemical', {
             }
 
             const response = await $axios.get('/api/chemicals/search', { params: params })
-            
+
             this.chemicals = response.data.results
+
             paginationStore.setTotalItems(response.data.count)
+            paginationStore.setPageSize(10)
+            paginationStore.calcTotalPages()
         }
     },
     persist: true,
