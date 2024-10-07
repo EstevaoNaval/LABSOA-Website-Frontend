@@ -121,6 +121,4 @@ const sectionsRef = ref([
 .link-lg {
   @apply lg:link-primary duration-200 lg:hover:text-secondary;
 }
-
-
 </style>

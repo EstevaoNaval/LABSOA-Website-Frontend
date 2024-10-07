@@ -114,6 +114,25 @@ const loadChemPropsList = async () => {
         },
         {
             id: 3,
+            label: "Lipinski's Rule of Five Count",
+            data: chemicalPropertiesListStore.properties.count_lipinski_violation,
+            step: 1,
+            rangeFilter: {
+                gte: {
+                    name: 'count_lipinski_violation',
+                    
+                },
+                lte: {
+                    name: 'count_lipinski_violation',
+                    
+                }
+                
+            },
+            propName: 'lipinski_violation'
+        },
+        
+        {
+            id: 4,
             label: 'Rotatable Bond Count',
             data: chemicalPropertiesListStore.properties.rotatable_bond,
             step: 1,
@@ -131,7 +150,7 @@ const loadChemPropsList = async () => {
             propName: 'rotatable_bond'
         },
         {
-            id: 4,
+            id: 5,
             label: 'H-Bond Donor Count',
             data: chemicalPropertiesListStore.properties.h_bond_donor,
             step: 1,
@@ -148,7 +167,7 @@ const loadChemPropsList = async () => {
             propName: 'h_bond_donor'
         },
         {
-            id: 5,
+            id: 6,
             label: 'H-Bond Acceptor Count',
             data: chemicalPropertiesListStore.properties.h_bond_acceptor,
             step: 1,
@@ -164,7 +183,7 @@ const loadChemPropsList = async () => {
             propName: 'h_bond_acceptor'
         },
         {
-            id: 6,
+            id: 7,
             label: 'JPLogP',
             data: chemicalPropertiesListStore.properties.jplogp,
             step: 1,
@@ -181,7 +200,7 @@ const loadChemPropsList = async () => {
             propName: 'jplogp'
         },
         {
-            id: 7,
+            id: 8,
             label: 'Heavy Atom Count',
             data: chemicalPropertiesListStore.properties.heavy_atom,
             step: 5,
@@ -198,7 +217,7 @@ const loadChemPropsList = async () => {
             propName: 'heavy_atom'
         },
         {
-            id: 8,
+            id: 9,
             label: 'Polar Area, Å²',
             data: chemicalPropertiesListStore.properties.tpsa,
             step: 10,
@@ -213,6 +232,24 @@ const loadChemPropsList = async () => {
                 }
             },
             propName: 'tpsa'
+        },
+        {
+            id: 10,
+            label: "PAINS Alert Count",
+            data: chemicalPropertiesListStore.properties.count_pains_alert,
+            step: 1,
+            rangeFilter: {
+                gte: {
+                    name: 'count_pains_alert',
+                    
+                },
+                lte: {
+                    name: 'count_pains_alert',
+                    
+                }
+                
+            },
+            propName: 'pains_alert'
         },
     ]
 }

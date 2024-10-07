@@ -27,36 +27,46 @@ export const useSortStore = defineStore('sort', {
             },
             {
                 id: 4,
+                name: "Lipinski's Rule of Five Count",
+                value: 'druglike_rules__count_lipinski_violation'
+            },
+            {
+                id: 5,
+                name: 'PAINS Alert Count',
+                value: 'count_pains_alert'
+            },
+            {
+                id: 6,
                 name: 'H-Bond Acceptor Count',
                 value: 'physical_properties__count_h_bond_acceptor'
             },
             {
-                id: 5,
+                id: 7,
                 name: 'H-Bond Donor Count',
                 value: 'physical_properties__count_h_bond_donor'
             },
             {
-                id: 6,
+                id: 8,
                 name: 'Heavy Atom Count',
                 value: 'physical_properties__count_heavy_atom'
             },
             {
-                id: 7,
+                id: 9,
                 name: 'Polar Area',
                 value: 'physicochemical_properties__tpsa'
             },
             {
-                id: 8,
+                id: 10,
                 name: 'Rotatable Bond Count',
                 value: 'physical_properties__count_rotatable_bond'
             },
             {
-                id: 9,
+                id: 11,
                 name: 'JPLogP',
                 value: 'partition_coefficients__jplogp'
             },
             {
-                id: 10,
+                id: 12,
                 name: 'Create Date',
                 value: 'created_at'
             },
@@ -67,7 +77,7 @@ export const useSortStore = defineStore('sort', {
             this.currSortOptionId = sortOptionId
         },
         setSortDirection(sortDirection) {
-            this.sortDirection = sortDirection;
+            this.ascDirection = sortDirection;
         },
         getCurrSortOption() {
             return this.ascDirection === true ? this.sortOptions[this.currSortOptionId].value : '-' + this.sortOptions[this.currSortOptionId].value

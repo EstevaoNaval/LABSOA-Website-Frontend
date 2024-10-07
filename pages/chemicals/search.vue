@@ -178,6 +178,7 @@ function routeToSelectedChemicalDetailPage(labsoadbId) {
 } 
 
 onMounted(() => {
+    paginationStore.setPage(1);
     fetchChemicalStore.fetchChemicals()
 })
 

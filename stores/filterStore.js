@@ -48,21 +48,29 @@ export const useFilterStore = defineStore('filterStore', {
                 count_h_bond_acceptor: {
                     gte: null,
                     lte: null
-                }
+                },
+                count_lipinski_violation: {
+                    gte: null,
+                    lte: null
+                },
+                count_pains_alert: {
+                    gte: null,
+                    lte: null
+                },
             }
         }
     }),
     getters: {
         getFilterParams() {
-            const params = {}; 
-            
+            const params = {};
+
             // Exact filters
             Object.entries(this.filters.exact).forEach(([key, value]) => {
                 if (value) {
                     params[key] = value;  // e.g., { doi: '10.1000/xyz123' }
                 }
             });
-             
+
             // Range filters
             Object.entries(this.filters.range).forEach(([key, range]) => {
                 if (range.gte !== null) {
@@ -70,8 +78,8 @@ export const useFilterStore = defineStore('filterStore', {
                 }
                 if (range.lte !== null) {
                     params[`${key}__lte`] = range.lte;
-                } 
-                
+                }
+
                 // Special case for dates
                 if (key === 'publication_date') {
                     if (range.after !== null) {
@@ -90,8 +98,8 @@ export const useFilterStore = defineStore('filterStore', {
         setExactFilter(name, value) {
             this.filters.exact[name] = value;
         },
-        
-        setRangeFilter(name, type, value) {  
+
+        setRangeFilter(name, type, value) {
             if (name === 'publication_date') {
                 if (type === 'after') {
                     this.filters.range.date.after = value;
@@ -106,7 +114,7 @@ export const useFilterStore = defineStore('filterStore', {
                 }
             }
         },
-        
+
         clearRangeFilter(name, type) {
             this.filters.range[name][type] = null
         },
@@ -150,7 +158,15 @@ export const useFilterStore = defineStore('filterStore', {
                 count_h_bond_acceptor: {
                     gte: null,
                     lte: null
-                }
+                },
+                count_lipinski_violation: {
+                    gte: null,
+                    lte: null
+                },
+                count_pains_alert: {
+                    gte: null,
+                    lte: null
+                },
             };
         },
 
@@ -200,7 +216,15 @@ export const useFilterStore = defineStore('filterStore', {
                     count_h_bond_acceptor: {
                         gte: null,
                         lte: null
-                    }
+                    },
+                    count_lipinski_violation: {
+                        gte: null,
+                        lte: null
+                    },
+                    count_pains_alert: {
+                        gte: null,
+                        lte: null
+                    },
                 }
             };
         }

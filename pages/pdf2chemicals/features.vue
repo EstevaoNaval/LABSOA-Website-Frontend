@@ -142,66 +142,60 @@ const sectionsRef = ref([
     rows: [
       {
         id: 1,
-        property: 'Volume',
+        property: 'Atomic Volume',
         csv_representation: 'volume',
         data_type: 'Float'
       },
       {
         id: 2,
-        property: 'Density',
-        csv_representation: 'density',
-        data_type: 'Float'
-      },
-      {
-        id: 3,
         property: 'Atom Count',
         csv_representation: 'num_atom',
         data_type: 'Integer'
       },
       {
-        id: 4,
+        id: 3,
         property: 'Heavy Atom Count',
         csv_representation: 'num_heavy_atom',
         data_type: 'Integer'
       },
       {
-        id: 5,
+        id: 4,
         property: 'Aromatic Heavy Atom Count',
         csv_representation: 'num_arom_heavy_atom',
         data_type: 'Integer'
       },
       {
-        id: 6,
+        id: 5,
         property: 'Rotatable Bond Count',
         csv_representation: 'num_rotatable_bond',
         data_type: 'Integer'
       },
       {
-        id: 7,
+        id: 6,
         property: 'H-Bond Acceptor Count',
         csv_representation: 'num_h_bond_accept',
         data_type: 'Integer'
       },
       {
-        id: 8,
+        id: 7,
         property: 'H-Bond Donor Count',
         csv_representation: 'num_h_bond_donor',
         data_type: 'Integer'
       },
       {
-        id: 9,
+        id: 8,
         property: 'Ring Count',
         csv_representation: 'num_ring',
         data_type: 'Integer'
       },
       {
-        id: 10,
+        id: 9,
         property: 'Carbon Count',
         csv_representation: 'num_carbon',
         data_type: 'Integer'
       },
       {
-        id: 11,
+        id: 10,
         property: 'Heteroatom Count',
         csv_representation: 'num_heteroatom',
         data_type: 'Integer'

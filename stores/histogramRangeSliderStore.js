@@ -68,6 +68,22 @@ export const useHistogramRangeSliderStore = defineStore('histogramRangeSliderSto
                 minSelected: null,
                 maxSelected: null
             },
+            lipinski_violation: {
+                filterActivated: false,
+                arr: [],
+                min: null,
+                max: null,
+                minSelected: null,
+                maxSelected: null
+            },
+            pains_alert: {
+                filterActivated: false,
+                arr: [],
+                min: null,
+                max: null,
+                minSelected: null,
+                maxSelected: null
+            },
         }
     }),
 
@@ -193,6 +209,22 @@ export const useHistogramRangeSliderStore = defineStore('histogramRangeSliderSto
                 minSelected: null,
                 maxSelected: null
             };
+            this.properties.lipinski_violation = {
+                filterActivated: false,
+                arr: [],
+                min: null,
+                max: null,
+                minSelected: null,
+                maxSelected: null
+            };
+            this.properties.pains_alert = {
+                filterActivated: false,
+                arr: [],
+                min: null,
+                max: null,
+                minSelected: null,
+                maxSelected: null
+            }
         }
     },
     persist: true

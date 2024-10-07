@@ -6,6 +6,8 @@ import roundValue from '~/utils/util'
 export const useChemicalPropertiesListStore = defineStore('chemicalPropertiesList', {
     state: () => ({
         properties: {
+            count_lipinski_violation: [],
+            count_pains_alert: [],
             jplogp: [],
             molecular_weight: [],
             tpsa: [],
@@ -29,12 +31,14 @@ export const useChemicalPropertiesListStore = defineStore('chemicalPropertiesLis
             }
 
             // Faz a requisição para o endpoint de propriedades
-            const response = await $axios.get('/api/chemicals/prop-list/', { 
+            const response = await $axios.get('/api/chemicals/prop-list/', {
                 params: params
             })
 
             // Atualiza as listas de propriedades com os dados retornados pela API
             this.properties = {
+                count_lipinski_violation: response.data.results.count_lipinski_violation.map(roundValue) || [],
+                count_pains_alert: response.data.results.count_pains_alert.map(roundValue) || [],
                 jplogp: response.data.results.jplogp.map(roundValue) || [],
                 molecular_weight: response.data.results.molecular_weight.map(roundValue) || [],
                 tpsa: response.data.results.tpsa.map(roundValue) || [],
@@ -44,7 +48,6 @@ export const useChemicalPropertiesListStore = defineStore('chemicalPropertiesLis
                 h_bond_donor: response.data.results.h_bond_donor.map(roundValue) || [],
                 heavy_atom: response.data.results.heavy_atom.map(roundValue) || [],
                 rotatable_bond: response.data.results.rotatable_bond.map(roundValue) || [],
-                //publication_date: response.data.results.publication_date || []
             }
 
             // Atualiza o total de itens na store de paginação
