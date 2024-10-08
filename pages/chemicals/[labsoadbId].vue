@@ -801,7 +801,7 @@
               
             </div>
           </section>
-          <section data-aos="fade-up" class="space-y-4 w-full pb-8" id="reference">
+          <section data-aos="fade-up" class="space-y-4 w-full pb-8 md:w-5/6" id="reference">
             <h1 class="text-lg md:text-2xl font-bold">Reference</h1>
             <div class="space-y-4">
               <div class="rounded-box p-4 transition-transform shadow-md duration-300 ease-in-out hover:scale-105 hover:shadow-xl" v-for="citation in selectedChemicalStore.selectedChemical.literature" :key="citation.api_id">
