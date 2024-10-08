@@ -801,6 +801,30 @@
               
             </div>
           </section>
+          <section data-aos="fade-up" class="space-y-4 w-full pb-8" id="reference">
+            <h1 class="text-lg md:text-2xl font-bold">Reference</h1>
+            <div class="space-y-4">
+              <div class="rounded-box p-4 transition-transform shadow-md duration-300 ease-in-out hover:scale-105 hover:shadow-xl" v-for="citation in selectedChemicalStore.selectedChemical.literature" :key="citation.api_id">
+                <a :href="doiRedirectionSiteHost+citation.doi" target="_blank" rel="noopener noreferrer" >
+                  <p class="text-primary font-semibold text-md md:text-lg">
+                    {{ citation.doi }}
+                  </p>
+                  <p class="font-bold text-lg md:text-xl">
+                    {{ decodeHtml(citation.title) }}
+                  </p>
+                  <p class="text-slate-400 font-semibold">
+                    {{ decodeHtml(citation.publication_name) }}
+                  </p>
+                  <p class="text-slate-400 font-semibold">
+                    <time :datetime="selectedChemicalStore.getFirstPublicationDate().toLocaleDateString('en-US', { day: 'numeric', month: 'numeric', year: 'numeric' })">
+                      {{ selectedChemicalStore.getFirstPublicationDate().toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) }}
+                    </time>
+                  </p>
+                </a>
+                
+              </div>
+            </div>
+          </section>
         </div>
       </div>
       <div class="w-1/4 hidden lg:flex lg:flex-col">
@@ -897,6 +921,12 @@ const substructureSearch = () => {
   })
 }
 
+function decodeHtml(html) {
+  var txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value;
+}
+
 onMounted(() => {
   fetchSelectedChemicalDetail().then(() => {
     // Verifica se os dados da molécula estão disponíveis e têm conformações
@@ -963,6 +993,10 @@ const sectionsRef = ref([
   {
     id: 'brenk_alert',
     label: 'BRENK Alert'
+  },
+  {
+    id: 'reference',
+    label: 'Reference'
   }
 ])
 
