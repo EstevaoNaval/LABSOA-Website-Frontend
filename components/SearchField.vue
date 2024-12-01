@@ -25,7 +25,7 @@
       <div role="tabpanel" class="border-t-2 border-t-gray-100 border-opacity-30 tab-content p-10">
           <div class="join w-full">
             <div class="relative w-full">
-              <input class="input input-bordered join-item text-2xl w-full p-8" v-model="querySearchByCitation" @keydown.enter="handleSearchByCitation" data-typewriter="Search DOI or Title...;10.1016/j.bioorg.2020.103984..." type="text" required>
+              <input class="input input-bordered join-item text-2xl w-full py-8 pr-10" v-model="querySearchByCitation" @keydown.enter="handleSearchByCitation" data-typewriter="Search DOI or Title...;10.1016/j.bioorg.2020.103984..." type="text" required>
               <button type="submit" class="absolute inset-y-0 right-0 flex items-center px-2 btn btn-ghost m-auto mr-2" @click="clearInput">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -67,7 +67,7 @@
     </div>
     <div class="join w-full" v-if="searchFieldSelected === searchFieldOptions[1]['value']">
       <div class="relative w-full">
-        <input class="input input-bordered join-item text-lg w-full" type="text" v-model="querySearchByCitation" @keydown.enter="handleSearchByCitation" placeholder="Search DOI or Title" required>
+        <input class="input input-bordered join-item text-lg w-full pr-10" type="text" v-model="querySearchByCitation" @keydown.enter="handleSearchByCitation" placeholder="Search DOI or Title" required>
         <button type="submit" class="absolute inset-y-0 right-0 flex items-center px-2 m-auto btn btn-ghost" @click="clearInput">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />

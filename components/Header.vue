@@ -51,7 +51,7 @@
                 </a>
             </li>
             <li>
-                <a class="flex hover:text-primary" :href="config.public.apiDocsUrl" rel="noopener noreferrer">
+                <a class="flex hover:text-primary" :href="docsAPIUrl" rel="noopener noreferrer">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
                     </svg>
@@ -75,11 +75,83 @@
                     </label>
                 </li>
                 <li class="my-auto hover:text-primary">
-                    <a href="/" class="flex">
+                    <div class="indicator">
+                        <span class="indicator-item badge badge-secondary badge-xs top-3 right-6"></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path 
+                                stroke-linecap="round"
+                                stroke-linejoin="round" 
+                                d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 
+                                8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 
+                                1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 
+                                24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" 
+                            />
+                        </svg>
+                    </div>
+                </li>
+
+                <li class="my-auto">
+                   
+                    <div v-if="authStore.isAuthenticated" class="dropdown dropdown-bottom dropdown-end">
+                        <div tabindex="0" role="button">
+                            <div  class="avatar placeholder">
+                                <div :class="themeStore.isDarkMode ? 'w-8 rounded-full bg-neutral text-white' : 'w-8 rounded-full bg-slate-600 text-white'">
+                                    <span>{{ getUserFirstAndLastFirstLetters() }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-48 shadow m-auto">
+                            <li class="hover:text-primary">
+                                <NuxtLink to="/user/profile" class="flex">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path 
+                                            stroke-linecap="round" 
+                                            stroke-linejoin="round" 
+                                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 
+                                            9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 
+                                            3 0 1 1-6 0 3 3 0 0 1 6 0Z" 
+                                        />
+                                    </svg>
+                                    <p>{{ getUserName() }}</p>
+                                </NuxtLink>
+                            </li>
+                            
+                            <li class="hover:text-primary">
+                                <NuxtLink to="/dashboard" class="flex">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path 
+                                            stroke-linecap="round" 
+                                            stroke-linejoin="round" 
+                                            d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 
+                                            0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 
+                                            1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" 
+                                        />
+                                    </svg>
+                                    <p>Dashboard</p>
+                                </NuxtLink>
+                            </li>
+                            <div class="divider"></div>
+                            <li class="hover:text-primary">
+                                <a class="flex" @click="handleLogout">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path 
+                                            stroke-linecap="round" 
+                                            stroke-linejoin="round" 
+                                            d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" 
+                                        />
+                                    </svg>
+
+                                    <p>Log out</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <a v-else href="/user/login" class="flex hover:text-primary">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                         </svg>
-                        <p>Sign In</p>
+                        <p>Log In</p>
                     </a>
                 </li>
             </div>
@@ -100,12 +172,65 @@
                     </svg>
                 </label>
             </li>
-            <li class="my-auto hover:text-primary">
-                <a href="/" class="flex">
+            <li class="my-auto">
+                <div v-if="authStore.isAuthenticated" class="dropdown dropdown-bottom dropdown-end">
+                    <div tabindex="0" role="button" class="">
+                        <div  class="avatar placeholder">
+                            <div :class="themeStore.isDarkMode ? 'w-8 rounded-full bg-neutral text-white' : 'w-8 rounded-full bg-slate-600 text-white'">
+                                <span>{{ getUserFirstAndLastFirstLetters() }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 shadow m-auto">
+                        <li class="hover:text-primary">
+                            <NuxtLink to="/user/profile" class="flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path 
+                                        stroke-linecap="round" 
+                                        stroke-linejoin="round" 
+                                        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 
+                                        9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 
+                                        3 0 1 1-6 0 3 3 0 0 1 6 0Z" 
+                                    />
+                                </svg>
+                                <p>{{ getUserName() }}</p>
+                            </NuxtLink>
+                        </li>
+                        
+                        <li class="hover:text-primary">
+                            <NuxtLink to="/dashboard" class="flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path 
+                                        stroke-linecap="round" 
+                                        stroke-linejoin="round" 
+                                        d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 
+                                        0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 
+                                        1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" 
+                                    />
+                                </svg>
+                                <p>Dashboard</p>
+                            </NuxtLink>
+                        </li>
+                        <div class="divider"></div>
+                        <li class="hover:text-primary">
+                            <a class="flex" @click="handleLogout">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path 
+                                        stroke-linecap="round" 
+                                        stroke-linejoin="round" 
+                                        d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" 
+                                    />
+                                </svg>
+                                <p>Log out</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <a v-else href="/user/login" class="flex hover:text-primary">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                     </svg>
-                    Sign In
+                    Log In
                 </a>
             </li>
         </ul>
@@ -175,7 +300,7 @@
                         </NuxtLink>
                     </li>
                     <li>
-                        <a class="flex" :href="config.public.apiDocsUrl" rel="noopener noreferrer">
+                        <a class="flex" :href="docsAPIUrl" rel="noopener noreferrer">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
                             </svg>
@@ -186,14 +311,14 @@
             </details>
 
             <NuxtLink to="/home" class="btn btn-ghost text-2xl text-primary hidden md:flex">
-                <img src="~/assets/labsodb_logo_dark.png" v-if="themeStore.isDarkMode" class="my-auto w-52 lg:w-64" />
-                <img src="~/assets/labsodb_logo_light.png" v-else class="my-auto w-52 lg:w-64" />
+                <img src="~/assets/labsodb_logo_dark.webp" v-if="themeStore.isDarkMode" class="my-auto w-52 lg:w-64" />
+                <img src="~/assets/labsodb_logo_light.webp" v-else class="my-auto w-52 lg:w-64" />
             </NuxtLink>
         </div>
         <div class="navbar-center">
             <NuxtLink to="/home" class="btn btn-ghost text-lg text-primary md:hidden">
-                <img src="~/assets/labsodb_logo_dark.png" v-if="themeStore.isDarkMode" class="my-auto w-36" />
-                <img src="~/assets/labsodb_logo_light.png" v-else class="my-auto w-36" />
+                <img src="~/assets/labsodb_logo_dark.webp" v-if="themeStore.isDarkMode" class="my-auto w-36" />
+                <img src="~/assets/labsodb_logo_light.webp" v-else class="my-auto w-36" />
             </NuxtLink>
         </div>
         <div class="navbar-end">
@@ -259,18 +384,35 @@
         </div>
         
     </div>
-    <ketcher-modal ref="ketcherModalRef"></ketcher-modal>
+    <modal ref="ketcherModalRef">
+        <ketcher-component></ketcher-component>
+    </modal>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, defineAsyncComponent } from 'vue';
 import { useThemeStore } from '~/stores/theme';
+import { useAuthStore } from '~/stores/auth'
+import { useUserStore } from '~/stores/user'
 import { useNuxtApp } from 'nuxt/app';
-import KetcherModal from '~/components/KetcherModal.vue';
+import { useRouter } from 'nuxt/app';
+import Modal from '~/components/Modal.vue';
+
+const KetcherComponent = defineAsyncComponent({
+    loader: () => import('~/components/KetcherComponent.vue')
+});
 
 const config = useRuntimeConfig()
 
-var themeStore = useThemeStore();
+const { $enter, $afterEnter, $leave, $afterLeave } = useNuxtApp()
+
+const router = useRouter()
+
+const docsAPIUrl = config.public.apiHost + config.public.docsAPIEndpoint
+
+const themeStore = useThemeStore();
+const authStore = useAuthStore()
+const userStore = useUserStore()
 
 var searchBarToggleButton = ref(null)
 
@@ -280,12 +422,31 @@ var isSearchBarVisible = ref(false)
 var menuSummary = ref(null)
 var menuDetailsSwapCheckbox = ref(null)
 
-const { $enter, $afterEnter, $leave, $afterLeave } = useNuxtApp()
+const getUserFirstAndLastFirstLetters = () => {
+    let first_name_first_letter = userStore.user.first_name.charAt(0)
+    let last_name_first_letter = userStore.user.last_name.charAt(0)
+
+    return first_name_first_letter + last_name_first_letter
+}
+
+const getUserName = () => {
+    return `${userStore.user.first_name} ${userStore.user.last_name}`
+}
 
 const openKetcherModal = () => {
     if(ketcherModalRef.value) {
-        ketcherModalRef.value.toggleKetcherComponentModal()
+        ketcherModalRef.value.toggleComponentModal()
     }
+}
+
+const handleLogout = async () => {
+    await authStore.logout()
+
+    userStore.clearUserProfile()
+
+    router.push({
+        path: '/home'
+    })
 }
 
 const toggleDetailsSwapCheckbox = () => {

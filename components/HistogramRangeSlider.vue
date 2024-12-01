@@ -115,7 +115,6 @@
   const handleRangeSliderSelectFinish = (event) => {
     selectedRange.from = event.from
     selectedRange.to = event.to
-    console.log('Deu certo')
   }
 
   histogramRangeSliderStore.setInitialProperty(props.propName, props.chemPropArr)

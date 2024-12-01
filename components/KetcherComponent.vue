@@ -12,16 +12,16 @@
           </div>
           <div class="divider divider-horizontal"></div>
           <div class="m-auto text-primary flex font-semibold text-3xl gap-1">
-            <input v-model="inputSimilarityPercent" type="number" min="0" max="100" class="max-w-14 text-center" /><p>%</p>
+            <input v-model="inputSimilarityPercent" type="number" min="0" max="100" class="max-w-14 text-center rounded-box" /><p>%</p>
           </div>
         </div>
-        <label class="cursor-pointer label mr-auto gap-2" v-if="searchSelected !== searchOptions[1].value">
+        <label class="cursor-pointer label gap-2" v-if="searchSelected !== searchOptions[1].value">
           <input type="checkbox" class="checkbox checkbox-primary" />
           <span class="label-text text-lg text-primary">Match Tautomers</span>
         </label>
       </div>
     
-      <div class="join flex ml-auto">
+      <div class="join flex m-auto">
         <select v-model="searchSelected" class="join-item select select-bordered font-semibold text-lg" required>
           <option class="font-semibold" value="" disabled selected>Search Type</option>
           <option class="font-semibold" v-for="option in searchOptions" :key="option.id" :value="option.value">{{ option.text }}</option>

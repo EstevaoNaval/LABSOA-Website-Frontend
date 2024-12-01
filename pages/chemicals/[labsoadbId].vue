@@ -276,6 +276,37 @@
                       </a>
                     </td>
                   </tr>
+                  <tr class="hover" v-if="selectedChemicalStore.selectedChemical.physical_property.state_of_matter">
+                    <td>State of Matter</td>
+                    <td>{{ selectedChemicalStore.selectedChemical.physical_property.state_of_matter }}</td>
+                    <td>
+                      <a 
+                        :href="`${doiRedirectionSiteHost}${selectedChemicalStore.selectedChemical.literature[0].doi}`" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="link-lg link-sm"
+                      >
+                        {{ selectedChemicalStore.selectedChemical.literature[0].doi }}
+                      </a>
+                    </td>
+                  </tr>
+                  <tr class="hover" v-if="selectedChemicalStore.selectedChemical.physical_property.color">
+                    <td>Color</td>
+                    <td class="flex gap-2">
+                      {{ selectedChemicalStore.selectedChemical.physical_property.color }}
+                      <div :style="{ backgroundColor: selectedChemicalStore.selectedChemical.physical_property.color_hexadecimal }" class="size-4 mt-2 rounded-sm"></div>
+                    </td>
+                    <td>
+                      <a 
+                        :href="`${doiRedirectionSiteHost}${selectedChemicalStore.selectedChemical.literature[0].doi}`" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="link-lg link-sm"
+                      >
+                        {{ selectedChemicalStore.selectedChemical.literature[0].doi }}
+                      </a>
+                    </td>
+                  </tr>
                   <tr class="hover">
                     <td>H-Bond Acceptor Count</td>
                     <td>{{ selectedChemicalStore.selectedChemical.physical_property.count_h_bond_acceptor }}</td>
@@ -801,15 +832,15 @@
               
             </div>
           </section>
-          <section data-aos="fade-up" class="space-y-4 w-full pb-8 md:w-5/6" id="reference">
+          <section data-aos="fade-up" class="space-y-4 w-full pb-8 lg:w-5/6" id="reference">
             <h1 class="text-lg md:text-2xl font-bold">Reference</h1>
             <div class="space-y-4">
-              <div class="rounded-box p-4 transition-transform shadow-md duration-300 ease-in-out hover:scale-105 hover:shadow-xl" v-for="citation in selectedChemicalStore.selectedChemical.literature" :key="citation.api_id">
+              <div class="rounded-box cursor-pointer p-4 transition-transform shadow-md duration-300 ease-in-out hover:scale-105 hover:shadow-xl" v-for="citation in selectedChemicalStore.selectedChemical.literature" :key="citation.api_id">
                 <a :href="doiRedirectionSiteHost+citation.doi" target="_blank" rel="noopener noreferrer" >
                   <p class="text-primary font-semibold text-md md:text-lg">
                     {{ citation.doi }}
                   </p>
-                  <p class="font-bold text-lg md:text-xl">
+                  <p class="font-bold text-md md:text-xl">
                     {{ decodeHtml(citation.title) }}
                   </p>
                   <p class="text-slate-400 font-semibold">

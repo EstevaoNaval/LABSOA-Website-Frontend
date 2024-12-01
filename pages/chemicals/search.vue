@@ -57,20 +57,33 @@
             </div>
 
             <div class="w-[90%] mx-auto">
+                
                 <div class="mb-6 hidden lg:flex">
                     <h1 class="text-2xl font-semibold mr-auto my-auto">Search Results</h1>
-                    <button type="button" class="btn btn-ghost" @click="openFilterModal">
+                    <button type="button" class="btn btn-ghost" @click="handleExport">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                        </svg>
+                        <h1 class="text-xl">Export</h1>
+                    </button>
+                    <button type="button" class="btn btn-ghost my-auto" @click="openFilterModal">
                         <svg xmlns="http://www.w3.org/2000/svg" stroke-width="1.5" fill="currentColor" class="bi bi-filter size-8" viewBox="0 0 16 16">
                           <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
                         </svg>
                         <h1 class="text-xl">Filter</h1>
                     </button>
                     <sorting class="ml-auto"></sorting>
+                    
                 </div>
                 
                 <div class="mb-6 hidden md:flex lg:hidden">
                     <h1 class="text-2xl font-semibold mr-auto my-auto">Search Results</h1>
-                    <button type="button" class="btn btn-ghost" @click="openFilterModal">
+                    <button type="button" class="btn btn-ghost my-auto" @click="handleExport">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                        </svg>
+                    </button>
+                    <button type="button" class="btn btn-ghost my-auto" @click="openFilterModal">
                         <svg xmlns="http://www.w3.org/2000/svg" stroke-width="1.5" fill="currentColor" class="bi bi-filter size-8" viewBox="0 0 16 16">
                           <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
                         </svg>
@@ -80,7 +93,12 @@
                 
                 <div class="mb-4 m-auto flex md:hidden">
                     <h1 class="text-lg font-semibold my-auto mr-auto">Search Results</h1>
-                    <button type="button" class="btn btn-ghost btn-sm" @click="openFilterModal">
+                    <button type="button" class="btn btn-ghost btn-sm my-auto" @click="handleExport">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                        </svg>
+                    </button>
+                    <button type="button" class="btn btn-ghost btn-sm my-auto" @click="openFilterModal">
                         <svg xmlns="http://www.w3.org/2000/svg" stroke-width="1.5" fill="currentColor" class="bi bi-filter size-6" viewBox="0 0 16 16">
                           <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
                         </svg>
@@ -128,12 +146,16 @@
             </div>
         </div>
     </div>
-    <filter-modal ref="filterModalRef"></filter-modal>
+    <modal ref="filterModalRef">
+        <filter-component></filter-component>
+    </modal>
 </template>
 
 <script setup>
-import { provide, ref } from 'vue';
+import { provide, ref, defineAsyncComponent } from 'vue';
 import { usePaginationStore } from '~/stores/paginationStore';
+import { useThemeStore } from '~/stores/theme';
+import { useAuthStore } from '~/stores/auth';
 import { useSortStore } from '~/stores/sortingStore'
 import { useRouter } from 'vue-router'
 import { useFetchChemicalStore } from '~/stores/fetchChemicalStore'
@@ -142,8 +164,11 @@ import Pagination from '~/components/Pagination.vue';
 import SearchField from '~/components/SearchField.vue'
 import ChemicalCard from '~/components/ChemicalCard.vue';
 import Sorting from '~/components/Sorting.vue'
-import FilterModal from '~/components/FilterModal.vue';
-import { useThemeStore } from '~/stores/theme';
+import Modal from '~/components/Modal.vue';
+
+const FilterComponent = defineAsyncComponent({
+    loader: () => import('~/components/FilterComponent.vue')
+});
 
 const filterModalRef = ref(null)
 
@@ -151,6 +176,7 @@ var router = useRouter()
 
 // Stores
 const themeStore = useThemeStore()
+const authStore = useAuthStore()
 const paginationStore = usePaginationStore()
 const sortStore = useSortStore();
 const fetchChemicalStore = useFetchChemicalStore()
@@ -160,9 +186,17 @@ const searchResultsDiv = ref(1)
 paginationStore.setPageSize(10)
 paginationStore.calcTotalPages()
 
+function handleExport() {
+    if(authStore.isAuthenticated) {
+
+    }else{
+        
+    }
+}
+
 function openFilterModal() {
     if(filterModalRef.value) {
-        filterModalRef.value.toggleFilterComponentModal()
+        filterModalRef.value.toggleComponentModal()
     }
 }
 

@@ -24,7 +24,8 @@ export default defineNuxtConfig({
 
   plugins: [
     '~/plugins/axios.js',
-    { src: '~/plugins/aos.client.js', mode: 'client' },
+    { src: '~/plugins/aos.client.js', ssr: false },
+    { src: '~/plugins/toast.client.js', ssr: false },
     '~/plugins/close-details.js',
     '~/plugins/collapse-animation.js',
     '~/plugins/default-theme.js'
@@ -43,14 +44,17 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiUrl: process.env.API_URL_HOST,
-      apiDocsUrl: process.env.API_DOCS_URL
+      apiHost: process.env.API_URL_HOST,
+      docsAPIEndpoint: process.env.DOCS_API_ENDPOINT,
+      loginAPIEndpoint: process.env.LOGIN_API_ENDPOINT,
+      logoutAPIEndpoint: process.env.LOGOUT_API_ENDPOINT,
+      userAPIEndpoint: process.env.USER_API_ENDPOINT
     }
   },
 
-  compatibilityDate: '2024-08-27',
-
   image: {
     // Options
-  }
+  },
+
+  compatibilityDate: '2024-11-17'
 })

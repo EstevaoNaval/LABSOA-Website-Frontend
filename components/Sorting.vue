@@ -16,7 +16,7 @@
     
     <div class="dropdown dropdown-bottom dropdown-end m-auto">
       <div tabindex="0" role="button" class="btn btn-ghost btn-primary text-xl text-primary font-semibold">{{ sortStore.sortOptions[sortStore.currSortOptionId].name }}</div>
-      <ul tabindex="0" class="dropdown-content text-lg font-semibold menu bg-base-100 rounded-box z-[1] p-2 shadow w-52 lg:w-64">
+      <ul tabindex="0" class="dropdown-content text-lg font-semibold menu bg-base-200 rounded-box z-[1] p-2 shadow w-52 lg:w-64">
         <li @click="sortStore.setCurrSortOptionId(option.id)" v-for="option in sortStore.sortOptions" :key="option.id"><a>{{ option.name }}</a></li>
       </ul>
     </div>
