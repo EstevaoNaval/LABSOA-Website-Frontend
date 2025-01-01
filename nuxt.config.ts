@@ -48,7 +48,9 @@ export default defineNuxtConfig({
       docsAPIEndpoint: process.env.DOCS_API_ENDPOINT,
       loginAPIEndpoint: process.env.LOGIN_API_ENDPOINT,
       logoutAPIEndpoint: process.env.LOGOUT_API_ENDPOINT,
-      userAPIEndpoint: process.env.USER_API_ENDPOINT
+      userAPIEndpoint: process.env.USER_API_ENDPOINT,
+      downloadChemicalConformationsEndpoint: process.env.DOWNLOAD_CHEMICAL_CONFORMATIONS_ENPOINT,
+      exportChemicalEndpoint: process.env.EXPORT_CHEMICAL_ENDPOINT
     }
   },
 

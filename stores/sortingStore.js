@@ -80,7 +80,7 @@ export const useSortStore = defineStore('sort', {
             this.ascDirection = sortDirection;
         },
         getCurrSortOption() {
-            return this.ascDirection === true ? this.sortOptions[this.currSortOptionId].value : '-' + this.sortOptions[this.currSortOptionId].value
+            return this.ascDirection === true ? this.sortOptions[this.currSortOptionId].value : `-${this.sortOptions[this.currSortOptionId].value}`
         },
         toggleSortDirection() {
             this.ascDirection = !this.ascDirection;

@@ -95,10 +95,10 @@
               data-aos="fade-up" 
               class="space-y-4 w-full lg:w-3/4" 
               id="3d_conformations"
-              v-if="selectedChemicalStore.selectedChemical 
-              && selectedChemicalStore.selectedChemical.conformation 
-              && paginationStore.page > 0 
-              && selectedChemicalStore.selectedChemical.conformation[paginationStore.page - 1]"
+              v-if="selectedChemicalStore.selectedChemical &&
+              selectedChemicalStore.selectedChemical.conformation && 
+              paginationStore.page > 0 &&
+              selectedChemicalStore.selectedChemical.conformation[paginationStore.page - 1]"
             >
               <h1 class="text-lg md:text-2xl font-bold"> 3D Conformation </h1>
 
@@ -116,18 +116,36 @@
                   </ul>
                 </div>
 
-                <a 
-                  :href="selectedChemicalStore.selectedChemical.conformation[paginationStore.page - 1].conf_file" 
-                  :download="getFileName(selectedChemicalStore.selectedChemical.conformation[paginationStore.page - 1].conf_file)" 
-                  target="_blank" 
-                  type="button" 
-                  class="btn btn-ghost md:btn-outline btn-primary btn-sm md:btn-md my-auto"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                  </svg>
-                  <p class="font-semibold md:text-lg hidden md:flex">Download Coordinates</p>
-                </a>
+                <div class="dropdown">
+                  <div tabindex="0" role="button" class="btn btn-ghost md:btn-outline btn-primary btn-sm md:btn-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                    </svg>
+                    <p class="font-semibold md:text-lg hidden md:flex">Download Coordinates</p>
+                  </div>
+                  <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box md:text-lg z-[1] w-52 p-2 shadow">
+                    <li>
+                      <a 
+                        :href="selectedChemicalStore.selectedChemical.conformation[paginationStore.page - 1].conf_file" 
+                        :download="getFileName(selectedChemicalStore.selectedChemical.conformation[paginationStore.page - 1].conf_file)"
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                      >
+                        Current Conformation
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        :href="getAllConformationsDownloadLink()"
+                        :download="`${selectedChemicalStore.selectedChemical.api_id}_confs.zip`"
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        All conformations
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
 
               <ngl-viewer
@@ -876,6 +894,7 @@
 import { ref } from 'vue'
 import { useSelectedChemicalStore } from '~/stores/selectedChemicalStore';
 import { useRoute } from 'vue-router';
+import { useNuxtApp } from 'nuxt/app';
 import { useRouter } from 'vue-router'
 import { usePaginationStore } from '~/stores/paginationStore';
 import { useThemeStore } from '~/stores/theme'
@@ -887,6 +906,7 @@ import Pagination from '~/components/Pagination.vue';
 
 const router = useRouter()
 const route = useRoute()
+const config = useRuntimeConfig()
 
 var nglViewerKey = ref(1)
 
@@ -900,6 +920,10 @@ const fetchChemicalStore = useFetchChemicalStore()
 var isTableOfContentsOpened = ref(false)
 
 const doiRedirectionSiteHost = "https://www.doi.org/"
+
+const getAllConformationsDownloadLink = () => {
+  return `${config.public.apiHost}${config.public.downloadChemicalConformationsEndpoint}${selectedChemicalStore.selectedChemical.api_id}/`
+}
 
 const toggleTableOfContents = () => {
   isTableOfContentsOpened.value = !isTableOfContentsOpened.value

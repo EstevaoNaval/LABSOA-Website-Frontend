@@ -76,7 +76,7 @@
                 </li>
                 <li class="my-auto hover:text-primary">
                     <div class="indicator">
-                        <span class="indicator-item badge badge-secondary badge-xs top-3 right-6"></span>
+                        <span class="indicator-item badge badge-primary badge-xs top-3 right-6"></span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path 
                                 stroke-linecap="round"
@@ -250,7 +250,7 @@
                     </svg>    
                 </summary>                    
 
-                <ul tabindex="0" class="menu menu-md dropdown-content mt-3 z-[2] p-2 shadow bg-base-100 rounded-box w-52 text-lg font-bold">
+                <ul tabindex="0" class="menu menu-md dropdown-content mt-3 z-[2] p-2 shadow bg-base-100 rounded-box w-44 text-lg font-bold">
                     <li>
                         <NuxtLink to='/about' class="flex">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -260,7 +260,7 @@
                         </NuxtLink>
                     </li>
                     <li>
-                        <details v-close-details class="flex my-auto">
+                        <details v-close-details class="my-auto">
                             <summary>PDF2Chemicals</summary>
                             <ul class="p-2">
                                 <li>
